@@ -3,573 +3,397 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0f1923">
+<meta name="theme-color" content="#0c1520">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Radio-Onko">
+<meta name="apple-mobile-web-app-title" content="RadioOnko">
 <link rel="manifest" href="manifest.json">
-<title>Radio-Onkologie Lernkarten</title>
+<title>Radio-Onkologie Prüfung</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
-
-  :root {
-    --bg: #0c1520;
-    --surface: #131f2e;
-    --surface2: #1a2a3d;
-    --border: #1e3048;
-    --accent: #3b9eff;
-    --accent2: #00d4aa;
-    --accent3: #f4a261;
-    --text: #e8eef5;
-    --text-dim: #7a8fa6;
-    --text-dimmer: #3d5570;
-    --danger: #e05252;
-    --tag-bg: #0d2035;
-    --shadow: 0 8px 40px rgba(0,0,0,0.5);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html, body {
-    height: 100%;
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    overflow: hidden;
-  }
-
-  /* ── LOADING ── */
-  #loading {
-    position: fixed; inset: 0;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 20px; z-index: 100;
-    background: var(--bg);
-  }
-  .loader-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem; color: var(--accent);
-    letter-spacing: -0.02em;
-  }
-  .loader-bar-wrap {
-    width: 200px; height: 3px;
-    background: var(--border); border-radius: 2px; overflow: hidden;
-  }
-  .loader-bar {
-    height: 100%; background: var(--accent);
-    animation: load 1.8s ease-in-out infinite;
-  }
-  @keyframes load { 0%{transform:translateX(-100%)} 100%{transform:translateX(200%)} }
-  .loader-sub { font-size:.8rem; color:var(--text-dim); font-family:'DM Mono',monospace; }
-
-  /* ── APP SHELL ── */
-  #app {
-    display: none;
-    flex-direction: column;
-    height: 100%;
-    max-width: 680px;
-    margin: 0 auto;
-  }
-
-  /* ── HEADER ── */
-  header {
-    padding: 14px 20px 12px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    flex-shrink: 0;
-    background: var(--surface);
-  }
-  .header-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.1rem; color: var(--text);
-    letter-spacing: -0.02em;
-  }
-  .header-title span { color: var(--accent); }
-  .header-meta {
-    display: flex; gap: 12px; align-items: center;
-  }
-  .stat-chip {
-    font-family: 'DM Mono', monospace;
-    font-size: .7rem; color: var(--text-dim);
-    background: var(--tag-bg);
-    padding: 3px 8px; border-radius: 20px;
-    border: 1px solid var(--border);
-  }
-  .stat-chip.active { color: var(--accent); border-color: rgba(59,158,255,.3); }
-
-  /* ── MAIN SCROLL AREA ── */
-  main {
-    flex: 1; overflow-y: auto;
-    padding: 20px;
-    display: flex; flex-direction: column;
-    gap: 16px;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* ── CARD ── */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px 22px 18px;
-    position: relative;
-    transition: border-color 0.2s;
-  }
-  .card:hover { border-color: var(--surface2); }
-
-  .card-meta {
-    display: flex; gap: 8px; flex-wrap: wrap;
-    margin-bottom: 14px;
-  }
-  .tag {
-    font-family: 'DM Mono', monospace;
-    font-size: .65rem;
-    background: var(--tag-bg);
-    color: var(--accent);
-    border: 1px solid rgba(59,158,255,.25);
-    padding: 2px 8px; border-radius: 20px;
-  }
-  .tag.ctx { color: var(--accent2); border-color: rgba(0,212,170,.25); background: rgba(0,212,170,.05); }
-  .block-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: .65rem;
-    color: var(--text-dimmer);
-    border: 1px solid var(--border);
-    padding: 2px 8px; border-radius: 20px;
-    margin-left: auto;
-  }
-  .weight-dots {
-    display: flex; gap: 3px; align-items: center;
-    margin-right: 4px;
-  }
-  .weight-dot {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--text-dimmer);
-  }
-  .weight-dot.filled { background: var(--accent3); }
-
-  .question-text {
-    font-size: 1.05rem; line-height: 1.55;
-    color: var(--text);
-    font-weight: 400;
-  }
-
-  /* ── ANSWER REVEAL ── */
-  .answer-wrap {
-    margin-top: 16px;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.4s ease;
-  }
-  .answer-wrap.open { max-height: 2000px; }
-  .answer-divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin-bottom: 16px;
-  }
-  .answer-text {
-    font-size: .9rem; line-height: 1.7;
-    color: #b0c4dc;
-    font-weight: 300;
-  }
-
-  /* ── BUTTONS ── */
-  .btn-row {
-    display: flex; gap: 10px;
-    margin-top: 18px;
-    flex-wrap: wrap;
-  }
-  .btn {
-    border: none; cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    font-size: .85rem; font-weight: 500;
-    padding: 10px 20px; border-radius: 8px;
-    transition: all 0.15s; letter-spacing: 0.01em;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    box-shadow: 0 0 20px rgba(59,158,255,.2);
-  }
-  .btn-primary:hover { background: #5aaeff; }
-  .btn-primary:active { transform: scale(0.97); }
-  .btn-ghost {
-    background: var(--tag-bg);
-    color: var(--text-dim);
-    border: 1px solid var(--border);
-  }
-  .btn-ghost:hover { background: var(--surface2); color: var(--text); }
-  .btn-ghost:active { transform: scale(0.97); }
-  .btn-next {
-    background: var(--accent2);
-    color: var(--bg);
-    margin-left: auto;
-    font-weight: 600;
-  }
-  .btn-next:hover { background: #00e8bb; }
-  .btn-next:active { transform: scale(0.97); }
-
-  /* ── SESSION STATS BAR ── */
-  .progress-bar {
-    height: 2px;
-    background: var(--border);
-    flex-shrink: 0;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transition: width 0.4s ease;
-    width: 0%;
-  }
-
-  /* ── INFO/EMPTY STATES ── */
-  .info-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 32px 24px;
-    text-align: center;
-  }
-  .info-card h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.5rem; color: var(--accent);
-    margin-bottom: 10px;
-  }
-  .info-card p { color: var(--text-dim); font-size: .9rem; line-height: 1.6; }
-  .info-card .big-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 3rem; color: var(--accent2);
-    display: block; margin: 12px 0;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 10px 20px;
-    border-top: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    flex-shrink: 0;
-    background: var(--surface);
-  }
-  .footer-info {
-    font-family: 'DM Mono', monospace;
-    font-size: .65rem; color: var(--text-dimmer);
-  }
-  .btn-skip {
-    font-size: .75rem; padding: 6px 14px;
-  }
-
-  /* ── SESSION COMPLETE ── */
-  #session-complete {
-    display: none;
-  }
-  .complete-icon {
-    font-size: 3rem; margin-bottom: 16px;
-    display: block;
-  }
-
-  /* ── MOBILE TWEAKS ── */
-  @media (max-width: 480px) {
-    .question-text { font-size: .95rem; }
-    .answer-text { font-size: .85rem; }
-    main { padding: 14px; }
-    header { padding: 12px 16px; }
-    .card { padding: 18px 16px 14px; }
-  }
-
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-  /* ── SUBTLE GRID BG ── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: -1;
-    background-image:
-      linear-gradient(rgba(59,158,255,.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,158,255,.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+:root{--bg:#0c1520;--surface:#131f2e;--sur2:#1a2a3d;--border:#1e3048;--accent:#3b9eff;--green:#00d4aa;--orange:#f4a261;--purple:#a78bfa;--text:#e8eef5;--dim:#7a8fa6;--dimmer:#3d5570}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;width:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow:hidden}
+.screen{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.screen.hidden{display:none}
+#screen-loading{justify-content:center;gap:12px}
+.load-logo{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--accent)}
+.load-sub{color:var(--dim);font-size:.85rem}
+.bar-wrap{width:160px;height:2px;background:var(--border);border-radius:2px;overflow:hidden}
+.bar{height:100%;background:var(--accent);animation:slide 1.6s ease-in-out infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
+#screen-start{justify-content:flex-start;overflow-y:auto}
+.start-inner{width:100%;max-width:520px;padding:28px 20px 60px}
+.app-title{font-family:'DM Serif Display',serif;font-size:2rem;letter-spacing:-.03em;margin-bottom:2px}
+.app-title span{color:var(--accent)}
+.app-sub{font-size:.8rem;color:var(--dim);margin-bottom:28px}
+.sec-label{font-family:'DM Mono',monospace;font-size:.63rem;color:var(--dimmer);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.cluster-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.cluster-btn{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;text-align:left;transition:all .15s;display:flex;align-items:center;gap:14px;width:100%}
+.cluster-btn:hover{border-color:var(--dimmer)}
+.cluster-btn.sel-X{border-color:rgba(244,162,97,.6);background:rgba(244,162,97,.07)}
+.cluster-btn.sel-A{border-color:rgba(0,212,170,.6);background:rgba(0,212,170,.07)}
+.cluster-btn.sel-B{border-color:rgba(59,158,255,.6);background:rgba(59,158,255,.07)}
+.cluster-btn.sel-C{border-color:rgba(167,139,250,.6);background:rgba(167,139,250,.07)}
+.c-badge{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1.1rem;font-weight:bold;flex-shrink:0}
+.c-badge.X{background:rgba(244,162,97,.15);color:var(--orange)}
+.c-badge.A{background:rgba(0,212,170,.15);color:var(--green)}
+.c-badge.B{background:rgba(59,158,255,.15);color:var(--accent)}
+.c-badge.C{background:rgba(167,139,250,.15);color:var(--purple)}
+.c-info{flex:1;min-width:0}
+.c-name{font-size:.9rem;font-weight:600;line-height:1.3;display:block}
+.c-desc{font-size:.72rem;color:var(--dim);margin-top:2px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-count{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--dimmer);flex-shrink:0}
+.size-row{display:flex;gap:8px;margin-bottom:20px}
+.size-btn{flex:1;padding:10px 0;background:var(--sur2);color:var(--dim);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-family:'DM Mono',monospace;font-size:.85rem;transition:all .15s}
+.size-btn.selected{background:rgba(59,158,255,.15);color:var(--accent);border-color:rgba(59,158,255,.5)}
+.stats-row{display:flex;gap:8px;margin-bottom:20px}
+.stat-box{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+.stat-num{font-family:'DM Mono',monospace;font-size:1.3rem;color:var(--accent);display:block}
+.stat-lbl{font-size:.68rem;color:var(--dim)}
+#screen-question{justify-content:flex-start}
+.q-header{width:100%;max-width:640px;padding:12px 18px 10px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;gap:10px}
+.q-pos{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--dim);white-space:nowrap}
+.q-bar{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.q-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:2px;transition:width .4s ease}
+.q-cl{font-family:'DM Mono',monospace;font-size:.6rem;padding:2px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.q-cl.A{background:rgba(0,212,170,.15);color:var(--green)}
+.q-cl.B{background:rgba(59,158,255,.15);color:var(--accent)}
+.q-cl.C{background:rgba(167,139,250,.15);color:var(--purple)}
+.q-scroll{flex:1;overflow-y:auto;width:100%;max-width:640px;padding:16px 16px 100px;-webkit-overflow-scrolling:touch}
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 20px}
+.q-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.tag{font-family:'DM Mono',monospace;font-size:.58rem;background:rgba(59,158,255,.08);color:var(--accent);border:1px solid rgba(59,158,255,.2);padding:2px 7px;border-radius:20px}
+.q-text{font-size:1rem;line-height:1.6;font-weight:500}
+.ans-block{margin-top:18px;display:none}
+.ans-block.show{display:block}
+.a-div{border:none;border-top:1px solid var(--border);margin-bottom:14px}
+.a-lbl{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--green);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:5px}
+.a-lbl::before{content:'✓';font-size:.8rem}
+.a-text{font-size:.88rem;line-height:1.8;color:#b5c9df;font-weight:300}
+.a-text strong{color:var(--text);font-weight:600}
+.a-text .asec{margin-top:10px;margin-bottom:3px;color:var(--text);font-weight:600;font-size:.88rem;display:block}
+.a-text .asec:first-child{margin-top:0}
+.a-text ul{list-style:none;padding:0;margin:2px 0 8px 0}
+.a-text ul li{padding:2px 0 2px 14px;position:relative;line-height:1.65}
+.a-text ul li::before{content:'•';position:absolute;left:0;color:var(--dimmer)}
+.a-text table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.78rem}
+.a-text table th{background:var(--sur2);color:var(--dim);padding:4px 7px;text-align:left;border:1px solid var(--border);font-weight:500}
+.a-text table td{padding:4px 7px;border:1px solid var(--border);color:#9ab0c8}
+.chips-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+.chip{font-family:'DM Mono',monospace;font-size:.63rem;padding:3px 9px;border-radius:4px;line-height:1.4}
+.chip-0{background:rgba(59,158,255,.12);color:var(--accent);border:1px solid rgba(59,158,255,.25)}
+.chip-1{background:rgba(0,212,170,.1);color:var(--green);border:1px solid rgba(0,212,170,.25)}
+.chip-2{background:rgba(167,139,250,.1);color:var(--purple);border:1px solid rgba(167,139,250,.25)}
+.chip-3{background:rgba(244,162,97,.1);color:var(--orange);border:1px solid rgba(244,162,97,.25)}
+.q-footer{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:center}
+.q-foot{width:100%;max-width:640px;padding:12px 16px;background:var(--bg);border-top:1px solid var(--border);display:flex;gap:8px}
+#screen-summary{justify-content:flex-start}
+.sum-hdr{width:100%;max-width:640px;padding:18px 18px 14px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;text-align:center}
+.sum-hdr h2{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--green);margin-bottom:3px}
+.sum-hdr p{color:var(--dim);font-size:.82rem}
+.sum-scroll{flex:1;overflow-y:auto;width:100%;max-width:640px;padding:14px 14px 110px;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;gap:10px}
+.sum-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.sum-q{padding:13px 15px 11px;display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.sum-n{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--dimmer);flex-shrink:0;padding-top:2px}
+.sum-qt{font-size:.88rem;line-height:1.45;font-weight:500}
+.sum-a{padding:12px 15px 13px 36px;font-size:.82rem;line-height:1.75;color:#8fafc5;font-weight:300;border-top:1px solid var(--border);display:none}
+.sum-a.open{display:block}
+.sum-tog{width:100%;padding:8px 15px;background:var(--sur2);border:none;border-top:1px solid var(--border);color:var(--dim);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.75rem;text-align:left}
+.sum-footer{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:center}
+.sum-foot{width:100%;max-width:640px;padding:12px 16px;background:var(--bg);border-top:1px solid var(--border);display:flex;gap:8px}
+.btn{border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;padding:13px 18px;border-radius:10px;transition:all .15s}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:#fff;width:100%;font-size:.95rem;box-shadow:0 4px 20px rgba(59,158,255,.25)}
+.btn-ghost{background:var(--sur2);color:var(--dim);border:1px solid var(--border)}
+.btn-reveal{flex:1;background:rgba(59,158,255,.1);color:var(--accent);border:1px solid rgba(59,158,255,.3)}
+.btn-next{flex:1;background:var(--green);color:#0c1520;font-weight:600}
+.btn-finish{flex:1;background:var(--orange);color:#0c1520;font-weight:600}
+.btn-new{flex:1;background:var(--accent);color:#fff;font-weight:600;box-shadow:0 4px 16px rgba(59,158,255,.2)}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(59,158,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(59,158,255,.025) 1px,transparent 1px);background-size:40px 40px}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+@media(max-width:480px){.q-text{font-size:.93rem}.a-text{font-size:.83rem}}
 </style>
 </head>
 <body>
 
-<!-- LOADING -->
-<div id="loading">
-  <div class="loader-title">Radio-Onkologie</div>
-  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-  <div class="loader-sub" id="load-status">Lade Fragendatenbank…</div>
+<div class="screen" id="screen-loading">
+  <div class="load-logo">Radio-Onkologie</div>
+  <div class="load-sub">Facharztprüfung Lernkarten</div>
+  <div class="bar-wrap"><div class="bar"></div></div>
 </div>
 
-<!-- APP -->
-<div id="app">
-  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-
-  <header>
-    <div class="header-title"><span>Radio</span>Onko</div>
-    <div class="header-meta">
-      <span class="stat-chip active" id="stat-seen">0 gesehen</span>
-      <span class="stat-chip" id="stat-remain">– übrig</span>
+<div class="screen hidden" id="screen-start">
+  <div class="start-inner">
+    <div class="app-title"><span>Radio</span>Onko</div>
+    <div class="app-sub">Facharztprüfung · Mündliche Simulation</div>
+    <div class="sec-label">Cluster wählen</div>
+    <div class="cluster-grid" id="cluster-grid"></div>
+    <div class="sec-label">Fragen pro Block</div>
+    <div class="size-row">
+      <button class="size-btn" data-n="4" onclick="selectSize(4)">4</button>
+      <button class="size-btn selected" data-n="6" onclick="selectSize(6)">6</button>
+      <button class="size-btn" data-n="8" onclick="selectSize(8)">8</button>
+      <button class="size-btn" data-n="10" onclick="selectSize(10)">10</button>
     </div>
-  </header>
+    <div class="stats-row">
+      <div class="stat-box"><span class="stat-num" id="s-total">–</span><span class="stat-lbl">Fragen total</span></div>
+      <div class="stat-box"><span class="stat-num" id="s-seen">0</span><span class="stat-lbl">gesehen</span></div>
+      <div class="stat-box"><span class="stat-num" id="s-blocks">0</span><span class="stat-lbl">Blöcke</span></div>
+    </div>
+    <button class="btn btn-primary" onclick="startBlock()">Block starten →</button>
+  </div>
+</div>
 
-  <main id="main-content">
-    <!-- Question card injected here -->
-  </main>
+<div class="screen hidden" id="screen-question">
+  <div class="q-header" style="width:100%;max-width:640px">
+    <span class="q-pos" id="q-pos">FRAGE 1 / 6</span>
+    <div class="q-bar"><div class="q-fill" id="q-fill" style="width:0%"></div></div>
+    <span class="q-cl" id="q-cl"></span>
+  </div>
+  <div class="q-scroll" id="q-scroll">
+    <div class="q-card" id="q-card"></div>
+  </div>
+  <div class="q-footer"><div class="q-foot" id="q-foot"></div></div>
+</div>
 
-  <footer>
-    <span class="footer-info" id="footer-info">–</span>
-    <button class="btn btn-ghost btn-skip" id="btn-skip">Überspringen →</button>
-  </footer>
+<div class="screen hidden" id="screen-summary">
+  <div class="sum-hdr" style="width:100%;max-width:640px">
+    <h2>Block abgeschlossen ✓</h2>
+    <p id="sum-sub"></p>
+  </div>
+  <div class="sum-scroll" id="sum-list"></div>
+  <div class="sum-footer">
+    <div class="sum-foot">
+      <button class="btn btn-ghost" onclick="goHome()">← Start</button>
+      <button class="btn btn-new" onclick="startBlock()">Neuer Block →</button>
+    </div>
+  </div>
 </div>
 
 <script>
-// ════════════════════════════════════════════
-// ENGINE
-// ════════════════════════════════════════════
+const CLUSTERS_DEF = [
+  {id:"X",name:"Zufälliger Cluster",desc:"Alle Themen gemischt",key:null},
+  {id:"A",name:"Strahlenphysik",desc:"Physik · Wechselwirkungen · TDK · Dosimetrie",key:"A"},
+  {id:"B",name:"Technik & Planung",desc:"Linac · Röntgen · IMRT · QA · Bildgebung",key:"B"},
+  {id:"C",name:"Biologie & Strahlenschutz",desc:"LQ-Modell · 4Rs · OAR · Gesetzgebung",key:"C"}
+];
 
-let DB = null;
-let session = {
-  seen: new Set(),        // question IDs seen this session
-  seenTags: new Set(),    // tags encountered this session
-  currentQ: null,
-  showingAnswer: false,
-  totalCount: 0
-};
+let DB=null, selectedCluster="X", blockSize=6;
+let totalSeen=new Set(), totalBlocks=0;
+let block={questions:[],index:0};
 
-// ── WEIGHTED RANDOM ──
-function weightedRandom(arr, weights) {
-  const total = weights.reduce((a, b) => a + b, 0);
-  let r = Math.random() * total;
-  for (let i = 0; i < arr.length; i++) {
-    r -= weights[i];
-    if (r <= 0) return arr[i];
-  }
-  return arr[arr.length - 1];
+function wPick(arr){
+  if(!arr.length)return null;
+  const tot=arr.reduce((s,q)=>s+q.weight,0);
+  let r=Math.random()*tot;
+  for(const q of arr){r-=q.weight;if(r<=0)return q;}
+  return arr[arr.length-1];
 }
 
-// ── TAG GRAPH EXPANSION ──
-function expandTags(tags) {
-  const reached = new Set(tags);
-  const queue = [...tags];
-  while (queue.length) {
-    const t = queue.shift();
-    const neighbors = DB.tag_graph[t] || [];
-    for (const n of neighbors) {
-      if (!reached.has(n)) { reached.add(n); queue.push(n); }
+function buildBlock(){
+  let key;
+  if(selectedCluster==="X"){
+    key=["A","B","C"][Math.floor(Math.random()*3)];
+  } else {
+    key=selectedCluster;
+  }
+
+  let pool=DB.questions.filter(q=>key?q.cluster===key:true);
+  const unseen=pool.filter(q=>!totalSeen.has(q.id));
+  if(unseen.length>=3)pool=unseen;
+
+  const starters=pool.filter(q=>!q.requires_context);
+  const followups=pool.filter(q=>q.requires_context);
+  const chosen=[],chosenIds=new Set(),chosenTags=new Set();
+
+  function avail(arr){return arr.filter(q=>!chosenIds.has(q.id));}
+  function eligible(){return avail(followups).filter(q=>q.requires_context.every(t=>chosenTags.has(t)));}
+  function add(q){chosen.push(q);chosenIds.add(q.id);q.tags.forEach(t=>chosenTags.add(t));}
+
+  const first=wPick(avail(starters));
+  if(!first)return chosen;
+  add(first);
+
+  while(chosen.length<blockSize){
+    const ef=eligible();
+    if(ef.length&&Math.random()<0.60){add(wPick(ef));}
+    else{
+      const s=wPick(avail(starters));
+      if(s){add(s);continue;}
+      const f=wPick(eligible());
+      if(f){add(f);}else break;
     }
   }
-  return reached;
+  return chosen;
 }
 
-// ── ELIGIBILITY ──
-function isEligible(q) {
-  if (session.seen.has(q.id)) return false;
-  if (!q.requires_context) return true;
-  return q.requires_context.every(t => session.seenTags.has(t));
-}
+// ── FORMATTER ──
+function fmt(raw){
+  if(!raw)return'';
+  const lines=raw.split('\n');
+  let html='',inList=false,inTable=false,tableRows=[];
 
-// ── PICK NEXT QUESTION ──
-function pickNext() {
-  const eligible = DB.questions.filter(isEligible);
-  if (eligible.length === 0) return null;
-
-  // If no tags seen yet → pick from starters only
-  const starters = eligible.filter(q => !q.requires_context);
-  if (session.seenTags.size === 0) {
-    if (starters.length === 0) return eligible[Math.floor(Math.random() * eligible.length)];
-    const ws = starters.map(q => q.weight);
-    return weightedRandom(starters, ws);
+  function flushTable(){
+    if(!tableRows.length)return;
+    let th='',tb='';
+    tableRows.forEach((row,i)=>{
+      const cells=row.split('|').map(c=>c.trim()).filter(c=>c!=='');
+      if(i===0){th='<tr>'+cells.map(c=>`<th>${fi(c)}</th>`).join('')+'</tr>';}
+      else if(i===1&&row.replace(/[\|\-\s]/g,'')===''){}
+      else{tb+='<tr>'+cells.map(c=>`<td>${fi(c)}</td>`).join('')+'</tr>';}
+    });
+    html+=`<table><thead>${th}</thead><tbody>${tb}</tbody></table>`;
+    tableRows=[];inTable=false;
   }
+  function closeList(){if(inList){html+='</ul>';inList=false;}}
 
-  // Score eligible questions by tag overlap
-  const currentTags = session.currentQ ? session.currentQ.tags : [];
-  const expanded = expandTags(currentTags);
+  lines.forEach(line=>{
+    if(line.trim().startsWith('|')){closeList();inTable=true;tableRows.push(line.trim());return;}
+    if(inTable)flushTable();
 
-  const scores = eligible.map(q => {
-    let score = q.weight; // base
-    for (const t of q.tags) {
-      if (currentTags.includes(t)) score += 3;
-      else if (expanded.has(t)) score += 1;
+    // Section header: **Text:** at start
+    if(/^\*\*[^*]+\*\*[:\s]/.test(line.trim())){
+      closeList();
+      html+=`<span class="asec">${fi(line.trim())}</span>`;
+      return;
     }
-    return score;
+    // Bullet
+    if(/^[•\-]\s/.test(line.trim())){
+      if(!inList){html+='<ul>';inList=true;}
+      html+=`<li>${fi(line.trim().replace(/^[•\-]\s/,''))}</li>`;
+      return;
+    }
+    // Blank line
+    if(!line.trim()){closeList();return;}
+    // Paragraph
+    closeList();
+    html+=`<p style="margin:3px 0">${fi(line.trim())}</p>`;
   });
-
-  return weightedRandom(eligible, scores);
+  if(inTable)flushTable();
+  closeList();
+  return html;
 }
 
-// ── ADVANCE SESSION ──
-function advance(q) {
-  session.seen.add(q.id);
-  for (const t of q.tags) session.seenTags.add(t);
-  session.currentQ = q;
-  session.showingAnswer = false;
+function fi(t){
+  return t
+    .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+    .replace(/__([^_]+)__/g,'<strong>$1</strong>');
 }
 
-// ════════════════════════════════════════════
-// UI
-// ════════════════════════════════════════════
-
-function weightDots(w) {
-  let html = '<div class="weight-dots">';
-  for (let i = 1; i <= 5; i++) {
-    html += `<div class="weight-dot${i <= w ? ' filled' : ''}"></div>`;
-  }
-  return html + '</div>';
+function chips(arr){
+  if(!arr||!arr.length)return'';
+  return'<div class="chips-row">'+arr.map((c,i)=>`<span class="chip chip-${Math.min(i,3)}">${c}</span>`).join('')+'</div>';
 }
 
-function renderQuestion(q) {
-  const main = document.getElementById('main-content');
-  const tagsHtml = q.tags.map(t =>
-    `<span class="tag">${t}</span>`
-  ).join('');
-  const ctxHtml = q.requires_context
-    ? q.requires_context.map(t => `<span class="tag ctx">↳ ${t}</span>`).join('')
-    : '';
+// ── SCREENS ──
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
+function goHome(){updateStats();renderGrid();show('screen-start');}
+function selectSize(n){blockSize=n;document.querySelectorAll('.size-btn').forEach(b=>b.classList.toggle('selected',parseInt(b.dataset.n)===n));}
+function selectCluster(id){
+  selectedCluster=id;
+  document.querySelectorAll('.cluster-btn').forEach(b=>{b.className='cluster-btn';if(b.dataset.id===id)b.classList.add('sel-'+id);});
+}
+function updateStats(){
+  if(!DB)return;
+  document.getElementById('s-total').textContent=DB.questions.length;
+  document.getElementById('s-seen').textContent=totalSeen.size;
+  document.getElementById('s-blocks').textContent=totalBlocks;
+}
+function renderGrid(){
+  document.getElementById('cluster-grid').innerHTML=CLUSTERS_DEF.map(c=>{
+    const cnt=c.key?DB.questions.filter(q=>q.cluster===c.key).length:DB.questions.length;
+    const isSel=c.id===selectedCluster;
+    return`<button class="cluster-btn${isSel?' sel-'+c.id:''}" data-id="${c.id}" onclick="selectCluster('${c.id}')">
+      <div class="c-badge ${c.id}">${c.id==='X'?'🎲':c.id}</div>
+      <div class="c-info"><span class="c-name">${c.name}</span><span class="c-desc">${c.desc}</span></div>
+      <span class="c-count">${cnt}</span>
+    </button>`;
+  }).join('');
+}
 
-  main.innerHTML = `
-    <div class="card" id="q-card">
-      <div class="card-meta">
-        ${weightDots(q.weight)}
-        ${tagsHtml}
-        ${ctxHtml}
-        <span class="block-badge">${q.block}</span>
-      </div>
-      <div class="question-text" id="q-text">${q.question}</div>
-      <div class="answer-wrap" id="answer-wrap">
-        <hr class="answer-divider">
-        <div class="answer-text" id="a-text">${formatAnswer(q.answer)}</div>
-      </div>
-      <div class="btn-row" id="btn-row">
-        <button class="btn btn-primary" id="btn-reveal" onclick="revealAnswer()">Antwort zeigen</button>
-      </div>
-    </div>
-  `;
+function startBlock(){
+  const qs=buildBlock();
+  if(!qs.length){alert('Keine Fragen verfügbar.');return;}
+  block.questions=qs;block.index=0;totalBlocks++;
+  show('screen-question');renderQ();
+}
+
+function renderQ(){
+  const q=block.questions[block.index];
+  const pos=block.index+1,tot=block.questions.length;
+  document.getElementById('q-pos').textContent=`FRAGE ${pos} / ${tot}`;
+  document.getElementById('q-fill').style.width=((pos-1)/tot*100)+'%';
+  const cl=document.getElementById('q-cl');
+  cl.className='q-cl '+(q.cluster||'');
+  cl.textContent=q.cluster?(DB.clusters[q.cluster]?.name||q.cluster):'';
+  document.getElementById('q-card').innerHTML=`
+    <div class="q-tags">${q.tags.map(t=>`<span class="tag">${t.replace(/-/g,' ')}</span>`).join('')}</div>
+    <div class="q-text">${q.question}</div>
+    <div class="ans-block" id="ans">
+      <hr class="a-div">
+      <div class="a-lbl">Modellantwort</div>
+      <div class="a-text">${fmt(q.answer)}</div>
+      ${chips(q.chips)}
+    </div>`;
+  document.getElementById('q-foot').innerHTML=`<button class="btn btn-reveal" onclick="reveal()">Antwort aufdecken</button>`;
+  document.getElementById('q-scroll').scrollTop=0;
+}
+
+function reveal(){
+  document.getElementById('ans').classList.add('show');
+  const q=block.questions[block.index];
+  totalSeen.add(q.id);
+  const pos=block.index+1,tot=block.questions.length;
+  document.getElementById('q-fill').style.width=(pos/tot*100)+'%';
+  const isLast=block.index===tot-1;
+  document.getElementById('q-foot').innerHTML=isLast
+    ?`<button class="btn btn-finish" onclick="finish()">Block beenden ✓</button>`
+    :`<button class="btn btn-next" onclick="nextQ()">Nächste Frage →</button>`;
+}
+
+function nextQ(){block.index++;renderQ();}
+
+function finish(){
   updateStats();
-}
-
-function formatAnswer(text) {
-  // Bold text between ** **
-  return text
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\n/g, '<br>');
-}
-
-function revealAnswer() {
-  session.showingAnswer = true;
-  document.getElementById('answer-wrap').classList.add('open');
-  document.getElementById('btn-row').innerHTML = `
-    <button class="btn btn-ghost" onclick="nextQuestion()">Nächste Frage</button>
-    <button class="btn btn-next" onclick="nextQuestion()">Weiter →</button>
-  `;
-}
-
-function nextQuestion() {
-  const q = pickNext();
-  if (!q) {
-    showSessionComplete();
-    return;
-  }
-  advance(q);
-  renderQuestion(q);
-  // Scroll to top
-  document.getElementById('main-content').scrollTop = 0;
-}
-
-function skipQuestion() {
-  if (!session.currentQ) return;
-  // Skip without marking as seen → just move to next
-  const skipped = session.currentQ;
-  const q = pickNext();
-  if (!q) { showSessionComplete(); return; }
-  advance(q);
-  renderQuestion(q);
-  document.getElementById('main-content').scrollTop = 0;
-}
-
-function updateStats() {
-  const total = session.totalCount;
-  const seen = session.seen.size;
-  const remain = total - seen;
-  const pct = total > 0 ? (seen / total * 100) : 0;
-
-  document.getElementById('stat-seen').textContent = `${seen} gesehen`;
-  document.getElementById('stat-remain').textContent = `${remain} übrig`;
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('footer-info').textContent =
-    `${seen} / ${total} · ${session.seenTags.size} Tags freigeschaltet`;
-}
-
-function showSessionComplete() {
-  const main = document.getElementById('main-content');
-  main.innerHTML = `
-    <div class="info-card" id="session-complete">
-      <span class="complete-icon">🎓</span>
-      <h2>Session beendet</h2>
-      <span class="big-num">${session.seen.size}</span>
-      <p>Fragen in dieser Session beantwortet.<br>
-      Alle ${session.totalCount} Fragen wurden gesehen.</p>
-      <div class="btn-row" style="justify-content:center; margin-top:20px">
-        <button class="btn btn-primary" onclick="restartSession()">Neue Session starten</button>
+  const q0=block.questions[0];
+  const clName=q0?.cluster?(DB.clusters[q0.cluster]?.name||''):'';
+  document.getElementById('sum-sub').textContent=`${block.questions.length} Fragen · ${clName}`;
+  document.getElementById('sum-list').innerHTML=block.questions.map((q,i)=>`
+    <div class="sum-item">
+      <div class="sum-q" onclick="togA(${i})">
+        <span class="sum-n">${i+1}.</span>
+        <span class="sum-qt">${q.question}</span>
       </div>
-    </div>
-  `;
-  document.getElementById('footer-info').textContent = 'Session abgeschlossen';
+      <div class="sum-a" id="sa${i}">
+        <div class="a-text">${fmt(q.answer)}</div>
+        ${chips(q.chips)}
+      </div>
+      <button class="sum-tog" id="sb${i}" onclick="togA(${i})">▸ Antwort anzeigen</button>
+    </div>`).join('');
+  show('screen-summary');
 }
 
-function restartSession() {
-  session.seen.clear();
-  session.seenTags.clear();
-  session.currentQ = null;
-  session.showingAnswer = false;
-  const q = pickNext();
-  if (q) { advance(q); renderQuestion(q); }
+function togA(i){
+  const a=document.getElementById('sa'+i),b=document.getElementById('sb'+i);
+  const open=a.classList.toggle('open');
+  b.textContent=open?'▾ Antwort ausblenden':'▸ Antwort anzeigen';
 }
 
-// ════════════════════════════════════════════
-// INIT
-// ════════════════════════════════════════════
-
-async function init() {
-  const statusEl = document.getElementById('load-status');
-  try {
-    statusEl.textContent = 'Lade questions_database.json…';
-    const res = await fetch('questions_database.json');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    statusEl.textContent = 'Verarbeite Daten…';
-    DB = await res.json();
-    session.totalCount = DB.questions.length;
-
-    // Done loading
-    document.getElementById('loading').style.display = 'none';
-    const app = document.getElementById('app');
-    app.style.display = 'flex';
-
-    // Start
-    const q = pickNext();
-    if (q) { advance(q); renderQuestion(q); }
-
-  } catch (e) {
-    statusEl.textContent = '❌ Fehler: ' + e.message;
-    console.error(e);
+async function init(){
+  try{
+    const res=await fetch('questions_database.json');
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    DB=await res.json();
+    renderGrid();updateStats();show('screen-start');
+  }catch(e){
+    document.querySelector('#screen-loading .load-sub').textContent='❌ '+e.message;
   }
 }
-
-// Wire up skip button
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('btn-skip').addEventListener('click', skipQuestion);
-  init();
-});
-
-// ════════════════════════════════════════════
-// SERVICE WORKER REGISTRATION
-// ════════════════════════════════════════════
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
-  });
-}
+init();
+if('serviceWorker' in navigator)
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 </script>
 </body>
 </html>

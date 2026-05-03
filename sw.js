@@ -1,7 +1,8 @@
-const CACHE = 'radioonko-v1';
+const CACHE = 'radioonko-v2';
 const ASSETS = [
   './',
   './index.html',
+  './manifest.json',
   './questions_database.json'
 ];
 
