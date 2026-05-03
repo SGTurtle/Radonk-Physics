@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0f1923">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Radio-Onko">
+<link rel="manifest" href="manifest.json">
+<title>Radio-Onkologie Lernkarten</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #0c1520;
+    --surface: #131f2e;
+    --surface2: #1a2a3d;
+    --border: #1e3048;
+    --accent: #3b9eff;
+    --accent2: #00d4aa;
+    --accent3: #f4a261;
+    --text: #e8eef5;
+    --text-dim: #7a8fa6;
+    --text-dimmer: #3d5570;
+    --danger: #e05252;
+    --tag-bg: #0d2035;
+    --shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  /* ── LOADING ── */
+  #loading {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 20px; z-index: 100;
+    background: var(--bg);
+  }
+  .loader-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem; color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .loader-bar-wrap {
+    width: 200px; height: 3px;
+    background: var(--border); border-radius: 2px; overflow: hidden;
+  }
+  .loader-bar {
+    height: 100%; background: var(--accent);
+    animation: load 1.8s ease-in-out infinite;
+  }
+  @keyframes load { 0%{transform:translateX(-100%)} 100%{transform:translateX(200%)} }
+  .loader-sub { font-size:.8rem; color:var(--text-dim); font-family:'DM Mono',monospace; }
+
+  /* ── APP SHELL ── */
+  #app {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 14px 20px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+    background: var(--surface);
+  }
+  .header-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem; color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .header-title span { color: var(--accent); }
+  .header-meta {
+    display: flex; gap: 12px; align-items: center;
+  }
+  .stat-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: .7rem; color: var(--text-dim);
+    background: var(--tag-bg);
+    padding: 3px 8px; border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+  .stat-chip.active { color: var(--accent); border-color: rgba(59,158,255,.3); }
+
+  /* ── MAIN SCROLL AREA ── */
+  main {
+    flex: 1; overflow-y: auto;
+    padding: 20px;
+    display: flex; flex-direction: column;
+    gap: 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 22px 18px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--surface2); }
+
+  .card-meta {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    background: var(--tag-bg);
+    color: var(--accent);
+    border: 1px solid rgba(59,158,255,.25);
+    padding: 2px 8px; border-radius: 20px;
+  }
+  .tag.ctx { color: var(--accent2); border-color: rgba(0,212,170,.25); background: rgba(0,212,170,.05); }
+  .block-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem;
+    color: var(--text-dimmer);
+    border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 20px;
+    margin-left: auto;
+  }
+  .weight-dots {
+    display: flex; gap: 3px; align-items: center;
+    margin-right: 4px;
+  }
+  .weight-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--text-dimmer);
+  }
+  .weight-dot.filled { background: var(--accent3); }
+
+  .question-text {
+    font-size: 1.05rem; line-height: 1.55;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* ── ANSWER REVEAL ── */
+  .answer-wrap {
+    margin-top: 16px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+  .answer-wrap.open { max-height: 2000px; }
+  .answer-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .answer-text {
+    font-size: .9rem; line-height: 1.7;
+    color: #b0c4dc;
+    font-weight: 300;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-row {
+    display: flex; gap: 10px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .85rem; font-weight: 500;
+    padding: 10px 20px; border-radius: 8px;
+    transition: all 0.15s; letter-spacing: 0.01em;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(59,158,255,.2);
+  }
+  .btn-primary:hover { background: #5aaeff; }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-ghost {
+    background: var(--tag-bg);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { background: var(--surface2); color: var(--text); }
+  .btn-ghost:active { transform: scale(0.97); }
+  .btn-next {
+    background: var(--accent2);
+    color: var(--bg);
+    margin-left: auto;
+    font-weight: 600;
+  }
+  .btn-next:hover { background: #00e8bb; }
+  .btn-next:active { transform: scale(0.97); }
+
+  /* ── SESSION STATS BAR ── */
+  .progress-bar {
+    height: 2px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* ── INFO/EMPTY STATES ── */
+  .info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .info-card h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem; color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .info-card p { color: var(--text-dim); font-size: .9rem; line-height: 1.6; }
+  .info-card .big-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 3rem; color: var(--accent2);
+    display: block; margin: 12px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 10px 20px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+    background: var(--surface);
+  }
+  .footer-info {
+    font-family: 'DM Mono', monospace;
+    font-size: .65rem; color: var(--text-dimmer);
+  }
+  .btn-skip {
+    font-size: .75rem; padding: 6px 14px;
+  }
+
+  /* ── SESSION COMPLETE ── */
+  #session-complete {
+    display: none;
+  }
+  .complete-icon {
+    font-size: 3rem; margin-bottom: 16px;
+    display: block;
+  }
+
+  /* ── MOBILE TWEAKS ── */
+  @media (max-width: 480px) {
+    .question-text { font-size: .95rem; }
+    .answer-text { font-size: .85rem; }
+    main { padding: 14px; }
+    header { padding: 12px 16px; }
+    .card { padding: 18px 16px 14px; }
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* ── SUBTLE GRID BG ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: -1;
+    background-image:
+      linear-gradient(rgba(59,158,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,158,255,.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="loader-title">Radio-Onkologie</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-sub" id="load-status">Lade Fragendatenbank…</div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+  <header>
+    <div class="header-title"><span>Radio</span>Onko</div>
+    <div class="header-meta">
+      <span class="stat-chip active" id="stat-seen">0 gesehen</span>
+      <span class="stat-chip" id="stat-remain">– übrig</span>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Question card injected here -->
+  </main>
+
+  <footer>
+    <span class="footer-info" id="footer-info">–</span>
+    <button class="btn btn-ghost btn-skip" id="btn-skip">Überspringen →</button>
+  </footer>
+</div>
+
+<script>
+// ════════════════════════════════════════════
+// ENGINE
+// ════════════════════════════════════════════
+
+let DB = null;
+let session = {
+  seen: new Set(),        // question IDs seen this session
+  seenTags: new Set(),    // tags encountered this session
+  currentQ: null,
+  showingAnswer: false,
+  totalCount: 0
+};
+
+// ── WEIGHTED RANDOM ──
+function weightedRandom(arr, weights) {
+  const total = weights.reduce((a, b) => a + b, 0);
+  let r = Math.random() * total;
+  for (let i = 0; i < arr.length; i++) {
+    r -= weights[i];
+    if (r <= 0) return arr[i];
+  }
+  return arr[arr.length - 1];
+}
+
+// ── TAG GRAPH EXPANSION ──
+function expandTags(tags) {
+  const reached = new Set(tags);
+  const queue = [...tags];
+  while (queue.length) {
+    const t = queue.shift();
+    const neighbors = DB.tag_graph[t] || [];
+    for (const n of neighbors) {
+      if (!reached.has(n)) { reached.add(n); queue.push(n); }
+    }
+  }
+  return reached;
+}
+
+// ── ELIGIBILITY ──
+function isEligible(q) {
+  if (session.seen.has(q.id)) return false;
+  if (!q.requires_context) return true;
+  return q.requires_context.every(t => session.seenTags.has(t));
+}
+
+// ── PICK NEXT QUESTION ──
+function pickNext() {
+  const eligible = DB.questions.filter(isEligible);
+  if (eligible.length === 0) return null;
+
+  // If no tags seen yet → pick from starters only
+  const starters = eligible.filter(q => !q.requires_context);
+  if (session.seenTags.size === 0) {
+    if (starters.length === 0) return eligible[Math.floor(Math.random() * eligible.length)];
+    const ws = starters.map(q => q.weight);
+    return weightedRandom(starters, ws);
+  }
+
+  // Score eligible questions by tag overlap
+  const currentTags = session.currentQ ? session.currentQ.tags : [];
+  const expanded = expandTags(currentTags);
+
+  const scores = eligible.map(q => {
+    let score = q.weight; // base
+    for (const t of q.tags) {
+      if (currentTags.includes(t)) score += 3;
+      else if (expanded.has(t)) score += 1;
+    }
+    return score;
+  });
+
+  return weightedRandom(eligible, scores);
+}
+
+// ── ADVANCE SESSION ──
+function advance(q) {
+  session.seen.add(q.id);
+  for (const t of q.tags) session.seenTags.add(t);
+  session.currentQ = q;
+  session.showingAnswer = false;
+}
+
+// ════════════════════════════════════════════
+// UI
+// ════════════════════════════════════════════
+
+function weightDots(w) {
+  let html = '<div class="weight-dots">';
+  for (let i = 1; i <= 5; i++) {
+    html += `<div class="weight-dot${i <= w ? ' filled' : ''}"></div>`;
+  }
+  return html + '</div>';
+}
+
+function renderQuestion(q) {
+  const main = document.getElementById('main-content');
+  const tagsHtml = q.tags.map(t =>
+    `<span class="tag">${t}</span>`
+  ).join('');
+  const ctxHtml = q.requires_context
+    ? q.requires_context.map(t => `<span class="tag ctx">↳ ${t}</span>`).join('')
+    : '';
+
+  main.innerHTML = `
+    <div class="card" id="q-card">
+      <div class="card-meta">
+        ${weightDots(q.weight)}
+        ${tagsHtml}
+        ${ctxHtml}
+        <span class="block-badge">${q.block}</span>
+      </div>
+      <div class="question-text" id="q-text">${q.question}</div>
+      <div class="answer-wrap" id="answer-wrap">
+        <hr class="answer-divider">
+        <div class="answer-text" id="a-text">${formatAnswer(q.answer)}</div>
+      </div>
+      <div class="btn-row" id="btn-row">
+        <button class="btn btn-primary" id="btn-reveal" onclick="revealAnswer()">Antwort zeigen</button>
+      </div>
+    </div>
+  `;
+  updateStats();
+}
+
+function formatAnswer(text) {
+  // Bold text between ** **
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+function revealAnswer() {
+  session.showingAnswer = true;
+  document.getElementById('answer-wrap').classList.add('open');
+  document.getElementById('btn-row').innerHTML = `
+    <button class="btn btn-ghost" onclick="nextQuestion()">Nächste Frage</button>
+    <button class="btn btn-next" onclick="nextQuestion()">Weiter →</button>
+  `;
+}
+
+function nextQuestion() {
+  const q = pickNext();
+  if (!q) {
+    showSessionComplete();
+    return;
+  }
+  advance(q);
+  renderQuestion(q);
+  // Scroll to top
+  document.getElementById('main-content').scrollTop = 0;
+}
+
+function skipQuestion() {
+  if (!session.currentQ) return;
+  // Skip without marking as seen → just move to next
+  const skipped = session.currentQ;
+  const q = pickNext();
+  if (!q) { showSessionComplete(); return; }
+  advance(q);
+  renderQuestion(q);
+  document.getElementById('main-content').scrollTop = 0;
+}
+
+function updateStats() {
+  const total = session.totalCount;
+  const seen = session.seen.size;
+  const remain = total - seen;
+  const pct = total > 0 ? (seen / total * 100) : 0;
+
+  document.getElementById('stat-seen').textContent = `${seen} gesehen`;
+  document.getElementById('stat-remain').textContent = `${remain} übrig`;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('footer-info').textContent =
+    `${seen} / ${total} · ${session.seenTags.size} Tags freigeschaltet`;
+}
+
+function showSessionComplete() {
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <div class="info-card" id="session-complete">
+      <span class="complete-icon">🎓</span>
+      <h2>Session beendet</h2>
+      <span class="big-num">${session.seen.size}</span>
+      <p>Fragen in dieser Session beantwortet.<br>
+      Alle ${session.totalCount} Fragen wurden gesehen.</p>
+      <div class="btn-row" style="justify-content:center; margin-top:20px">
+        <button class="btn btn-primary" onclick="restartSession()">Neue Session starten</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('footer-info').textContent = 'Session abgeschlossen';
+}
+
+function restartSession() {
+  session.seen.clear();
+  session.seenTags.clear();
+  session.currentQ = null;
+  session.showingAnswer = false;
+  const q = pickNext();
+  if (q) { advance(q); renderQuestion(q); }
+}
+
+// ════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════
+
+async function init() {
+  const statusEl = document.getElementById('load-status');
+  try {
+    statusEl.textContent = 'Lade questions_database.json…';
+    const res = await fetch('questions_database.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    statusEl.textContent = 'Verarbeite Daten…';
+    DB = await res.json();
+    session.totalCount = DB.questions.length;
+
+    // Done loading
+    document.getElementById('loading').style.display = 'none';
+    const app = document.getElementById('app');
+    app.style.display = 'flex';
+
+    // Start
+    const q = pickNext();
+    if (q) { advance(q); renderQuestion(q); }
+
+  } catch (e) {
+    statusEl.textContent = '❌ Fehler: ' + e.message;
+    console.error(e);
+  }
+}
+
+// Wire up skip button
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btn-skip').addEventListener('click', skipQuestion);
+  init();
+});
+
+// ════════════════════════════════════════════
+// SERVICE WORKER REGISTRATION
+// ════════════════════════════════════════════
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
