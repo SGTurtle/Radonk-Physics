@@ -1,4 +1,4 @@
-const CACHE = 'radioonko-v2';
+const CACHE = 'radioonko-v3';
 const ASSETS = [
   './',
   './index.html',
