@@ -2,7 +2,7 @@
   "version": "1.0",
   "meta": {
     "description": "Facharztprüfung Radio-Onkologie – Physik, Strahlenschutz, Strahlenbiologie",
-    "totalQuestions": 293,
+    "totalQuestions": 292,
     "language": "de",
     "schema": {
       "id": "Eindeutige Fragen-ID",
@@ -636,7 +636,7 @@
       "question": "Was ist eine Isodose? Was versteht man unter Bestrahlung?",
       "answer": "**Bestrahlung:**\n• Vorgang des Aussetzens gegenüber ionisierender Strahlung\n• Beschreibt den Prozess (nicht die Menge)\n• Veraltet: Exposition [C/kg] — heute ersetzt durch Dosis [Gy]\n\n**Isodose:**\n• Linie (2D) oder Fläche (3D) mit gleicher Dosis in der Dosisverteilung\n• Angegeben als % der Verschreibungsdosis (Referenzdosis)\n• Beispiele: 95%-Isodose, 50%-Isodose (halbe Dosis)\n• ICRU 50: PTV muss von 95%-Isodose umschlossen sein\n\n**Isodosenlinien klinisch:**\n• Enge Isodosen (viele Linien): steiler Dosisabfall = Gradient\n• Weite Isodosen: flacher Abfall = homogene Region\n• Konkave Isodose (nach innen gebogen): nur mit IMRT möglich\n• Conformity Index nutzt Isodosen für Planung\n\n**Zusammenhang:**\n• DVH = Zusammenfassung aller Isodosen in einem Organ/Volumen",
       "requires_context": [
-        "PDD-Photonen"
+        "Strahlung-Grundlagen"
       ],
       "cluster": "A",
       "chips": [
@@ -684,9 +684,7 @@
       "block": "b02",
       "weight": 4,
       "tags": [
-        "Radioaktiver-Zerfall",
-        "Brachytherapie",
-        "PET-SPECT"
+        "Radioaktiver-Zerfall"
       ],
       "question": "Nennen Sie klinisch relevante Radionuklide mit Halbwertszeiten und Anwendungen.",
       "answer": "**Klinisch relevante Radionuklide:**\n\n**Brachytherapie:**\n| Nuklid | T½ | Energie | Anwendung |\n|---|---|---|---|\n| ¹⁹²Ir | 73.8 d | 380 keV γ | HDR-Brachytherapie |\n| ¹²⁵I | 59.4 d | 28 keV γ | LDR-Prostata-Seeds |\n| ¹⁰³Pd | 17 d | 21 keV | LDR-Seeds |\n| ⁶⁰Co | 5.27 J | 1.25 MeV γ | Gamma-Knife |\n\n**Nuklearmedizin (Diagnostik):**\n| Nuklid | T½ | Zerfall | Anwendung |\n|---|---|---|---|\n| ⁹⁹ᵐTc | 6 h | γ (140 keV) | SPECT (Knochen, Lunge) |\n| ¹⁸F | 110 min | β⁺ → 511 keV | FDG-PET |\n| ⁶⁸Ga | 68 min | β⁺ | DOTATATE-PET, PSMA-PET |\n\n**Therapie (systemisch):**\n| Nuklid | T½ | Anwendung |\n|---|---|---|\n| ¹³¹I | 8 d | Schilddrüse, MIBG |\n| ¹⁷⁷Lu | 6.7 d | DOTATATE, PSMA |\n| ²²³Ra | 11.4 d | Knochenmetastasen |",
@@ -745,9 +743,7 @@
       "weight": 4,
       "tags": [
         "Strahlenarten",
-        "LET",
-        "RBE",
-        "Reoxygenierung-OER"
+        "LET"
       ],
       "question": "Was ist der Zusammenhang zwischen Strahlenart, LET und biologischer Wirkung?",
       "answer": "**Zusammenhang Strahlenart → LET → biologische Wirksamkeit:**\n\n**Niedrig-LET Strahlung (<10 keV/µm):**\n• Photonen (Röntgen, Gamma), Elektronen\n• Spärliche, isolierte Ionisation entlang der Bahn\n• Meist reparierbare Einzel-DSBs\n• RBE ≈ 1, OER ≈ 2.5–3 (Sauerstoffeffekt stark)\n\n**Mittel-LET (~10–100 keV/µm):**\n• Protonen (am Bragg-Peak), schnelle Neutronen\n• Dichtere Ionisation → mehr komplexe Schäden\n• RBE 1.1–3, OER sinkt\n\n**Hoch-LET (>100 keV/µm):**\n• Alpha-Teilchen, Kohlenstoff-Ionen (Peak), thermische Neutronen\n• Sehr dichte Ionisationsspur → Clustered Lesions (komplexe DSBs)\n• Schwer bis nicht reparierbar\n• RBE 5–20, OER ≈ 1 (kein Sauerstoffeffekt mehr!)\n\n**Klinische Konsequenz:**\n• Hoch-LET → ideal für hypoxische, strahlenresistente Tumoren\n• Niedrig-LET → therapeutisches Fenster durch Fraktionierung\n• Protonen: LET variiert (niedrig Eingang, hoch am Peak) → RBE 1.1 pauschal (Vereinfachung!)",
@@ -767,14 +763,12 @@
       "block": "b01",
       "weight": 3,
       "tags": [
-        "Strahlenarten",
-        "Direkt-Indirekt-Ionisierend"
+        "Strahlenarten"
       ],
       "question": "Wie interagieren Neutronen mit Materie? Was ist ihre klinische Relevanz?",
       "answer": "**Neutronen-Wechselwirkungen mit Materie:**\n\n**Neutronen: ungeladen → indirekt ionisierend**\n\n**1. Elastische Streuung (dominant in Gewebe):**\n• Neutron trifft Atomkern → Rückstosskern (Recoil)\n• Maximaler Energietransfer wenn Massen gleich → Wasserstoff ideal\n• Rückstosskerne = Protonen (hohes LET) → hohe biologische Wirksamkeit\n• Gewebe = wasserreich → viele H-Atome → dominanter Mechanismus\n\n**2. Inelastische Streuung:**\n• Kern absorbiert Neutron → angeregter Kern → γ-Strahlung\n• Bei schweren Kernen (Fe, Pb) wichtig\n\n**3. Kernumwandlung (n,α), (n,p), (n,γ):**\n• Neutron absorbiert → neues Nuklid → Aktivierung\n• Problematisch bei Bunkerabschirmung (aktivierte Wandmaterialien)\n\n**Tiefendosiskurve:**\n• Kein Aufbaueffekt wie Photonen (Rückstosskerne direkt ionisierend)\n• Ähnlich Photonen aber mit höherem RBE (3–10 je nach Energie)\n• Kein Bragg-Peak\n\n**Abschirmung:**\n• H-reiches Material (Wasser, Paraffin, Polyethylen) → Moderation\n• Dann Bor/Cadmium → thermische Neutronen absorbieren",
       "requires_context": [
-        "PDD-Protonen",
-        "Bragg-Peak"
+        "Strahlenarten"
       ],
       "cluster": "A",
       "chips": [
@@ -811,7 +805,7 @@
       "question": "Was ist KERMA? Warum ist der Begriff für indirekt ionisierende Strahlung wichtig?",
       "answer": "**KERMA (Kinetic Energy Released in Matter):**\n• Energie die durch indirekt ionisierende Strahlung auf geladene Sekundärteilchen übertragen wird\n• K = dE_tr/dm [Gy = J/kg]\n• Bezieht sich auf Energieübertragung, nicht auf lokale Deposition!\n\n**Warum wichtig für indirekt ionisierende Strahlung?**\n• Photonen/Neutronen: übertragen Energie an Sekundärteilchen (Elektronen, Rückstosskerne)\n• Diese Sekundärteilchen deponieren die Energie räumlich getrennt vom Wechselwirkungsort\n• KERMA = Energie übertragen, Dosis = Energie deponiert → können sich unterscheiden!\n\n**KERMA vs. Dosis:**\n• Aufbaubereich (vor Dmax): KERMA > Dosis\n  - Photonen abgeschwächt, aber Elektronen noch nicht vollständig aktiv\n• Dmax (CPE-Gleichgewicht): KERMA ≈ Dosis\n• Hinter Dmax: KERMA < Dosis (Photonen absorbiert, Elektronen noch aktiv)\n\n**Kollisions-KERMA vs. Strahlungs-KERMA:**\n• Kollisions-KERMA → deponiert lokal als Dosis\n• Strahlungs-KERMA → als Bremsstrahlung abgestrahlt (verlässt Ort)",
       "requires_context": [
-        "PDD-Photonen",
+        "Direkt-Indirekt-Ionisierend",
         "Aufbaueffekt-KERMA"
       ],
       "cluster": "A",
@@ -844,9 +838,7 @@
       "block": "b03",
       "weight": 3,
       "tags": [
-        "Photoeffekt",
-        "Schwächungskoeffizient",
-        "CT-Bildgebung"
+        "Photoeffekt"
       ],
       "question": "Was ist die K-edge? Wie wird sie klinisch genutzt?",
       "answer": "**K-Edge:**\n• Abrupter Anstieg des Photoeffekt-Querschnitts bei einer bestimmten Energie\n• Tritt auf wenn Photonenenergie exakt der K-Schalen-Bindungsenergie entspricht\n• Unterhalb K-Edge: Photoeffekt an K-Schale nicht möglich → plötzlich niedriger µ\n• Direkt oberhalb K-Edge: Photoeffekt an K-Schale möglich → sprunghafter Anstieg µ\n\n**K-Edge-Energien klinisch relevanter Materialien:**\n• Jod (Z=53): K-Edge bei **33.2 keV** → CT-Kontrastmittel absorbiert bei ~33 keV stark\n• Gadolinium (Z=64): K-Edge bei **50.2 keV** → MRT-KM\n• Wolfram (Z=74): K-Edge bei **69.5 keV** → charakteristische Strahlung in Röntgenröhre\n• Barium (Z=56): K-Edge bei **37.4 keV** → Bariumkontrast im GI-Trakt\n\n**Klinische Nutzung:**\n• **Dual-Energy CT:** Aufnahme bei 2 Energien um/um K-Edge von Jod → Materialzerlegung\n• Jod-KM-Quantifizierung, virtuelle Nativ-Bilder\n• **Kontrastmittel-Wahl:** optimale Absorption wenn Photonenergie knapp über K-Edge\n• **Schilddrüsen-IMRT:** Jod-reiche Schilddrüse bei diagnostischen Energien stärker absorbiert",
@@ -883,9 +875,7 @@
       "block": "b03",
       "weight": 5,
       "tags": [
-        "Comptoneffekt",
-        "Photoeffekt",
-        "Paarbildung"
+        "Photon-WW"
       ],
       "question": "Bei welcher Energie dominiert welcher Wechselwirkungseffekt? Nennen Sie die Übergänge.",
       "answer": "**Dominanzbereiche der Photonen-Wechselwirkungen:**\n\n| Effekt | Dominanzbereich | Abhängigkeit |\n|---|---|---|\n| Photoeffekt | <100 keV | ∝ Z³/E³ |\n| Compton | 25 keV – 25 MeV | ∝ Z/A, ~Z-unabhängig |\n| Paarbildung | >1.022 MeV, relevant >10 MeV | ∝ Z·ln(E) |\n\n**Übergangsenergien (Wasser/Weichteil):**\n• Photoeffekt = Compton: ~30 keV\n• Compton = Paarbildung: ~25–30 MeV\n\n**Klinische Beispiele:**\n• Mammographie (25–30 kV): Photoeffekt dominiert → Knochen-Weichteil-Kontrast\n• Diagnostisches CT (80–140 kV): hauptsächlich Photoeffekt + Compton-Mischung\n• 6 MV Therapie (mittl. E ~2 MeV): Compton dominiert (>95%)\n• 18 MV Therapie (mittl. E ~6 MeV): Compton + ~20–30% Paarbildung\n• Bei 300 keV: eindeutig Compton dominant\n\n**Materialabhängigkeit:**\n• Diagnostisch (Photoeffekt): µ ∝ Z³ → Knochen vs. Weichteil sehr unterschiedlich\n• Therapeutisch (Compton): µ/ρ ≈ konstant → kaum Knochen-Weichteil-Unterschied",
@@ -899,16 +889,15 @@
         "Compton: 25keV–25MeV",
         "6MV: Compton >95%",
         "kV: Photoeffekt → Knochen-Kontrast"
-      ]
+      ],
+      "parent": "q_phww_01"
     },
     {
       "id": "q_comp_03",
       "block": "b03",
       "weight": 3,
       "tags": [
-        "Comptoneffekt",
-        "Sekundaerkarzinome",
-        "Feldgroesse-SSD-Einfluss"
+        "Comptoneffekt"
       ],
       "question": "Warum produziert der Compton-Effekt Streustrahlung? Welche klinischen Konsequenzen hat das?",
       "answer": "**Warum produziert Compton-Effekt Streustrahlung?**\n• Einfallendes Photon wird nicht vollständig absorbiert (wie beim Photoeffekt)\n• Nur ein Teil der Energie wird ans Elektron übertragen\n• **Gestreutes Photon** verlässt Wechselwirkungsort in neuer Richtung\n• Winkel θ: 0° (vorwärts) bis 180° (rückwärts)\n\n**Klinische Probleme der Streustrahlung:**\n\n**In der Diagnostik:**\n• Streuphotonen treffen nicht vom Fokus kommend den Detektor → Bildrauschen\n• Reduktion des Bildkontrastes → Anti-Scatter-Raster nötig\n\n**In der Strahlentherapie:**\n• Streustrahlung aus Patient trifft umliegendes Gewebe → Out-of-field Dosis\n• Streustrahlung im Linac-Kopf → Dosisbeitrag ausserhalb des Nutzstrahls\n• Rückstreuung zum Patienten aus Lagerungshilfen → unerwünschte Dosis\n• Wichtig für Bunkerabschirmung: Primär- + Sekundärwand unterschiedlich\n\n**Streufaktor:**\n• Dosis in einer Tiefe = Primärstrahlung + Streustrahlung\n• Grösseres Feld → mehr Streustrahlung → höherer Output-Faktor",
@@ -964,8 +953,7 @@
       "weight": 2,
       "tags": [
         "Schwächungskoeffizient",
-        "Bunkerabschirmung",
-        "Gesetzgebung-CH"
+        "Bunkerabschirmung"
       ],
       "question": "Wie wird der Schwächungskoeffizient für die Bunkerabschirmung genutzt? Was ist die Zehntelwertsschicht?",
       "answer": "**Schwächungskoeffizient für Bunkerabschirmung:**\n• Primärwand (gegen Nutzstrahl gerichtet): schwerste Abschirmung nötig\n• Sekundärwand (Streustrahlung + Leckstrahlung): weniger dick\n• Dach: Streuung nach oben, muss auch abgeschirmt werden\n\n**Berechnung (vereinfacht):**\n• Benötigte Abschwächung: B = P/(W × T × U × Dpri)\n  - P = erlaubte Dosisleistung hinter Wand (Zielwert)\n  - W = Wochenarbeitslast [MU/Woche]\n  - T = Aufenthaltsfaktor (0.025–1)\n  - U = Nutzungsfaktor (Primär: 0.25, Sekundär: 1)\n\n**Materialien:**\n• Beton (ρ=2.35 g/cm³): Standard, günstig, HWS bei 6MV: ~15 cm\n• Baryt-Beton (ρ=3.2 g/cm³): kompakter wenn Platz fehlt\n• Blei: sehr kompakt, teuer, für spezielle Durchführungen\n\n**Türen:**\n• Strahlenlabyrint: verzögerter Strahlengang → kein direkter Blick auf Linac\n• Bleischicht in der Tür für verbleibende Streustrahlung\n\n**Regulierung CH:**\n• Planungsphase: Bunker-Design durch qualifizierten Physiker\n• BAG-Inspektion vor Inbetriebnahme\n• Zielwert: <0.02 mSv/Woche (Öffentlichkeit)",
@@ -985,8 +973,7 @@
       "weight": 3,
       "tags": [
         "Schwächungskoeffizient",
-        "Beam-Hardening",
-        "CT-Bildgebung"
+        "Beam-Hardening"
       ],
       "question": "Was ist Beam Hardening? Welche Konsequenzen hat es in CT und Strahlentherapie?",
       "answer": "**Beam Hardening:**\n• Beim Durchgang durch Materie: niederenergetische Photonen stärker absorbiert\n• Spektrum verschiebt zu höheren Energien → 'härterer' Strahl\n• Mittlere Energie steigt → µ sinkt → PDD-Kurve wird flacher mit der Tiefe\n\n**Konsequenzen in der CT:**\n• **Cupping-Artefakt:** Rand erscheint heller als Mitte (Rand: weniger BH)\n• **Metallartefakte:** starkes BH durch Metall → helle/dunkle Streifen\n• Korrektur: BH-Algorithmus im CT-Rekonstruktionsprogramm\n\n**Konsequenzen in der Strahlentherapie:**\n• PDD-Kurve: Dosisabfall in der Tiefe etwas flacher als bei monoenergetischem Strahl\n• TPS muss BH im Patienten berücksichtigen (polyenergetisches Spektrum)\n• HU im Planungs-CT: durch BH-Korrektur bereits angepasst\n\n**Klinische Relevanz RT:**\n• Bei inhomogenem Gewebe (Knochen, Lunge): BH beeinflusst Dosisberechnung\n• Moderne Algorithmen (Acuros XB, MC): berücksichtigen polyenergetisches Spektrum",
@@ -1041,9 +1028,7 @@
       "block": "b11",
       "weight": 3,
       "tags": [
-        "Röntgenröhre",
-        "CT-Bildgebung",
-        "Photoeffekt"
+        "Röntgenröhre"
       ],
       "question": "Welche Spannung ist bei der CT sinnvoll? Was sind die Vor- und Nachteile höherer kV-Werte?",
       "answer": "**Optimale Spannung für CT:**\n• Typisch: 80–140 kV je nach Indikation\n• **120 kV:** Standard für die meisten Abdomen/Thorax-CTs (gutes SNR, guter Kontrast)\n• **80 kV:** Jodhaltiges KM: stärker absorbiert (nahe K-Edge 33 keV), niedrigere Dosis\n• **140 kV:** Grosse Patienten, Metallartefakte reduziert (härterer Strahl)\n\n**Niedrige kV (80 kV):**\n• Vorteile: Mehr KM-Kontrast (Photoeffekt ↑), niedrigere Dosis\n• Nachteile: Mehr Rauschen (weniger Photonen), schlechtere Penetration bei grossen Patienten\n\n**Hohe kV (140 kV):**\n• Vorteile: Mehr Penetration, weniger Rauschen, weniger Metallartefakte\n• Nachteile: Höhere Dosis, weniger KM-Kontrast\n\n**Dual-Energy CT (DECT):**\n• Simultane Akquisition bei 2 kV-Werten (z.B. 80+140 kV)\n• Materialzerlegung möglich (Jod-Wasser-Separation)\n• Virtuelle Nativ-Bilder, Jod-Karten\n• Für RT: bessere HU-Bestimmung, Range-Uncertainty bei Protonen reduziert",
@@ -1141,8 +1126,7 @@
       "weight": 4,
       "tags": [
         "Linac-Aufbau",
-        "Bending-Magnet",
-        "Penumbra"
+        "Bending-Magnet"
       ],
       "question": "Warum biegt man den Elektronenstrahl um 270° statt 90°?",
       "answer": "**Warum 270° statt 90°?**\n\n**Problem der 90°-Ablenkung:**\n• Einfacher 90°-Magnet lenkt Elektronen aller Energien auf verschiedene Wege ab\n• Elektronen mit verschiedenen Energien kommen an verschiedenen Punkten an\n• → Grosser Brennfleck → schlechte Penumbra → keine Monochromatisierung\n\n**270°-Bending-Magnet (achromatisch):**\n• Drei 90°-Ablenksektoren hintereinander\n• Verschiedene Elektronen-Energien nehmen verschiedene Radien im Magneten\n• Nach 270° kommen nur Elektronen mit **exakt richtiger Energie** am Spalt an\n• Andere Energien werden ausgeblendet (Energieselektion!)\n• Ergebnis: monoenergetischer Strahl, kleiner Brennfleck (~1–3 mm)\n\n**Achromatisch = energieunabhängig:**\n• Alle Elektronen der richtigen Energie treffen am gleichen Punkt auf Target\n• Unabhängig von kleinen Energieschwankungen\n\n**Praktisch:**\n• 270°-Design benötigt weniger Platz als es aussieht (gebogener Pfad)\n• Isozentrum bleibt 100 cm vom Target entfernt\n• Kleinerer Brennfleck → schärfere Penumbra → bessere Dosiskonformität",
@@ -1162,8 +1146,7 @@
       "weight": 4,
       "tags": [
         "Linac-Aufbau",
-        "Ionisationskammer-Linac",
-        "Monitor-Units"
+        "Ionisationskammer-Linac"
       ],
       "question": "Was ist die Ionisationskammer im Linac-Kopf? Was sind ihre Funktionen?",
       "answer": "**Ionisationskammer im Linac-Kopf:**\n• Transmissions-Ionisationskammer (im Strahlengang)\n• Misst kontinuierlich die abgegebene Strahlung während der Behandlung\n• Zählt Monitor Units (MU) → 1 MU = 1 cGy unter Referenzbedingungen\n\n**Aufbau:**\n• Flache Parallelplatten-Kammer (meist 2 Kammern redundant)\n• Im Strahlengang nach dem Flattening Filter platziert\n• Luft- oder gasgefüllt, bei Atmosphärendruck\n\n**Funktionen:**\n• **MU-Zählung:** Strahlenabgabe präzise dosieren\n• **Symmetrie-Kontrolle:** bei asymmetrischer Kammer → Querprofile überwacht\n• **Dosisraten-Regelung:** Rückkopplung an Mikrowellenquelle\n• **Sicherheits-Interlock:** Strahl-Stop bei Abweichung >2% vom Soll\n\n**Zwei unabhängige Kammern (Redundanz):**\n• Kammer 1: primäre MU-Zählung\n• Kammer 2: Backup und Quervergleich\n• Beide müssen übereinstimmen → Sicherheit\n\n**Kalibrierung:**\n• Rückführbar auf METAS über Referenz-Ionisationskammer\n• Tägliche Konstanzprüfung obligat (±2% Toleranz)",
@@ -1183,8 +1166,7 @@
       "weight": 4,
       "tags": [
         "Linac-Aufbau",
-        "MLC-Kollimation",
-        "IMRT-VMAT"
+        "MLC-Kollimation"
       ],
       "question": "Was ist der MLC? Welche Eigenschaften hat er? Wie wird er für IMRT genutzt?",
       "answer": "**MLC (Multi-Leaf Collimator):**\n• Viele dünne Wolfram-Lamellen (Leaves) die sich unabhängig bewegen\n• Ersetzen patientenspezifische Blöcke für Feldformung\n• Wolfram: hohe Dichte (19.3 g/cm³) → gute Abschirmung in dünnen Leaves\n\n**Eigenschaften:**\n• Anzahl Leaves: 40–80 Paare (80–160 Leaves total)\n• Blattbreite: 5 mm (Standard) oder 2.5 mm (HD-MLC für SRS)\n• Max. Feldgrösse: 40×40 cm\n• Transmission durch Leaves: <2%\n• Positioniergenauigkeit: ±0.5 mm\n\n**Einsatz für IMRT/VMAT:**\n• Step-and-shoot IMRT: MLC formt verschiedene Segmente nacheinander\n• VMAT: MLC bewegt sich kontinuierlich während Gantry-Rotation\n• Dynamische IMRT: Leaves bewegen während Bestrahlung\n• Ermöglicht Intensitätsmodulation → konformere Dosisverteilung\n\n**Sicherheit:**\n• Interdigitierung: Leaves können Feld vollständig schliessen\n• Regelmässige QA: Picket-Fence-Test (Blattpositionsgenauigkeit)",
@@ -1223,9 +1205,7 @@
       "block": "b09",
       "weight": 4,
       "tags": [
-        "Linac-Aufbau",
-        "Gesetzgebung-CH",
-        "QA-Dosimetrie"
+        "Linac-Aufbau"
       ],
       "question": "Was braucht man in der Schweiz für den Betrieb eines Linearbeschleunigers?",
       "answer": "**Anforderungen Betrieb Linearbeschleuniger in der Schweiz:**\n\n**Gesetzliche Grundlage:**\n• Strahlenschutzgesetz (StSG) + Strahlenschutzverordnung (StSV)\n• **Beschleunigerverordnung** (Departements-Verordnung EDI)\n\n**BAG-Betriebsbewilligung erforderlich:**\n• Antrag an BAG vor Inbetriebnahme\n• Nachweis: qualifiziertes Personal, geeignete Räumlichkeiten, QA-Programm\n\n**Pflichtpersonal:**\n• **Facharzt Radioonkologie:** ärztliche Verantwortung\n• **Medizinphysiker:** mind. **1 Vollzeit-MPHYS pro Gerät** (gesetzlich)\n  - Fachanerkennung SGSMP erforderlich\n• **Radiotherapiefachperson (RTF):** Behandlungsdurchführung\n\n**QA-Programm (obligat):**\n• Schriftliches QA-Programm muss existieren\n• Tägliche Konstanzprüfung vor Patientenbehandlung\n• Monatliche und jährliche Messungen\n• Dokumentation und Archivierung (20 Jahre)\n\n**Kalibrierungskette:**\n• BIPM → METAS → Referenzkammer (alle 2 Jahre) → Linac\n\n**Meldepflicht:**\n• Strahlenereignisse → BAG innert 30 Tagen",
@@ -1245,8 +1225,7 @@
       "weight": 4,
       "tags": [
         "Flattening-Filter-FFF",
-        "PDD-Photonen",
-        "IMRT-VMAT"
+        "PDD-Photonen"
       ],
       "question": "Was ändert sich im FFF-Modus gegenüber dem Standard-Modus mit Flattening Filter?",
       "answer": "**FFF-Modus (Flattening Filter Free):**\n\n**Was wegfällt:**\n• Flattening Filter (kegelförmiger Absorber aus Wolfram/Kupfer)\n• Dieser Filter homogenisiert normalerweise das Intensitätsprofil\n\n**Änderungen im FFF-Modus:**\n\n**Dosisrate:**\n• FFF: **1400–2400 MU/min** (vs. FF: 400–600 MU/min)\n• 4–6× höhere Dosisrate → viel kürzere Bestrahlungszeit\n\n**Dosisprofil:**\n• Kein flaches Profil mehr → konisches (höchste Intensität im Zentrum)\n• TPS modelliert das konische Profil genau\n\n**Spektrum:**\n• Etwas weicher (weniger Beam-Hardening durch Filter)\n• Dmax leicht flacher als mit FF\n\n**Weniger Kopfstreuung:**\n• Kein Filter → weniger Streustrahlung aus Linac-Kopf\n• Geringere Out-of-field Dosis → vorteilhaft bei Kindern\n\n**Klinische Anwendungen:**\n• SBRT/SRS (kurze Behandlungszeit → weniger intrafraktionelle Bewegung)\n• Pädiatrische RT (weniger Integraldosis)\n• Kombination mit VMAT möglich",
@@ -1259,7 +1238,8 @@
         "FFF: 2400 MU/min (4–6× höher)",
         "Konisches Profil (nicht flach)",
         "Weniger Kopfstreuung"
-      ]
+      ],
+      "parent": "q_linac_07"
     },
     {
       "id": "q_fff_02",
@@ -1267,8 +1247,7 @@
       "weight": 3,
       "tags": [
         "Flattening-Filter-FFF",
-        "PDD-Photonen",
-        "Sekundaerkarzinome"
+        "PDD-Photonen"
       ],
       "question": "Warum ist FFF besonders vorteilhaft bei kleinen Feldern? Was sind die Grenzen?",
       "answer": "**FFF bei kleinen Feldern:**\n• Kleines Feld (<4 cm): der konische Intensitätsabfall des FFF-Profils ist weniger relevant\n• Im kleinen Feld: Profil-Unterschied FF vs. FFF minimal (Filter wirkt hauptsächlich am Rand)\n• TPS modelliert exakt → klinisch identische Dosisverteilung im Tumor\n\n**Vorteile FFF bei kleinen Feldern (SBRT/SRS):**\n• Hohe Dosisrate → kurze Behandlungszeit\n• Kurze Behandlung → weniger intrafraktionelle Bewegung (Atmung, Patient)\n• Weniger Kontaminationselektronen aus Linac-Kopf → etwas niedrigere Oberflächendosis\n• Weniger Streustrahlung out-of-field → besserer Strahlenschutz\n\n**Dosisgradient:**\n• FFF bei SBRT: steilerer Dosisabfall ausserhalb des Feldes?\n• → Kein wesentlicher Unterschied zum FF bei kleinen Feldern\n\n**Typische FFF-Anwendungen:**\n• SBRT Lunge/Leber (3–5 Fx)\n• SRS Hirnmetastasen\n• Prostata-SBRT\n• Pädiatrische RT (niedrigere Integraldosis durch weniger Streuung)",
@@ -1281,7 +1260,8 @@
         "Kleines Feld: Profil FFF≈FF",
         "Kurze Behandlung → weniger Bewegung",
         "FFF: Standard für SBRT/SRS"
-      ]
+      ],
+      "parent": "q_fff_01"
     },
     {
       "id": "q_mlck_01",
@@ -1289,8 +1269,7 @@
       "weight": 3,
       "tags": [
         "MLC-Kollimation",
-        "Penumbra",
-        "Forward-Inverse-Planning"
+        "Penumbra"
       ],
       "question": "Was beeinflusst die Penumbra? Wie unterscheidet sich die Penumbra bei Photonen vs. Elektronen?",
       "answer": "**Penumbra — Einflussfaktoren:**\n\n**Geometrische Penumbra:**\n• Endliche Quellgrösse (Brennfleck) → Halbschatten\n• Geometrische Penumbra = Quellgrösse × Abstand Kollimator-Patient / Abstand Quelle-Kollimator\n• Kleinerer Brennfleck → schärfere Penumbra (Vorteil 270°-Magnet)\n\n**Physikalische Penumbra:**\n• Durch Strahlung die um den Kollimatorrand streut\n• Sekundärelektronen aus dem Kollimator\n• Bei höherer Energie: Elektronen reichweitenabhängig → breitere Penumbra\n\n**Transmission Penumbra:**\n• Strahlung durch die Kollimator-Randschicht → Teilabschirmung\n\n**Penumbra MLC vs. Jaws:**\n• MLC: Leaves nicht perfekt senkrecht → Tongue-and-Groove-Effekt\n• Leaves abgerundet am Ende → penumbraähnlicher Effekt\n• Jaws: schärfere Penumbra als MLC\n\n**Elektronen vs. Photonen:**\n• Elektronen: viel breitere Penumbra (starke Vielfachstreuung!)\n• Photonen: enger, geometrisch bestimmt\n• Deshalb: Elektronen-Feldrand mind. 1 cm Abstand zum Zielvolumen",
@@ -1368,9 +1347,7 @@
       "block": "b05",
       "weight": 4,
       "tags": [
-        "PDD-Photonen",
-        "Monitor-Units",
-        "Dosisberechnung-Algorithmen"
+        "PDD-Photonen"
       ],
       "question": "Was sind AP-PA Felder? Wie sieht die Dosisverteilung aus?",
       "answer": "**AP-PA Felder (Anterior-Posterior / Posterior-Anterior):**\n• Zwei gegenläufige Felder: von vorne (AP) und von hinten (PA)\n• Typisch gleiches Gewicht (50%/50%) oder angepasst\n\n**Dosisverteilung AP-PA:**\n• Dosis addiert sich in der Mitte des Körpers\n• Aufbaueffekte beider Felder eliminiert → hohe Eintrittsdosis an Vorder- und Rückseite\n• Relativ homogene Dosis im Zentralbereich\n• Eintrittsdosen (Haut) vorne und hinten: ~40–50% (je Feld) → summiert höher\n\n**Vorteil:**\n• Einfach zu planen und zu verifizieren\n• Homogene Dosis bei mittlerer Körpertiefe (z.B. Thorax)\n• Standard für: Mediastinum, Wirbelsäule palliativ, TBI (zusammen mit lateralen Feldern)\n\n**Nachteil:**\n• Keine Schonung von anterior/posterior liegenden OAR (Lunge, Rückenmark bekommt volle Dosis)\n• Keine laterale Konformität\n• Bei grossen Durchmessern (>20 cm): Dosis-Inhomogenität zunimmt\n\n**Verbesserung:**\n• Mehr Felder (4-Felder-Box, IMRT) für bessere OAR-Schonung",
@@ -1390,7 +1367,6 @@
       "weight": 3,
       "tags": [
         "PDD-Photonen",
-        "Beam-Hardening",
         "Flattening-Filter-FFF"
       ],
       "question": "Was ist der Cupping-Effekt? Was ist der Unterschied zwischen FF und FFF im transversalen Profil?",
@@ -1404,7 +1380,8 @@
         "FF: ±3% flach",
         "FFF: konisch (Zentrum max.)",
         "Grosses Feld: 30–50% Abfall zum Rand"
-      ]
+      ],
+      "parent": "q_fff_01"
     },
     {
       "id": "q_pdde_01",
@@ -1428,8 +1405,7 @@
       "block": "b06",
       "weight": 4,
       "tags": [
-        "PDD-Elektronen",
-        "PDD-Protonen"
+        "PDD-Elektronen"
       ],
       "question": "Warum gibt es bei Elektronen keinen Bragg-Peak, bei Protonen aber schon?",
       "answer": "**Warum kein Bragg-Peak bei Elektronen?**\n\n**Masse ist entscheidend:**\n• Elektronen-Masse: 0.511 MeV/c² (sehr leicht)\n• Protonen-Masse: 938 MeV/c² (1836× schwerer)\n\n**Vielfachstreuung dominiert bei Elektronen:**\n• Leichte Teilchen werden stark im Coulombfeld der Kerne abgelenkt\n• Jede Wechselwirkung → grosse Richtungsänderung möglich\n• Elektronen durchlaufen kein geradlinige Bahn → Zick-Zack-Pfad\n• Reichweite statistisch verteilt → kein definierter Endpunkt\n\n**Beim Bragg-Peak (Voraussetzung):**\n• Teilchen muss fast geradlinig laufen (geringe Streuung)\n• Am Ende der Reichweite: maximaler Energieverlust\n• Nur möglich wenn Masse gross genug → geringe Ablenkung pro Stoss\n\n**Protonen: kaum Vielfachstreuung:**\n• 1836× schwerer → kaum abgelenkt\n• Fast geradliniger Weg → definiertes Ende → Bragg-Peak\n\n**Elektronen-PDD:**\n• Kein scharfer Peak → breiter, gradueller Abfall\n• R50, Rp statistisch definiert (nicht physikalisch scharf)",
@@ -1488,9 +1464,7 @@
       "weight": 3,
       "tags": [
         "PDD-Protonen",
-        "SOBP-Protonentherapie",
-        "LET",
-        "RBE"
+        "Bragg-Peak"
       ],
       "question": "Welchen Einfluss hat die Energie auf den Bragg-Peak? Was bedeutet das für die RBE am distalen Rand?",
       "answer": "**Energie → Reichweite des Bragg-Peaks:**\n• Höhere Energie → tieferer Bragg-Peak\n• 100 MeV Protonen: Reichweite ~8 cm in Wasser\n• 200 MeV Protonen: Reichweite ~26 cm in Wasser\n• Modifikation durch Degrader (Energie-Reduktion) oder verschiedene Beschleunigungsenergien\n\n**Range Uncertainty:**\n• Unsicherheit in der berechneten Reichweite\n• Quellen: CT-HU-Kalibrierungsfehler (~1–3.5%), Anatomieänderungen, CT-Artefakte\n• Gesamtunsicherheit: ~3.5% der Reichweite + 1 mm\n• Konsequenz: Range Margin (distale Sicherheitsmarge) notwendig\n\n**Klinische Konsequenz Range Uncertainty:**\n• Kritische Strukturen sollen NICHT direkt distal vom SOBP liegen\n• Beams so wählen, dass OAR seitlich (nicht distal) vom Feld sind\n• Dual-Energy CT: reduziert Range-Uncertainty auf ~1.5%\n\n**RBE am Bragg-Peak:**\n• LET steigt zum Peak hin → RBE steigt\n• Klinisch verwendetes RBE = 1.1 (konstant, Vereinfachung)\n• Tatsächliches RBE am distalen Rand: bis 1.5\n• → Kritische Strukturen distal können biologisch stärker getroffen werden als geplant!",
@@ -1504,7 +1478,8 @@
         "200 MeV p: ~26 cm Reichweite",
         "Range Uncertainty: ~3.5%+1mm",
         "RBE steigt zum distalen Rand"
-      ]
+      ],
+      "parent": "q_rbe_01"
     },
     {
       "id": "q_pddp_03",
@@ -1525,7 +1500,8 @@
         "Passiv: Streufolien+Bolus",
         "PBS/Scanning: magnetisch gelenkt",
         "PBS: Standard für neue Anlagen"
-      ]
+      ],
+      "parent": "q_pddp_01"
     },
     {
       "id": "q_bpk_01",
@@ -1551,8 +1527,7 @@
       "weight": 4,
       "tags": [
         "Aufbaueffekt-KERMA",
-        "PDD-Photonen",
-        "Dosisbegriffe-Physik"
+        "PDD-Photonen"
       ],
       "question": "Erklären Sie den Unterschied zwischen Dmax und CPE. Was ist die Faustregel für Dmax?",
       "answer": "**Aufbaueffekt und CPE:**\n\n**Aufbaueffekt (Build-up):**\n• Photonen erzeugen Sekundärelektronen (Compton, Photoeffekt)\n• Diese Elektronen brauchen Wegstrecke bis sie alle Energie abgeben\n• Dosis steigt von Oberfläche bis Dmax an\n• Dmax = Reichweite der Sekundärelektronen (energieabhängig)\n\n**CPE (Charged Particle Equilibrium):**\n• Zustand wo Elektronen die Region verlassen durch gleich viele ersetzt werden\n• Netto-Elektronenfluss = 0 → Dosis ≈ KERMA\n• Erst ab Dmax näherungsweise erfüllt\n\n**Vor Dmax (kein CPE):**\n• KERMA > Dosis (Photonen schon abgeschwächt, Elektronen noch nicht voll aktiv)\n• Dosis < KERMA → Aufbaubereich\n\n**Ab Dmax (CPE erfüllt):**\n• Dosis ≈ KERMA\n• Ionisationskammer kann korrekt messen\n\n**Skin-Sparing-Effekt:**\n• Oberfläche erhält nur ~40% (6 MV) → Haut geschont\n• Höhere Energie → tieferes Dmax → mehr Skin-Sparing\n• 6 MV: Dmax 1.5 cm, Eintrittsdosis ~40%\n• 18 MV: Dmax 3.5 cm, Eintrittsdosis ~25%",
@@ -1573,8 +1548,7 @@
       "weight": 3,
       "tags": [
         "Feldgroesse-SSD-Einfluss",
-        "PDD-Photonen",
-        "Monitor-Units"
+        "PDD-Photonen"
       ],
       "question": "Wie beeinflusst die SSD die Tiefendosiskurve? Was ist das Inverse-Square-Law?",
       "answer": "**SSD-Einfluss auf PDD:**\n• Grösserer SSD → Strahlenfeld divergiert weniger → Isodosen liegen tiefer\n• Bei grösserem SSD: PDD-Kurve etwas flacher (weniger Streuung wegen grösserem Abstand)\n• Klinisch: SSD 100 cm Standard, TBI: SSD 350–400 cm (grosses Feld nötig)\n\n**Inverse-Square-Law (1/r²-Gesetz):**\n• Intensität fällt mit Quadrat des Abstands: I ∝ 1/r²\n• Verdoppelung des Abstands → 4× niedrigere Intensität\n• Gilt für Punktquelle (Linac-Fokus als Näherung)\n• Dosisrate bei 100 cm: I₀ → bei 141 cm: I₀/2\n\n**Praktische Anwendung:**\n• SSD-Korrektur bei SSD ≠ 100 cm:\n  D(SSD₂) = D(SSD₁) × (SSD₁ + d)² / (SSD₂ + d)²\n• d = Tiefe des Zielpunkts\n\n**TBI-Extended-SSD:**\n• SSD 350–400 cm → Feld gross genug für ganzen Körper (~70×70 cm bei 400 cm)\n• Dosisrate stark reduziert → lange Behandlungszeiten\n• In-vivo-Dosimetrie unbedingt nötig (Lungenabschirmung)",
@@ -1633,9 +1607,7 @@
       "block": "b12",
       "weight": 4,
       "tags": [
-        "Monitor-Units",
-        "Feldgroesse-SSD-Einfluss",
-        "PDD-Photonen"
+        "Monitor-Units"
       ],
       "question": "Von welchen Parametern hängt die MU-Berechnung ab?",
       "answer": "**Parameter der MU-Berechnung (isozentrisch):**\n\n**Formel:**\n• MU = D_verschrieben [cGy] / (D_ref × TMR × OF × WF × TF)\n\n**D_ref (Referenz-Dosisleistung):**\n• 1 cGy/MU unter Standardbedingungen (10×10, SSD 100, 10 cm Tiefe)\n\n**TMR (Tissue-Maximum-Ratio):**\n• Korrigiert für Tiefe des Zielpunkts\n• TMR(d, Feldgrösse) = Dosis in Tiefe d / Dosis in Dmax\n• Sinkt mit Tiefe, steigt mit Feldgrösse\n\n**OF (Output-Faktor):**\n• Korrigiert für Feldgrösse (Abweichung von 10×10)\n• Grösseres Feld → mehr Streustrahlung → OF >1\n• Kleineres Feld → OF <1\n\n**WF (Wedge-Faktor / Keilfilter-Faktor):**\n• Keilfilter reduziert Dosis → WF <1\n• Ohne Keil: WF = 1\n\n**TF (Tray-Faktor):**\n• Absorptionsfaktor des Block-Trägers (Tray): ~0.97\n\n**Unabhängige Verifikation:**\n• Zweiter Physiker oder Software (Mobius) muss MU unabhängig berechnen\n• Toleranz: ±3% Abweichung akzeptabel",
@@ -1692,9 +1664,7 @@
       "block": "b12",
       "weight": 4,
       "tags": [
-        "IMRT-VMAT",
-        "MLC-Kollimation",
-        "Forward-Inverse-Planning"
+        "IMRT-VMAT"
       ],
       "question": "Was ist IMRT? Welche Delivery-Typen gibt es?",
       "answer": "**IMRT (Intensity Modulated Radiation Therapy):**\n• Intensitätsmodulierter Photonenstrahl: verschiedene Teile des Feldes erhalten verschiedene Intensitäten\n• Ermöglicht konkave Dosisverteilungen (unmöglich mit konventionellen Feldern)\n• Realisiert durch inverse Planung + MLC\n\n**Delivery-Typen:**\n\n**Step-and-Shoot IMRT:**\n• MLC bildet definierte Segmente nacheinander\n• Strahl AUS zwischen Segmenten (MLC bewegt sich)\n• Einfacher zu verifizieren\n• Länger als DMLC\n\n**Dynamic MLC (DMLC / Sliding Window):**\n• Leaves bewegen sich kontinuierlich während Bestrahlung\n• Strahl immer AN → effizienter\n• Komplexer zu verifizieren\n\n**VMAT (Volumetric Modulated Arc Therapy):**\n• Gantry rotiert kontinuierlich (1–3 Bögen, 360° oder partiell)\n• Gleichzeitig: MLC bewegt sich, Dosisrate variiert, Gantry-Winkel ändert sich\n• Behandlungszeit: 2–4 min (statt 10–15 min bei Step-and-Shoot)\n• Heute Standard für IMRT\n\n**Vorteile IMRT/VMAT:**\n• Bessere OAR-Schonung, konforme Dosisverteilung, SIB möglich\n• **Nachteil:** Mehr Streustrahlung (höhere MU), aufwändige QA",
@@ -1713,9 +1683,7 @@
       "block": "b12",
       "weight": 5,
       "tags": [
-        "IMRT-VMAT",
-        "Sekundaerkarzinome",
-        "Flattening-Filter-FFF"
+        "IMRT-VMAT"
       ],
       "question": "Was sind Vor- und Nachteile von IMRT gegenüber 3D-konformaler RT?",
       "answer": "**IMRT vs. 3D-konformal RT:**\n\n**Vorteile IMRT:**\n• Höhere Dosiskonformität: konvexe UND konkave Dosisverteilungen möglich\n• Bessere OAR-Schonung (z.B. Parotis bei H&N, Rektum bei Prostata)\n• Simultaner Integrierter Boost (SIB): Primärtumor höhere Dosis, Elektiv niedrigere Dosis — alles in einer Fraktion\n• Dosiseskalation möglich ohne mehr OAR-Dosis\n• PARSPORT: Xerostomie 29% vs. 74% bei H&N\n\n**Nachteile IMRT:**\n• Mehr MU (3–5×) → mehr Streustrahlung → höhere Integraldosis\n• Höheres Sekundärkarzinom-Risiko (niedrige Dosen über grosses Volumen)\n• Längere Behandlungszeit (ausser VMAT)\n• Aufwändige QA obligat (Plan-QA, unabh. MU-Verifikation)\n• Komplexer Planungsprozess (inverse Planung)\n• Interplay-Effekt bei beweglichen Tumoren\n\n**Wann 3D-konformal bevorzugt:**\n• Einfache Geometrie (2–3 Felder ausreichend)\n• Wenn Behandlungszeit minimiert werden muss\n• Wenn QA-Ressourcen begrenzt\n\n**Klinischer Standard heute:**\n• H&N, Prostata, Lunge (zentral), Gehirn: IMRT/VMAT obligat\n• Einfache Palliativfälle: 3D-konformal ausreichend",
@@ -1727,7 +1695,8 @@
         "IMRT: Konkave Dosisverteilung möglich",
         "Nachteil: mehr Streustrahlung, hohe Integraldosis",
         "PARSPORT: Xerostomie 29% vs 74%"
-      ]
+      ],
+      "parent": "q_imrt_01"
     },
     {
       "id": "q_dvh_01",
@@ -1772,8 +1741,7 @@
       "block": "b13",
       "weight": 4,
       "tags": [
-        "DVH",
-        "QUANTEC-Constraints"
+        "DVH"
       ],
       "question": "Was ist der Conformity Index (CI)? Was ist der Homogeneity Index (HI)?",
       "answer": "**Conformity Index (CI):**\n• Mass für räumliche Übereinstimmung zwischen Verschreibungsisodose und PTV\n• RTOG-Definition: CI = V_PIV / V_PTV\n  - V_PIV = Volumen das Verschreibungsdosis erhält\n  - V_PTV = PTV-Volumen\n• Ideal: CI = 1.0\n• CI > 1: Normalgewebe ausserhalb PTV überdosiert\n• CI < 1: PTV unterdosiert\n\n**Paddick CI (genauer):**\n• CI = (V_PIV∩PTV)² / (V_PTV × V_PIV)\n• Berücksichtigt Über- und Unterdosierung gleichzeitig\n• Ideal: 1.0 → bei schlechter Konformität → 0\n\n**Homogeneity Index (HI):**\n• Mass für Dosishomogenität im PTV\n• ICRU-Definition: HI = (D2% − D98%) / D_prescr\n• D2% = Hotspot, D98% = Coldspot\n• Ideal: HI = 0 (vollständig homogen)\n• Akzeptabel IMRT: HI < 0.1\n• SBRT: Hotspots erlaubt (HI bis 0.5)\n\n**Klinisch:**\n• SRS: CI 1.0–1.2 (sehr konform)\n• IMRT: CI 1.0–2.0 akzeptabel\n• Grosses CI → unnötige Normalgewebsdosis",
@@ -1809,8 +1777,7 @@
       "block": "b13",
       "weight": 4,
       "tags": [
-        "PTV-Konzepte",
-        "DVH"
+        "PTV-Konzepte"
       ],
       "question": "Was ist der Unterschied zwischen systematischen und zufälligen Lagerungsfehlern? Warum sind systematische Fehler schlimmer?",
       "answer": "**Systematische Fehler:**\n• Treten bei jeder Fraktion in gleicher Richtung und Grösse auf\n• Entstehung: Planungs-CT vs. Behandlungsposition (Positionierungsfehler bei Simulation), falsch kalibrierte Laser\n• Wirkung: Gesamte Behandlung ist verschoben → **schwerwiegend!**\n• Korrektur: IGRT erkennt und korrigiert systematische Fehler\n\n**Zufällige Fehler:**\n• Variieren von Fraktion zu Fraktion (mal mehr, mal weniger, verschiedene Richtungen)\n• Entstehung: Tagesform, Organfüllung (Blase, Rektum), Atemtiefe\n• Wirkung: Dosisverteilung wird \"verwaschen\" → Penumbra effektiv verbreitert\n• Korrektur: Grosse PTV-Margins, IGRT reduziert (aber eliminiert nicht vollständig)\n\n**PTV-Margin-Formel (van Herk):**\n• Margin = 2.5 × Σ (systematisch) + 0.7 × σ (zufällig)\n• Σ = systematischer Fehler, σ = Standardabweichung zufälliger Fehler\n• Faktor 2.5 für Σ: systematischer Fehler viel wichtiger!\n\n**IGRT-Effekt:**\n• Tägliches Imaging reduziert systematischen Fehler → kleinere Margins möglich\n• Kleineres PTV → weniger Normalgewebe bestrahlt",
@@ -1840,7 +1807,11 @@
         "Physisch: fester Winkel 10–60°",
         "EDW: dynamisch, kein Filter",
         "Keilwinkel = Isodosen-Neigung"
-      ]
+      ],
+      "requires_context": [
+        "Linac-Aufbau"
+      ],
+      "parent": "q_linac_01"
     },
     {
       "id": "q_brch_01",
@@ -1903,9 +1874,7 @@
       "block": "b16",
       "weight": 5,
       "tags": [
-        "Dosisbegriffe-SS",
-        "Dosisgrenzen",
-        "Strahlenschutz-Prinzipien"
+        "Dosisbegriffe-SS"
       ],
       "question": "Was ist die effektive Dosis? Was sind die Gewebewichtungsfaktoren?",
       "answer": "**Effektive Dosis E:**\n• Gewichtete Summe der Äquivalentdosen aller Organe\n• E = Σ(wT × HT) [Sv]\n• Berücksichtigt unterschiedliche Radiosensitivität der Organe\n• Nur für Strahlenschutz bei niedrigen Dosen (nicht für RT-Patienten!)\n\n**Gewebewichtungsfaktoren wT (ICRP 103):**\n| Gewebe | wT |\n|---|---|\n| Knochenmark, Kolon, Lunge, Magen, Brust | je 0.12 |\n| Gonaden | 0.08 |\n| Blase, Leber, Schilddrüse, Ösophagus | je 0.04 |\n| Haut, Gehirn, Knochen, Speicheldrüsen | je 0.01 |\n| Summe aller Gewebe | **1.0** |\n\n**Interpretation:**\n• Höherer wT → strahlensensitiver → mehr Gewichtung in effektiver Dosis\n• Brust und Knochenmark: relativ hohe Gewichtung (0.12)\n• Haut: niedrig (0.01) trotz direkter Exposition\n\n**Grenzen:**\n• Bevölkerungsdurchschnitt (jung/alt, Mann/Frau) → nicht individuell\n• Nicht geeignet für RT (zu hohe Dosen, inhomogene Verteilung)",
@@ -1925,8 +1894,7 @@
       "weight": 5,
       "tags": [
         "Dosisgrenzen",
-        "Strahlenschutz-Prinzipien",
-        "Gesetzgebung-CH"
+        "Strahlenschutz-Prinzipien"
       ],
       "question": "Nennen Sie die Dosisgrenzwerte für beruflich exponierte Personen und die Bevölkerung in der Schweiz.",
       "answer": "**Dosisgrenzwerte (StSV, ICRP 103):**\n\n**Beruflich exponierte Personen:**\n• Effektive Dosis: **20 mSv/Jahr** (Durchschnitt über 5 Jahre, max. 50 mSv in einem Jahr)\n• Augenlinse: **20 mSv/Jahr** (neu gesenkt von 150 mSv!)\n• Haut, Hände, Füsse: **500 mSv/Jahr**\n\n**Bevölkerung (nicht-beruflich):**\n• Effektive Dosis: **1 mSv/Jahr**\n• Augenlinse: 15 mSv/Jahr\n• Haut: 50 mSv/Jahr\n\n**Schwangere Mitarbeiterinnen:**\n• Fötusdosis: **1 mSv** während gesamter Schwangerschaft\n• Oberflächendosis Abdomen: max. 2 mSv/Monat\n\n**Lernende <18 Jahre:**\n• 6 mSv/Jahr (wenn Ausbildung Strahlenexposition erfordert)\n\n**Patienten:**\n• Keine gesetzlichen Grenzwerte!\n• Rechtfertigung + Optimierung statt Grenzwerte\n\n**Vergleich Hintergrundstrahlung CH:**\n• ~4.5 mSv/Jahr natürlich → beruflicher Grenzwert nur 4.4× höher",
@@ -1938,7 +1906,8 @@
         "Beruflich: 20 mSv/Jahr",
         "Bevölkerung: 1 mSv/Jahr",
         "Fötus: 1 mSv gesamt"
-      ]
+      ],
+      "parent": "q_doss_01"
     },
     {
       "id": "q_schpz_01",
@@ -1962,8 +1931,7 @@
       "block": "b15",
       "weight": 3,
       "tags": [
-        "Strahlenschutz-Prinzipien",
-        "Dosisgrenzen"
+        "Strahlenschutz-Prinzipien"
       ],
       "question": "Was sind die 7 A's des Strahlenschutzes?",
       "answer": "**Die 7 A's des Strahlenschutzes:**\n\n**1. Abstand:**\n• Dosis ∝ 1/r² → Verdoppelung des Abstands → 4× weniger Dosis\n• Wichtigstes und einfachstes Schutzmittel\n\n**2. Abschirmung:**\n• Material zwischen Quelle und Person\n• Blei (Photonen), Beton (Bunker), Wasser/Paraffin (Neutronen)\n\n**3. Aufenthaltsdauer minimieren:**\n• Dosis = Dosisrate × Zeit → Zeit reduzieren → Dosis reduzieren\n• ALARA-Prinzip\n\n**4. Aktivität minimieren:**\n• Nur notwendige Aktivität verwenden (diagnostisch)\n• Kleinste therapeutische Aktivität die Ziel erreicht\n\n**5. Abschirmung des Körpers (persönlich):**\n• Bleischürze (0.25–0.5 mm Pb): reduziert Dosis ~80–90%\n• Schilddrüsenschutz, Augenlinsen-Schutz\n• Bleihandschuhe bei Handarbeit nahe der Quelle\n\n**6. Ausrüstung und Geräte:**\n• Geeignete Geräte, Abschirmvorrichtungen, Greifzangen für Brachytherapie\n\n**7. Ausbildung:**\n• Alle exponierten Personen: Strahlenschutz-Grundkurs\n• Regelmässige Fortbildung\n\n**Merkregel:** AAA + Aktivität + Abschirmung Person + Ausrüstung + Ausbildung",
@@ -1995,16 +1963,15 @@
         "Fötus: max 1 mSv/Schwangerschaft",
         "8–15 SSW: sensibelste Phase (Hirn)",
         "RT-Personal: <1 mSv/Jahr"
-      ]
+      ],
+      "parent": "q_dslm_01"
     },
     {
       "id": "q_gsch_01",
       "block": "b15",
       "weight": 4,
       "tags": [
-        "Gesetzgebung-CH",
-        "QA-Dosimetrie",
-        "Strahlenschutz-Prinzipien"
+        "Gesetzgebung-CH"
       ],
       "question": "Welche Behörde ist in der Schweiz für den Strahlenschutz zuständig? Was sind ihre Aufgaben?",
       "answer": "**Strahlenschutzbehörden Schweiz:**\n\n**BAG (Bundesamt für Gesundheit):**\n• Hauptaufsichtsbehörde für medizinische Strahlungsanwendungen\n• Zuständig für: Bewilligungen, Inspektionen, Dosisregister (PEDOS)\n• Erteilt Betriebsbewilligungen für Linacs und Diagnostikgeräte\n• Durchsetzt: StSG, StSV, Beschleunigerverordnung\n\n**METAS (Bundesamt für Metrologie):**\n• Nationales Referenzlabor für Dosimetrie\n• Kalibriert Referenz-Ionisationskammern (rückführbar auf BIPM Paris)\n• Klinische Kammern müssen alle 2 Jahre zu METAS (oder akkreditiertem Labor)\n• Gibt Kalibrierzertifikate aus\n\n**ENSI (Eidg. Nuklearsicherheitsinspektorat):**\n• Aufsicht über Kernanlagen (KKW, Forschungsreaktoren)\n• Nicht zuständig für medizinische RT\n\n**SUVA (Schweizerische Unfallversicherung):**\n• Strahlenschutz am Arbeitsplatz\n• Berufsbedingte Strahlenunfälle\n• Arbeitnehmerschutz (nicht medizinische Anwendung direkt)\n\n**Kantone:**\n• Vollzug der Strahlenschutzgesetzgebung\n• Kantonale Behörden ergänzen BAG\n\n**International:**\n• ICRP: Empfehlungen (keine Gesetzgebung)\n• IAEA: internationale Normen (IAEA TRS-398, BSS)",
@@ -2081,7 +2048,6 @@
       "block": "b19",
       "weight": 3,
       "tags": [
-        "Sekundaerkarzinome",
         "Life-Span-Study",
         "Stochastisch-Deterministisch"
       ],
@@ -2095,7 +2061,8 @@
         "120'000 Überlebende, seit 1950",
         "ERR Leukämie: 4.7/Gy",
         "Basis für ICRP-Grenzwerte"
-      ]
+      ],
+      "parent": "q_stdet_02"
     },
     {
       "id": "q_sekkz_02",
@@ -2103,13 +2070,11 @@
       "weight": 3,
       "tags": [
         "Sekundaerkarzinome",
-        "IMRT-VMAT",
-        "Flattening-Filter-FFF"
+        "Stochastisch-Deterministisch"
       ],
       "question": "Wie hoch ist das Sekundärkarzinomrisiko nach Strahlentherapie? Was beeinflusst es?",
       "answer": "**Sekundärkarzinomrisiko nach RT:**\n\n**Typische Risikowerte:**\n• Absolutes Risiko: 0.5–2% nach 10 Jahren (abhängig von Alter, Dosis, Volumen)\n• Kinder: 3–10× höheres Risiko (sensitiver, längere Lebenserwartung)\n• Relative Risikoerhöhung pro Gy: ~0.5–1% (variiert stark je nach Organ)\n\n**Häufige Sekundärkarzinome:**\n• Nach Brust-RT: kontralateraler Brustkrebs, Lunge\n• Nach H&N-RT: Zweitkarzinom Mukosa, Schilddrüse\n• Nach Lymphom-RT: Brust, Lunge, Schilddrüse\n• Nach Becken-RT: Rektum, Blase, Sarkom\n\n**Risikofaktoren:**\n• Junges Alter bei Bestrahlung (sensitiver, mehr Lebenszeit)\n• Hohe Integraldosis (mehr Volumen, mehr Out-of-field)\n• Genetische Prädisposition (Li-Fraumeni, BRCA)\n\n**Latenzzeit:**\n• Leukämie: 2–3 Jahre (peak 5–10 Jahre)\n• Solide Karzinome: >10 Jahre (bis 30+ Jahre)\n\n**Reduktion des Risikos:**\n• Protonen: weniger Integraldosis\n• IMRT: niedrige Dosen über grosses Volumen → möglicherweise mehr Sekundärkarzinome!\n• FFF, keine Keile → weniger Out-of-field",
       "requires_context": [
-        "Sekundaerkarzinome",
         "Life-Span-Study"
       ],
       "cluster": "B",
@@ -2163,9 +2128,7 @@
       "block": "b27",
       "weight": 3,
       "tags": [
-        "MRI-Bildgebung",
-        "CT-Bildgebung",
-        "PTV-Konzepte"
+        "MRI-Bildgebung"
       ],
       "question": "Was ist T1 und T2 in der MRT? Was sind die Vorteile von MRT gegenüber CT in der Radioonkologie?",
       "answer": "**T1-Relaxation (Longitudinal):**\n• Wiederherstellung der Längsmagnetisierung nach HF-Puls\n• T1 = Zeitkonstante der Längsrelaxation\n• Kurzes T1: Signal kehrt schnell zurück → hell auf T1-Bild\n  - Fett: T1 kurz → hell\n  - Wasser: T1 lang → dunkel\n• T1-Kontrast: gut für Anatomie, KM-Enhancement (Gadolinium verkürzt T1)\n\n**T2-Relaxation (Transversal):**\n• Abnahme der Quermagnetisierung durch Phasendephasing der Spins\n• T2 = Zeitkonstante der Querrelaxation\n• Kurzes T2: Signal schnell weg → dunkel auf T2-Bild\n  - Wasser/Flüssigkeit: T2 lang → hell\n  - Fett: T2 intermediär\n  - Knochen/Fibrose: T2 kurz → dunkel\n• T2-Kontrast: gut für Ödeme, Tumore (oft hyperintens wegen hohem Wassergehalt)\n\n**MRT-Vorteile gegenüber CT für RT:**\n• Überlegener Weichteilkontrast → bessere GTV-Delineation\n  - Prostata, Gehirn, H&N: MRT deutlich besser\n• Keine ionisierende Strahlung für Bildgebung\n• Funktionelle Information (DWI, DCE)\n• Nachteil: geometrische Verzerrungen, kein HU, teurer",
@@ -2177,7 +2140,8 @@
         "T1: Fett hell, Wasser dunkel",
         "T2: Wasser hell (Ödem/Tumor)",
         "MRT: besser Weichteilkontrast"
-      ]
+      ],
+      "parent": "q_ctbild_01"
     },
     {
       "id": "q_petspct_01",
@@ -2235,15 +2199,15 @@
         "NHEJ: schnell, fehleranfällig",
         "HR: langsam, fehlerfrei (S/G2)",
         "Min. 6h zwischen Fraktionen"
-      ]
+      ],
+      "parent": "q_dna_01"
     },
     {
       "id": "q_zell_01",
       "block": "b22",
       "weight": 4,
       "tags": [
-        "Zellzyklus-Strahlung",
-        "DNA-Schaden"
+        "Zellzyklus-Strahlung"
       ],
       "question": "In welcher Phase des Zellzyklus sind Zellen am strahlensensibelsten und am resistentesten?",
       "answer": "**Strahlensensitivität im Zellzyklus:**\n\n**Sensitivste Phasen:**\n• **G2/M (Mitose):** am strahlensensibelsten\n  - Kondensierte Chromosomen → weniger Reparatur möglich\n  - Kein intaktes Schwesterchromatid (HR nicht möglich)\n  - Spindelapparat strahlensensibel\n• **Späte G1:** ebenfalls sensitiv (vor S-Phase)\n\n**Resistenteste Phase:**\n• **S-Phase (DNA-Synthese):** am strahlenresistentesten\n  - HR möglich (Schwesterchromatid als Vorlage vorhanden)\n  - Effiziente Reparatur\n• **Frühe G1:** relativ resistent\n\n**Klinische Bedeutung:**\n• Redistribution (2. R der 4 Rs): resistente S-Phase-Zellen überleben\n• Rücken nach Fraktion in sensitivere Phasen → nächste Fraktion wirksamer\n• Synchronisation durch Chemotherapie (Taxane → G2/M-Arrest) → Radiosensibilisierung\n\n**Strahlenresistenz-Reihenfolge:**\nS > früh G1 > G2/M (sensibelst)",
@@ -2281,8 +2245,7 @@
       "weight": 4,
       "tags": [
         "LQ-Modell",
-        "alpha-beta",
-        "Normalgewebstoxizitaet"
+        "alpha-beta"
       ],
       "question": "Was ist der α/β-Wert? Welche Gewebe haben hohes α/β, welche niedriges? Klinische Bedeutung?",
       "answer": "**α/β-Wert — Definition:**\n• Dosis bei der α-Komponente (αD) = β-Komponente (βD²) gleichgross sind\n• Grafisch: Schulterbreite der Überlebenskurve\n• Einheit: Gy\n\n**Hoher α/β (~8–12 Gy):**\n• Frühreagierendes Gewebe und die meisten Tumoren\n• Kleine Schulter → wenig sublethale Reparatur\n• Weniger empfindlich für Fraktionsgrösse\n• Beispiele:\n  - Mukosa: α/β ≈ 10 Gy\n  - Haut (früh): α/β ≈ 9 Gy\n  - NSCLC, H&N-Tumoren: α/β ≈ 10 Gy\n\n**Niedriger α/β (~1–3 Gy):**\n• Spätreagierendes Gewebe\n• Grosse Schulter → viel sublethale Reparatur\n• Sehr empfindlich für Fraktionsgrösse → profitiert von kleinen Fraktionen\n• Beispiele:\n  - Rückenmark: α/β ≈ 2 Gy\n  - Lunge (spät): α/β ≈ 3 Gy\n  - Prostata-Ca: α/β ≈ 1.5 Gy (ausnahmsweise niedrig für Tumor!)\n\n**Therapeutisches Fenster:**\n• Tumor (hohes α/β) profitiert weniger von kleinen Fraktionen\n• Spätgewebe (niedriges α/β) profitiert sehr stark\n• → Fraktionierung schützt Spätgewebe relativ mehr als Tumor",
@@ -2359,7 +2322,8 @@
         "30×2Gy: BED₁₀=72, BED₃=100",
         "15×3Gy: BED₁₀=58.5, BED₃=90",
         "EQD2: Referenz bei 2Gy/Fx"
-      ]
+      ],
+      "parent": "q_bed_01"
     },
     {
       "id": "q_bed_03",
@@ -2379,7 +2343,8 @@
         "BED_korr = BED − Repopulationsterm",
         "T_pot: Verdopplungszeit Tumor",
         "Keine Unterbrechungen!"
-      ]
+      ],
+      "parent": "q_bed_01"
     },
     {
       "id": "q_4rs_01",
@@ -2428,8 +2393,7 @@
       "weight": 4,
       "tags": [
         "Reoxygenierung-OER",
-        "4Rs",
-        "LET"
+        "4Rs"
       ],
       "question": "Was ist der Sauerstoffeffekt? Was ist der OER? Warum schützt Hypoxie vor Strahlung?",
       "answer": "**Sauerstoffeffekt und OER:**\n\n**Mechanismus:**\n• O₂ fixiert strahleninduzierte Radikalschäden: R• + O₂ → RO₂• (permanent)\n• Ohne O₂ (Hypoxie): Radikale können durch SH-Gruppen repariert werden\n• → Hypoxische Zellen sind 2.5–3× strahlenresistenter\n\n**OER (Oxygen Enhancement Ratio):**\n• OER = Dosis (hypoxisch) / Dosis (oxisch) für gleichen Effekt\n• Niedrig-LET (Photonen): OER ≈ **2.5–3**\n• Hoch-LET (C-Ionen, Alpha): OER ≈ **1.0** (kein Sauerstoffeffekt!)\n• Klinische Konsequenz: hoch-LET ideal für hypoxische Tumoren\n\n**Warum ist Hypoxie ein klinisches Problem?**\n• Solide Tumoren: hypoxische Zonen (>150 µm von Kapillaren)\n• Hypoxische Zellen überleben RT → Tumorrezidiv\n• Messung: FMISO-PET, pO₂-Elektroden (Eppendorf)\n\n**Reoxygenierung (4. R):**\n• Nach jeder Fraktion: oxische Zellen sterben → hypoxische Zellen rücken näher an Kapillare\n• Reoxygenierung → sensitiver für nächste Fraktion\n• Grund warum Fraktionierung auch für Hypoxie-Problem hilft",
@@ -2485,8 +2449,7 @@
       "weight": 3,
       "tags": [
         "RBE",
-        "LET",
-        "Reoxygenierung-OER"
+        "LET"
       ],
       "question": "Warum nimmt der OER mit steigendem LET ab? Was ist der Overkill-Effekt?",
       "answer": "**OER und LET:**\n• OER (Oxygen Enhancement Ratio) sinkt mit steigendem LET\n• Niedrig-LET (Photonen): OER ≈ 2.5–3 → Hypoxie stark schützend\n• Mittel-LET (~20–100 keV/µm): OER 1.5–2\n• Hoch-LET (>100 keV/µm, Ionen, Alpha): OER ≈ **1.0** → kein Sauerstoffeffekt!\n\n**Warum OER sinkt mit LET?**\n• Hoch-LET → sehr dichte Ionisationsspur → viele komplexe DSBs entlang des Tracks\n• Diese 'Clustered Lesions' irreparabel unabhängig von Sauerstoff\n• Sauerstoff als 'Radikalfixierer' verliert Bedeutung wenn Schäden direkt sind\n\n**Overkill-Effekt:**\n• Bei sehr hohem LET (>100 keV/µm): RBE sinkt wieder!\n• Grund: jeder Teilchenpfad tötet Zelle mehrfach → Energie 'verschwendet'\n• Eine Zelle kann nur einmal getötet werden\n• Optimum: LET ~80–100 keV/µm (Bragg-Peak Protonen/C-Ionen)\n• Kohlenstoff-Ionen: LET im Bragg-Peak ~80–100 keV/µm → optimal\n\n**Klinische Bedeutung:**\n• Hoch-LET (C-Ionen): hypoxische und strahlenresistente Tumoren\n• Kein Sauerstoffeffekt → OER=1 → hypoxische Zellen gleichwertig sensitiv",
@@ -2500,7 +2463,8 @@
         "Hoch-LET: OER≈1",
         "Overkill: LET>100 keV/µm RBE sinkt",
         "Optimum: ~80–100 keV/µm"
-      ]
+      ],
+      "parent": "q_reox_01"
     },
     {
       "id": "q_4rs_02",
@@ -2545,8 +2509,7 @@
       "block": "b26",
       "weight": 4,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "QUANTEC-Constraints"
+        "Normalgewebstoxizitaet"
       ],
       "question": "Was ist der Unterschied zwischen seriellen und parallelen Organen? Geben Sie Beispiele.",
       "answer": "**Serielle vs. parallele Organe:**\n\n**Serielle Organe (Serienprinzip):**\n• Funktion abhängig von **jedem** Segment (Kette)\n• Ein kritischer Punkt überdosiert → Funktionsverlust\n• Dosislimitierend: **Maximaldosis (Dmax)**\n• Beispiele: Rückenmark, Ösophagus, Ureter, Darm, Hirnstamm\n• Constraint: Dmax <45 Gy (Rückenmark)\n\n**Parallele Organe (Parallelprinzip):**\n• Funktion durch viele unabhängige Funktionseinheiten\n• Teilschaden kompensierbar durch verbleibende gesunde Einheiten\n• Dosislimitierend: **mittlere Dosis oder bestrahltes Volumen**\n• Beispiele: Lunge, Leber, Niere, Parotis\n• Constraint: V20 <30% (Lunge), Dmean <26 Gy (Lunge)\n\n**DVH-Konsequenz:**\n| | Seriell | Parallel |\n|---|---|---|\n| Constraint | Dmax | Dmean oder Vd |\n| DVH-Parameter | D0.03cc | Dmean, V20 |\n| Klinisch | Rückenmark | Lunge, Niere |\n\n**Gemischte Organe:**\n• Herz: seriell (Koronarien) + parallel (Myokard)\n• Unterschiedliche Constraints für verschiedene Endpunkte",
@@ -2587,15 +2550,13 @@
       "block": "b31",
       "weight": 3,
       "tags": [
-        "TBI-Akuteffekte",
-        "Strahlenarten",
-        "LQ-Modell"
+        "TBI-Akuteffekte"
       ],
       "question": "Was sind akute Strahlensyndrome? Was ist TBI?",
       "answer": "**Akutes Strahlensyndrom (ARS):**\n• Tritt nach Ganzkörperbestrahlung (oder grossem Volumen) >0.5–1 Gy akut auf\n• Drei Phasen: Prodromal → Latenz → Manifestation\n\n**Drei Syndrome (dosisabhängig):**\n\n**Hämatopoetisches Syndrom (1–8 Gy):**\n• Knochenmark-Depletion → Panzytopenie → Infektionen, Blutungen\n• Latenz: 2–4 Wochen\n• Behandelbar: G-CSF, Transfusionen, KMT\n• LD50: ~4–5 Gy (ohne Therapie), ~7 Gy (mit Therapie)\n\n**Gastrointestinales Syndrom (8–50 Gy):**\n• Darmepithel-Depletion → Durchfall, Ileus, Sepsis\n• Latenz: 1 Woche\n• Kaum therapierbar → meist letal\n\n**Neurozerebrales Syndrom (>50 Gy):**\n• Vaskuläres Ödem, Hirndruck → Bewusstlosigkeit, Krampfanfälle\n• Latenz: Stunden bis wenige Tage → rasch letal\n\n**TBI (Total Body Irradiation):**\n• Konditionierung vor Stammzelltransplantation\n• Standard: 12 Gy in 6 Fraktionen (3 Tage, 2×/Tag)\n• Dosislimitierend: Lunge (Lungenabschirmung nötig)",
       "cluster": "C",
       "requires_context": [
-        "LQ-Modell"
+        "Normalgewebstoxizitaet"
       ],
       "chips": [
         "LD50: ~4–5 Gy",
@@ -2608,9 +2569,7 @@
       "block": "b25",
       "weight": 4,
       "tags": [
-        "Stochastisch-Deterministisch",
-        "Life-Span-Study",
-        "Dosisgrenzen"
+        "Stochastisch-Deterministisch"
       ],
       "question": "Ab welchem Dosisbereich haben wir verlässliche epidemiologische Daten? Was ist das No-Threshold-Modell?",
       "answer": "**Verlässliche epidemiologische Daten:**\n\n**Verlässlich ab ~100 mSv:**\n• Life Span Study (LSS) Atombomben-Überlebende: 0.05–2 Sv Dosisbereich\n• Statistisch signifikante Risikoerhöhung ab ~100–200 mSv nachgewiesen\n\n**Unter 100 mSv:**\n• Kein statistisch signifikanter Effekt direkt nachweisbar\n• Hintergrundrauschen (spontane Krebsrate) zu hoch\n• LNT-Modell: Extrapolation unter 100 mSv (nicht direkt belegt!)\n\n**Life Span Study (LSS) — Kerndaten:**\n• 120'000 Atombomben-Überlebende Hiroshima + Nagasaki\n• Follow-up seit 1950 (>70 Jahre)\n• Dosen: 0.005–3+ Gy (Mittel ~0.2 Gy)\n• Ergebnis: ERR pro Gy ≈ 0.47 für solide Karzinome\n• Leukämie: ERR pro Gy ≈ 4.7 (sensitiver)\n\n**LNT-Modell (Linear No Threshold):**\n• Extrapoliert linear bis Dosis 0 → keine sichere Dosis\n• Konservatives Modell für Strahlenschutz-Regulierung\n• Nicht als biologische Wahrheit behauptet\n• Alternative: Schwellenmodell, Hormesis (wissenschaftlich umstritten)",
@@ -2687,8 +2646,7 @@
       "weight": 3,
       "tags": [
         "Photoeffekt",
-        "Comptoneffekt",
-        "CT-Bildgebung"
+        "Comptoneffekt"
       ],
       "question": "Warum sieht man Knochen im Röntgenbild weiss und Luft schwarz? Was hat das mit den Wechselwirkungseffekten zu tun?",
       "answer": "**Warum Knochen weiss, Luft schwarz im Röntgenbild?**\n\n**Diagnostisches Röntgen (60–120 kVp) — Photoeffekt dominiert:**\n\n**Knochen (weiss/hell):**\n• Ca: Z=20, P: Z=15 → hohes Z\n• Photoeffekt ∝ Z³ → viel Absorption\n• Wenige Photonen treffen Detektor → hohe optische Dichte → weiss\n\n**Weichteil (grau):**\n• C, O, N, H: Z≈6–8 → mittleres Z\n• Mittlere Absorption → grau\n\n**Fett (dunkelgrau):**\n• Weniger Absorption als Weichteil → dunkler\n\n**Luft (schwarz):**\n• Minimale Dichte und Absorption (ρ ≈ 0.001 g/cm³)\n• Fast alle Photonen durchdringen → viele treffen Detektor → schwarz\n\n**Bei MV-Therapiestrahlung (Compton dominiert):**\n• µ/ρ ≈ konstant für alle biologischen Materialien (Z-unabhängig!)\n• Knochen und Weichteil: ähnliche Absorption pro Gramm\n• → Kein Röntgenbild-Kontrast bei MV → schlechte Weichteildarstellung\n• Deshalb: kV-Bildgebung (CBCT) für IGRT bevorzugt",
@@ -2701,7 +2659,8 @@
         "kVp: Photoeffekt → Z³-Abhängigkeit",
         "MV: Compton → Z-unabhängig",
         "MV: kein Knochen-Weichteil-Kontrast"
-      ]
+      ],
+      "parent": "q_rohr_01"
     },
     {
       "id": "q_comp_04",
@@ -2832,8 +2791,7 @@
       "block": "b09",
       "weight": 3,
       "tags": [
-        "Linac-Aufbau",
-        "PDD-Photonen"
+        "Linac-Aufbau"
       ],
       "question": "Was ist ein Primärkollimator? Was ist der Unterschied zwischen Jaws und MLC?",
       "answer": "**Primärkollimator:**\n• Erster Kollimator nach dem Target im Linac-Kopf\n• Aus hochdichtem Wolfram, kreisförmige Öffnung\n• Definiert das maximale Strahlenfeld (~40×40 cm² am Isozentrum)\n• Eliminiert: seitliche Streuphotonen, Kontaminationselektronen\n• Schützt Flattening Filter vor direkter Elektronenbestrahlung\n\n**Jaws (sekundäre Kollimatoren):**\n• Zwei Paare von Wolfram-Blöcken (X-Jaws: links/rechts, Y-Jaws: oben/unten)\n• Unabhängige Bewegung → rechteckige Felder von 0 bis 40×40 cm²\n• Können asymmetrisch gestellt werden (Half-beam blocks für Feldanschlüsse)\n• Präzise, robust, einfache QA\n\n**MLC (Multi-Leaf Collimator):**\n• Tertiärer Kollimator aus vielen dünnen Wolfram-Leaves\n• Beliebige (nicht nur rechteckige) Feldformen möglich\n• Jaws definieren Aussenrahmen, MLC innerhalb der Jaws\n• Grundlage für IMRT/VMAT\n\n**Hierarchie:**\nPrimärkollimator → Jaws (rechteckig) → MLC (beliebige Form)\n\n**Unterschied Jaws vs. MLC:**\n• Jaws: schnell, robust, rechteckig, geringe Leckstrahlung\n• MLC: präzise Formgebung, langsamer, Basis für Intensitätsmodulation",
@@ -2852,8 +2810,7 @@
       "block": "b12",
       "weight": 3,
       "tags": [
-        "Monitor-Units",
-        "QA-Dosimetrie"
+        "Monitor-Units"
       ],
       "question": "Was ist Commissioning eines Linearbeschleunigers? Was wird dabei gemessen?",
       "answer": "**Commissioning eines Linearbeschleunigers:**\n• Inbetriebnahme und Qualifikation eines neuen Linacs für den klinischen Einsatz\n• Dauer: ca. 2–4 Monate (je nach Anzahl Energien und Techniken)\n\n**Messungen:**\n\n**Absolute Dosimetrie:**\n• 1 MU = 1 cGy unter Referenzbedingungen verifizieren (TG-51/TRS-398)\n• Rückführbar auf METAS\n\n**Relative Dosimetrie:**\n• PDD-Kurven: alle Energien, alle klinisch relevante Feldgrössen\n• Querprofile (Dosisprofile) in verschiedenen Tiefen\n• Output-Faktoren für alle Feldgrössen\n• FFF-Profile (falls vorhanden)\n\n**Geometrie:**\n• Isozentrum-Genauigkeit, Laser-Kalibrierung\n• Lichtfeld-Strahlfeld-Übereinstimmung\n• Gantry-/Kollimator-Winkelanzeige\n\n**Spezielle Techniken:**\n• IMRT/VMAT-Verifikation\n• SBRT kleine Felder (TRS-483)\n• IGRT-Kalibrierung (CBCT-Geometrie, kV-Bildqualität)\n\n**Abschluss Commissioning:**\n• Alle Daten ins TPS importiert und validiert\n• Planverifikation mit Phantom (Gamma-Analyse)\n• Freigabe durch Medizinphysiker und Arzt\n\n**QA-Programm danach:**\n• Tägliche/monatliche/jährliche Konstanzprüfungen",
@@ -2872,9 +2829,7 @@
       "block": "b12",
       "weight": 3,
       "tags": [
-        "Dosisberechnung-Algorithmen",
-        "Monitor-Units",
-        "CT-Bildgebung"
+        "Dosisberechnung-Algorithmen"
       ],
       "question": "Was sind die wichtigsten Dosisberechnungsalgorithmen im TPS? Was sind ihre Unterschiede?",
       "answer": "**Dosisberechnungsalgorithmen im TPS:**\n\n**Pencil Beam (veraltet):**\n• Teilt Strahl in schmale Pencil Beams\n• Schnell, aber ungenau in Inhomogenitäten\n• Überschätzt Dosis in Lunge, unterschätzt hinter Knochen\n• Kaum noch klinisch eingesetzt\n\n**Collapsed Cone / AAA (Varian):**\n• Konvolution der Energiefluenz mit Energie-Depositions-Kernel\n• Berücksichtigt laterale Streuung besser als Pencil Beam\n• Gut für Weichteil, begrenzt in extremen Inhomogenitäten (Lunge)\n\n**Acuros XB (Varian) / Collapsed Cone (Elektra):**\n• Löst Strahlungstransportgleichung direkt (deterministisch)\n• Sehr genau auch in Inhomogenitäten\n• Rechenintensiver als AAA\n• Zunehmend Standard\n\n**Monte-Carlo (MC):**\n• Simuliert jeden Teilchenpfad statistisch\n• Goldstandard für Genauigkeit\n• Sehr rechenintensiv (früher Stunden, heute mit GPU Minuten)\n• Referenzmethode für Algorithmus-Validierung\n\n**Klinisch wichtig:**\n• Bei Lungenbestrahlung: Unterschiede zwischen Algorithmen >5% möglich\n• Algorithmus-Wahl kann klinischen Outcome beeinflussen!\n• SBRT Lunge: Acuros XB oder MC empfohlen",
@@ -2887,7 +2842,8 @@
         "MC: Goldstandard, rechenintensiv",
         "Acuros XB: deterministisch, genau",
         "Pencil Beam: veraltet"
-      ]
+      ],
+      "parent": "q_mu_01"
     },
     {
       "id": "q_igrt_01",
@@ -2911,8 +2867,7 @@
       "block": "b12",
       "weight": 3,
       "tags": [
-        "PTV-Konzepte",
-        "DVH"
+        "PTV-Konzepte"
       ],
       "question": "Was ist Online vs. Offline IGRT? Was ist adaptive Radiotherapie?",
       "answer": "**Online IGRT:**\n• Bild aufnehmen → sofort auswerten → sofort korrigieren → dann bestrahlen\n• Korrigiert: systematische UND zufällige Fehler der aktuellen Fraktion\n• Heute Standard für Prostata, H&N, stereotaktische Verfahren\n• Zeitaufwand: 5–15 min zusätzlich pro Fraktion\n\n**Offline IGRT:**\n• Bilder werden nach der Fraktion ausgewertet\n• Systematische Fehler identifiziert → für zukünftige Fraktionen korrigiert\n• Zufällige Fehler der einzelnen Fraktion werden NICHT korrigiert\n• Vorteil: kein Zeitdruck, grössere Datenbasis\n• Einsatz: bei gut reproduzierbaren Targets\n\n**Adaptive RT (ART):**\n• Plan wird während des Therapieverlaufs angepasst (wegen Anatomieänderungen)\n\n**Offline ART:**\n• Neuer Plan nach z.B. 2 Wochen (bei deutlichen Anatomieänderungen)\n• Tumorschrumpfung, Gewichtsverlust (H&N)\n\n**Online ART (MR-Linac, Ethos):**\n• Tägliche Plananpassung vor jeder Fraktion\n• Zeitaufwand: 20–60 min pro Fraktion\n• Indikationen: Pankreas, Blase, Prostata, Zervix\n• Vorteil: kleineres PTV möglich, bessere OAR-Schonung",
@@ -2932,7 +2887,6 @@
       "weight": 3,
       "tags": [
         "Forward-Inverse-Planning",
-        "Flattening-Filter-FFF",
         "BED-EQD2"
       ],
       "question": "Was ist SBRT/SRS? Was sind die physikalischen Besonderheiten?",
@@ -2966,7 +2920,8 @@
         "SBRT: klinisch relevant!",
         "Konventionell 25+ Fx: mittelt sich aus",
         "Lösung: Gating/DIBH/ITV"
-      ]
+      ],
+      "parent": "q_imrt_01"
     },
     {
       "id": "q_dvh_04",
@@ -3055,14 +3010,12 @@
       "block": "b10",
       "weight": 2,
       "tags": [
-        "Flattening-Filter-FFF",
-        "SOBP-Protonentherapie"
+        "Linac-Aufbau"
       ],
       "question": "Was sind neue Bestrahlungssysteme? Nennen Sie Cyberknife, Tomotherapy und MR-Linac.",
       "answer": "**Cyberknife:**\n• Kleiner Linac (6 MV, fix) auf Roboterarm (6 Freiheitsgrade)\n• Keine Gantry → beliebige Einstrahlrichtungen (100–200 Felder)\n• Echtzeit-Targeting: Röntgenbild-Vergleich, Bewegungskorrektur\n• Indikationen: SRS/SBRT Gehirn, Wirbelsäule, Prostata, Pankreas\n• Vorteil: sehr konform, keine Immobilisierung nötig (bei manchen Indikationen)\n\n**Tomotherapy (Radixact/TomoTherapy):**\n• Linac in Gantry einer CT-Gantry integriert (Helix-förmige Rotation)\n• Behandlung: Gantry dreht kontinuierlich, Tisch fährt vor\n• FFF, sehr viele Winkel → exzellente Dosiskonformität\n• IGRT: integriertes MVCT oder kVCT\n• Indikationen: H&N, grosse Volumina, ganzkörperliche Behandlungen\n\n**MR-Linac (z.B. Unity Elektra, MRIdian ViewRay):**\n• Kombiniert MRT (1.5T oder 0.35T) + Linac\n• Online-adaptive RT: täglich neuer Plan\n• Echtzeit-MRT-Gating möglich\n• Indikationen: Pankreas, Blase, Prostata, Zervix\n\n**Gemeinsam:**\n• Alle für hochpräzise stereotaktische Behandlungen\n• Aufwändiger als Standard-Linac (QA, Planung)",
       "requires_context": [
-        "Linac-Aufbau",
-        "Flattening-Filter-FFF"
+        "Linac-Aufbau"
       ],
       "cluster": "B",
       "chips": [
@@ -3089,15 +3042,15 @@
         "Keilwinkel = 90°−θ/2",
         "Out-of-field 2–4× erhöht",
         "Nie Keile bei Kindern!"
-      ]
+      ],
+      "parent": "q_keilf_01"
     },
     {
       "id": "q_dosa_02",
       "block": "b16",
       "weight": 2,
       "tags": [
-        "Dosisbegriffe-Physik",
-        "Dosisbegriffe-SS"
+        "Dosisbegriffe-Physik"
       ],
       "question": "Was ist der Unterschied zwischen Dosisleistung und Dosis? Was ist die biologische Bedeutung der Dosisleistung?",
       "answer": "**Dosisleistung (Dosisrate):**\n• Dosis pro Zeiteinheit: D_rate = dD/dt [Gy/s, Gy/min, Gy/h]\n• Linac: 400–600 cGy/min (FF), 1400–2400 cGy/min (FFF)\n• LDR-Brachytherapie: <2 Gy/h\n\n**Dosisleistungseffekt:**\n• Bei niedrigerer Dosisrate: mehr Zeit für Reparatur sublethaler Schäden zwischen Ionisationsereignissen\n• Höhere Dosisrate: weniger Reparatur → biologisch wirksamer (für gleiches D)\n• Bei LDR: Reparatur während der Behandlung → niedrigerer biologischer Effekt als HDR\n\n**FLASH-Effekt:**\n• Ultra-High-Dose-Rate: >40 Gy/s (experimentell)\n• Beobachtung: bei UHDR weniger Normalgewebe-Schäden, gleiche Tumorkontrolle (Tier)\n• Mechanismus: unklar (O₂-Verarmung? freie Radikale kurzlebig?)\n• Status (2026): Phase-I-Studie läuft, klinisch noch nicht etabliert\n\n**Dosisleistung klinisch:**\n• Linac: MU/min einstellbar (Dosisratenregulation)\n• LDR vs. HDR-Brachytherapie: biologisch verschieden (BED-Korrektur nötig)",
@@ -3116,8 +3069,7 @@
       "block": "b16",
       "weight": 3,
       "tags": [
-        "Dosisbegriffe-SS",
-        "Strahlenschutz-Prinzipien"
+        "Dosisbegriffe-SS"
       ],
       "question": "Was ist die Operationelle Dosimetrie? Was sind H*(10), Hp(10) und Hp(0.07)?",
       "answer": "**Operationelle Dosisgrossen:**\nMessgrössen für die praktische Dosimetrie (einfacher messbar als theoretische Schutzgrössen)\n\n**H*(10) — Umgebungsäquivalentdosis:**\n• Ortsdosimetrie (Messung am Ort, nicht an Person)\n• Gemessen in ICRU-Kugelphantom, 10 mm Tiefe\n• Dosis in Vorwärtsrichtung der Strahlung\n• Konservative Abschätzung der effektiven Dosis am Messort\n• Messgerät: Ortsdosisleistungsmessgerät (Survey Meter)\n\n**Hp(10) — Personenäquivalentdosis, 10 mm:**\n• Am Körper des Mitarbeiters (Brust, Bauch)\n• Abschätzung der effektiven Dosis und Tiefenorgane\n• Standard-Dosimeter (TLD, OSL) misst Hp(10)\n• Dosisgrenzen in Hp(10): 20 mSv/Jahr beruflich\n\n**Hp(0.07) — Personenäquivalentdosis, 0.07 mm:**\n• Hautdosis und Extremitätendosis\n• Händedosimeter bei Brachytherapie-Handhabung\n• Weiche Beta-Strahlung, schwach penetrierende Strahlung\n\n**Hp(3) — Augenlinsendosis:**\n• Seit Absenkung der Augenlinsen-Grenzwerte (20 mSv/Jahr) relevant\n• Augendosimeter für Personal mit Kopfexpositionen",
@@ -3136,8 +3088,7 @@
       "block": "b15",
       "weight": 2,
       "tags": [
-        "Gesetzgebung-CH",
-        "Strahlenschutz-Prinzipien"
+        "Gesetzgebung-CH"
       ],
       "question": "Was ist ein medizinisches Strahlenereignis in der Schweiz? Was muss wann gemeldet werden?",
       "answer": "**Medizinisches Strahlenereignis (Schweiz, StSV Art. 94):**\n• Unbeabsichtigte Strahlenexposition die erheblich von der geplanten abweicht\n• Oder: bestimmte Schwellenwerte überschritten\n\n**Meldepflichtige Ereignisse (BAG, innert 30 Tagen):**\n• Falscher Patient bestrahlt\n• Falsches Zielvolumen bestrahlt\n• Dosis >25% über oder unter der verschriebenen Dosis\n• Unbeabsichtigte Bestrahlung eines Embryos/Fötus\n• Tod oder schwerer Gesundheitsschaden durch Strahlenfehler\n• Geräteausfall der zu Fehldosierung geführt hat\n\n**Meldung an:**\n• BAG (Bundesamt für Gesundheit) → nationale Meldestelle\n• Intern: Qualitätsmanagement, Strahlenabschusskommission\n\n**Untersuchungspflicht:**\n• Root Cause Analysis (RCA): Ursachenanalyse obligat\n• Corrective Actions: Massnahmen zur Vermeidung Wiederholung\n• Dokumentation und Archivierung\n\n**Präventionsprogramme:**\n• WHO Radiotherapy Safety Challenge: 5 Schritte\n• ROSIS (Radiation Oncology Safety Information System): freiwillige anonyme Meldeplattform\n• ASTRO Target Safely-Programme\n\n**Häufige Ursachen:**\n• Kommunikationsfehler, Verwechslung, Software-Fehler, menschliches Versagen\n• Systemansatz: Fehler trotz kompetenter Mitarbeiter → Systemverbesserung",
@@ -3149,7 +3100,8 @@
         "Meldepflicht bei >25% Dosisfehler",
         "BAG: innert 30 Tagen",
         "RCA: Ursachenanalyse obligat"
-      ]
+      ],
+      "parent": "q_gsch_01"
     },
     {
       "id": "q_qa_03",
@@ -3170,7 +3122,8 @@
         "Täglich: Output ±2%",
         "Jährlich: abs. Dosimetrie METAS",
         "Archivierung: 20 Jahre"
-      ]
+      ],
+      "parent": "q_gsch_01"
     },
     {
       "id": "q_bunker_01",
@@ -3198,8 +3151,7 @@
       "block": "b35",
       "weight": 2,
       "tags": [
-        "Dosisbegriffe-SS",
-        "Stochastisch-Deterministisch"
+        "Dosisbegriffe-SS"
       ],
       "question": "Was ist die Strahlenbelastung durch verschiedene CT-Untersuchungen? Wie ist das im Verhältnis zur Strahlentherapie?",
       "answer": "**Strahlenbelastung diagnostische CT:**\n\n| Untersuchung | Effektive Dosis |\n|---|---|\n| CT Schädel | ~2 mSv |\n| CT Thorax | ~7 mSv |\n| CT Abdomen/Becken | ~10 mSv |\n| CT Ganzkörper | ~15–20 mSv |\n| PET/CT | ~10–15 mSv |\n| Konventionelles Röntgen Thorax | ~0.02 mSv |\n| Mammographie | ~0.4 mSv |\n\n**Vergleich:**\n• Natürliche Hintergrundstrahlung CH: ~4.5 mSv/Jahr\n• CT Thorax ≈ 1.5 Jahre natürliche Hintergrundstrahlung\n• CT-Ganzkörper ≈ 3–4 Jahre natürliche Hintergrundstrahlung\n\n**Strahlenrisiko:**\n• CT Abdomen: LNT-Risikoschätzung ~1:2000 Lebenszeitkrebsrisiko\n• Klinisch: Nutzen überwiegt fast immer das Risiko\n• Kinder: Risiko 2–3× höher → Dosisoptimierung besonders wichtig\n\n**ALARA in der Diagnostik:**\n• Dosisreduktionsalgorithmen (iterative Rekonstruktion)\n• Angepasste mAs nach Körpergrösse\n• 80 kV statt 120 kV bei guter Kontrastverstärkung",
@@ -3218,8 +3170,7 @@
       "block": "b19",
       "weight": 3,
       "tags": [
-        "Life-Span-Study",
-        "Sekundaerkarzinome"
+        "Life-Span-Study"
       ],
       "question": "Was ist der Unterschied zwischen EAR und ERR? Wie werden sie zur Risikoabschätzung genutzt?",
       "answer": "**EAR (Excess Absolute Risk):**\n• Zusätzliche Krebsfälle pro 10'000 Personenjahre pro Gy\n• Absolute Zahl über das Hintergrundrisiko\n• EAR = (beobachtete Rate − erwartete Rate) / Dosis\n• LSS: EAR solide Karzinome ~49/10'000 PJ/Gy\n\n**ERR (Excess Relative Risk):**\n• Relatives Risiko im Vergleich zum Hintergrundrisiko\n• ERR = (beobachtete Rate / erwartete Rate − 1) / Dosis\n• LSS: ERR solide Karzinome ~0.47/Gy (47% Risikoerhöhung pro Gy)\n\n**Anwendung:**\n• EAR: besser wenn Hintergrundrate sehr verschieden (Japan vs. Europa)\n• ERR: besser wenn Hintergrundrate ähnlich\n• Für CH-Risikoschätzung: EAR + demographische Anpassung\n\n**Klinische Sekundärkarzinom-Risikoschätzung:**\n• EAR × Dosis × bestrahltes Volumen × Alter × Geschlecht\n• Typisch: 0.5–2% absolute Risikoerhöhung nach 10 Jahren (Erwachsene)\n• Kinder: deutlich höher (sensitive Gewebe, längere Lebenserwartung)",
@@ -3231,15 +3182,15 @@
         "EAR: absolut pro 10'000 PJ/Gy",
         "ERR: relativ (~0.47/Gy)",
         "EAR für Bevölkerungsvergleich"
-      ]
+      ],
+      "parent": "q_sekkz_01"
     },
     {
       "id": "q_bild_ct_02",
       "block": "b27",
       "weight": 3,
       "tags": [
-        "CT-Bildgebung",
-        "MRI-Bildgebung"
+        "CT-Bildgebung"
       ],
       "question": "Was ist Dual-Energy CT? Was sind die Anwendungen in der Radioonkologie?",
       "answer": "**Dual-Energy CT (DECT):**\n• Simultane Akquisition bei zwei verschiedenen kV (z.B. 80+140 kV)\n• Materialzerlegung möglich: zwei Messungen → zwei Materialien eindeutig trennbar\n\n**Technische Implementierungen:**\n• Rapid kV-Switching: schnelle Wechsel zwischen kV-Werten\n• Dual-Source CT: 2 Röntgenröhren 90° versetzt\n• Dual-Layer Detektor: eine Röhre, zwei Detektorschichten\n\n**Anwendungen in der Radioonkologie:**\n\n**Protonentherapie:**\n• Direkte Bestimmung der relativen Stoppkraft aus DECT\n• Genauer als Standard-CT-Kalibrierung (~1.5% vs. 3.5% Unsicherheit)\n• Kleinere Range Margin möglich\n\n**Metallartefaktreduktion:**\n• Virtuelle monoenergetische Bilder (VMI) bei hohen keV\n• Weniger Metallartefakte durch Prothesen → bessere Konturierung\n\n**Tumorkontrast:**\n• Bessere Unterscheidung Tumor vs. Atelektase (Lunge)\n• Jod-KM-Quantifizierung (Jod-Karten)\n\n**Jod-KM-Subtraktion:**\n• Virtuelle Nativ-Bilder (VNC) ohne KM-Subtraktion",
@@ -3251,7 +3202,8 @@
         "DECT: 2 kV-Werte gleichzeitig",
         "Protonen: Range-Uncertainty ↓",
         "VMI: weniger Metallartefakte"
-      ]
+      ],
+      "parent": "q_ctbild_01"
     },
     {
       "id": "q_hypo_01",
@@ -3281,8 +3233,7 @@
       "weight": 3,
       "tags": [
         "BED-EQD2",
-        "LQ-Modell",
-        "Normalgewebstoxizitaet"
+        "LQ-Modell"
       ],
       "question": "Was sind die Grenzen des LQ-Modells bei sehr hohen Einzeldosen (SBRT)?",
       "answer": "**Grenzen des LQ-Modells bei hohen Einzeldosen (SBRT):**\n\n**Überlebenskurve bei hohen Dosen:**\n• LQ-Modell: SF = e^(−αD − βD²)\n• Bei grossen D: βD²-Term dominiert → Kurve biegt stark ab\n• Beobachtung bei Experimenten: tatsächliche Kurve bei >10 Gy weniger steil als LQ vorhersagt\n• LQ überschätzt die Zelltötung bei SBRT-Dosen (>8–10 Gy/Fx)!\n\n**Mechanismen jenseits des LQ-Modells:**\n• **Vaskuläre Effekte:** SBRT-Dosen → Endothelzell-Apoptose → Tumorvaskularisation gestört\n• **Immunaktivierung:** SBRT → Tumorzelltod → Antigene freigesetzt → Immunantwort\n• Diese Mechanismen im LQ nicht enthalten\n\n**Konsequenz:**\n• BED bei SBRT (3×18 Gy): LQ-BED = 151 Gy₁₀ → möglicherweise überschätzt!\n• Tatsächliche biologische Äquivalenz unklar\n• SBRT-Dosen nicht einfach mit LQ auf konventionell umrechnen\n\n**Modifikationen:**\n• USC-Modell (Universal Survival Curve): LQ bei niedrigen Dosen + linear bei hohen Dosen\n• LQ-L Modell: Linearisierung bei hohen Dosen\n• Klinisch: empirische Daten wichtiger als LQ-Berechnungen bei SBRT",
@@ -3295,16 +3246,15 @@
         "LQ>10 Gy: überschätzt Zelltötung",
         "SBRT: vaskuläre + Immuneffekte",
         "BED bei SBRT: unklar ob gültig"
-      ]
+      ],
+      "parent": "q_lqm_01"
     },
     {
       "id": "q_ntcz_03",
       "block": "b26",
       "weight": 2,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "alpha-beta",
-        "BED-EQD2"
+        "Normalgewebstoxizitaet"
       ],
       "question": "Was sind LKBE-Modelle (NTCP-Modelle)? Was ist das Lyman-Kutcher-Burman-Modell?",
       "answer": "**NTCP-Modelle:**\n• Mathematische Modelle zur Vorhersage der Komplikationswahrscheinlichkeit aus DVH\n\n**Lyman-Kutcher-Burman (LKB) Modell:**\n• Bekanntestes NTCP-Modell\n• Sigmoid-Kurve: NTCP = Φ[(DVH_eff − TD50) / (m × TD50)]\n• DVH_eff: auf Ganzkörper-äquivalente Dosis umgerechnet (via Volumen-Reduktion)\n• TD50: Dosis für 50% Komplikationsrisiko (Volumen v)\n• m: Steilheit der Kurve\n• n: Volumen-Effekt-Parameter (n→1 = parallel, n→0 = seriell)\n\n**QUANTEC-Constraints:**\n• Basieren teilweise auf LKB-Modell-Fits\n• Evidenzbasierter, aber limitierte Datenbasis\n\n**Limitierungen NTCP-Modelle:**\n• Populationsdaten → nicht individuell\n• Meist univariat (keine Komorbiditäten)\n• Zeitpunkt der Komplikation nicht modelliert\n• Nicht validiert für Hypo/SBRT-Dosen\n\n**Klinischer Einsatz:**\n• NTCP-gestützte Entscheidung: Protonen vs. Photonen (wenn NTCP-Reduktion >10%)\n• In der Routine: DVH-Constraints als Surrogat\n• Forschung: NTCP-Modelle für neue Endpunkte (PREDIGT, REQUITE)",
@@ -3338,7 +3288,8 @@
         "Chronisch: >150 µm von Kapillar",
         "Akut: fluktuierend (Gefässspasmen)",
         "FMISO-PET: Hypoxie messen"
-      ]
+      ],
+      "parent": "q_reox_01"
     },
     {
       "id": "q_4rs_04",
@@ -3346,7 +3297,6 @@
       "weight": 3,
       "tags": [
         "4Rs",
-        "Zellzyklus-Strahlung",
         "LQ-Modell"
       ],
       "question": "Was ist der Unterschied zwischen akuter und fraktionierter Strahlentherapie bezüglich der 4 R's?",
@@ -3381,7 +3331,8 @@
         "SF = Kolonien/(Zellen×PE)",
         "D₀: SF auf 37% reduziert",
         "Schulter = sublethale Reparatur"
-      ]
+      ],
+      "parent": "q_zell_01"
     },
     {
       "id": "q_lqm_04",
@@ -3431,8 +3382,7 @@
       "block": "b25",
       "weight": 3,
       "tags": [
-        "Stochastisch-Deterministisch",
-        "Life-Span-Study"
+        "Stochastisch-Deterministisch"
       ],
       "question": "Was sind die deterministischen Schwellendosen für verschiedene Organe? Was ist LD50?",
       "answer": "**Deterministische Schwellendosen (Einzeldosis):**\n\n**Haut:**\n• Erythem (Rötung): ~2 Gy\n• Trockene Desquamation: ~10 Gy\n• Feuchte Desquamation: ~20 Gy\n• Nekrose: >18–20 Gy\n\n**Augenlinse:**\n• Katarakt (früher: 5 Gy, **neu gesenkt!**): 0.5 Gy akut / 5 Gy chronisch\n• Grenzwert revidiert → Augendosimeter wichtiger\n\n**Gonaden:**\n• Sterilität Mann (temporär): ~0.15 Gy\n• Sterilität Mann (permanent): ~3.5–6 Gy\n• Sterilität Frau (permanent): ~2.5–6 Gy (altersabhängig!)\n\n**Knochenmark:**\n• LD50 (Ganzkörper, ohne Therapie): 2.5–4 Gy\n• Mit Supportivtherapie: LD50 ~7 Gy\n• Mit KMT: weiter erhöhbar\n\n**Allgemein:**\n• Unterhalb Schwellendosis: kein deterministischer Effekt\n• Oberhalb: Schweregrad steigt mit Dosis\n• Fraktionierung: erhöht Toleranz (Reparatur)!\n• RT-Dosen am Tumor (30–80 Gy): weit über deterministischen Schwellen → Nebenwirkungen unvermeidlich",
@@ -3451,14 +3401,13 @@
       "block": "b32",
       "weight": 1,
       "tags": [
-        "Immunmodulation-RT",
-        "Strahlenarten"
+        "LQ-Modell"
       ],
       "question": "Was ist der FLASH-Effekt? Was sind Ultra-High-Dose-Rate (UHDR) Bestrahlungen?",
       "answer": "**FLASH-Effekt:**\n• Bestrahlung mit Ultra-High Dose Rate (UHDR): >40 Gy/s\n• Beobachtung (Tiermodell): gleiche Tumorkontrolle, aber drastisch weniger Normalgewebsschaden\n• Normalgewebe-Schonung: 1.5–3× besser als konventionelle Dosisrate\n\n**Mechanismus (hypothetisch, unklar):**\n• O₂-Verarmung: UHDR verbraucht O₂ schneller als Nachlieferung → transiente Hypoxie in Normalgewebe → Schutz\n• Freie Radikale: bei UHDR: Radikale kurzer Lebensdauer → weniger reaktiv\n• Immunologisch: FLASH aktiviert Immunsystem anders\n\n**Status (2026):**\n• Präklinische Daten: vielversprechend\n• Erste Phase-I Studien laufen (FLASH-RT beim Menschen)\n• ELECTRON-FLASH: Elektronen bei UHDR (technisch einfacher als Photonen)\n• PROTON-FLASH: in Entwicklung\n• Noch KEIN klinischer Standard\n\n**Technische Herausforderungen:**\n• Konventionelle Linacs: max. 2400 MU/min (FFF) → weit unter UHDR\n• Spezielle Geräte nötig: Flash-Elektronen-Linac, Protonensynchrotron im pulsed Mode\n• Dosimetrie bei UHDR: Ionisationskammer saturiert → neue Detektoren nötig\n\n**Klinischer Ausblick:**\n• Wenn validiert: revolutionär → mehr Dosis möglich, weniger Toxizität",
       "cluster": "C",
       "requires_context": [
-        "Strahlenarten"
+        "LQ-Modell"
       ],
       "chips": [
         ">40 Gy/s (UHDR)",
@@ -3471,9 +3420,7 @@
       "block": "b31",
       "weight": 1,
       "tags": [
-        "TBI-Akuteffekte",
-        "LQ-Modell",
-        "BED-EQD2"
+        "TBI-Akuteffekte"
       ],
       "question": "Warum wird die TBI fraktioniert durchgeführt? Was sind die Dosiseinschränkungen?",
       "answer": "**Warum TBI fraktioniert?**\n• Dosis: 12 Gy total → toxisch als Einzeldosis (Lunge, Niere)\n• Standard: 6 Fraktionen à 2 Gy, 2×/Tag, 3 Tage (12 Gy/6 Fx)\n• Fraktionierung: Lunge und Niere (spätreagierend, α/β ~3) profitieren mehr\n\n**Lunge als limitierendes Organ:**\n• Pneumonitis-Risiko steigt stark oberhalb 8 Gy als Einzeldosis\n• Fraktioniert: Lunge toleriert 12 Gy gesamt viel besser\n• Lungenabschirmung: Cerrobend-Blöcke vor Lunge → Dmax <8–9 Gy (auch bei Gesamt-TBI 12 Gy)\n\n**Dosisbeschränkungen:**\n• Lunge: Dmax 8–9 Gy (abgeschirmt)\n• Niere: Dmax 10 Gy\n• Linse: Dmax 4 Gy (Katarakt-Risiko)\n• Gonade: ≥3 Gy → Sterilität\n\n**Biologische Begründung (LQ):**\n• BED Lunge (α/β=3): 2 Gy/Fx → BED = 2×(1+2/3) = 3.33 Gy₃; 6 Fx: BED = 20 Gy₃\n• Einzeldosis 12 Gy: BED = 12×(1+12/3) = 60 Gy₃ → 3× mehr biologische Wirkung!\n\n**Conditioning-Ziele:**\n• Immunablation (Empfänger toleriert Spendermark)\n• Myeloablation (Empfänger-Hämatopoese ausgelöscht)\n• Tumorzellkilling (bei Leukämie)",
@@ -3493,7 +3440,6 @@
       "block": "b26",
       "weight": 3,
       "tags": [
-        "Normalgewebstoxizitaet",
         "BED-EQD2"
       ],
       "question": "Wie werden Bestrahlungsserien verglichen wenn verschiedene Fraktionierungen verwendet wurden? Was ist die klinische Relevanz von EQD2?",
@@ -3589,7 +3535,8 @@
         "Pädiatrie: 3–5× weniger Sekundär-Ca",
         "Okuläres Melanom: 98% LC",
         "NTCP-Reduktion >10%: Indikation"
-      ]
+      ],
+      "parent": "q_pddp_01"
     },
     {
       "id": "q_linac_11",
@@ -3650,7 +3597,8 @@
         "CPE fehlt bei <2cm",
         "Dosis < KERMA bei kleinen Feldern",
         "MC/Acuros: korrekte Modellierung"
-      ]
+      ],
+      "parent": "q_dbert_01"
     },
     {
       "id": "q_igrt_03",
@@ -3677,8 +3625,7 @@
       "block": "b16",
       "weight": 4,
       "tags": [
-        "Dosisbegriffe-Physik",
-        "QA-Dosimetrie"
+        "Dosisbegriffe-Physik"
       ],
       "question": "Was ist der Unterschied zwischen absoluter und relativer Dosimetrie?",
       "answer": "**Absolute Dosimetrie:**\n• Bestimmung der tatsächlichen Dosis [Gy] an einem Punkt\n• Rückführbar auf nationale Standards: BIPM → METAS → Klinische Kammer\n• Instrument: Ionisationskammer (Farmer), kalibriert von akkreditiertem Labor\n• Anwendung: Linac-Kalibrierung (1 MU = 1 cGy), jährliche Messungen\n• Unsicherheit: ±1.5% (k=2) nach TG-51/TRS-398\n\n**Relative Dosimetrie:**\n• Messung von Dosisunterschieden relativ zu einem Referenzpunkt\n• Kein absoluter Gy-Wert\n• Anwendung: PDD-Kurven, Querprofile, Output-Faktoren\n• Instrumente: Dioden, Filmdetektoren, Arrays, kleine Kammern\n\n**Kalibrierungskette (Schweiz):**\n• **BIPM** (Paris) → primäre internationale Standards\n• **METAS** (Bern) → nationales Referenzlabor\n• Sekundärstandard-Kammer → klinische Referenzkammer (alle 2 Jahre)\n• Linac-Monitorkammer (täglich/monatlich gegen Referenz geprüft)\n\n**Protokolle:**\n• TG-51 (AAPM, USA): absorbed dose to water\n• TRS-398 (IAEA): international, in CH Standard\n• Beide kompatibel, Unsicherheit ~1.5%",
@@ -3738,8 +3685,7 @@
       "block": "b12",
       "weight": 3,
       "tags": [
-        "Dosisberechnung-Algorithmen",
-        "CT-Bildgebung"
+        "Dosisberechnung-Algorithmen"
       ],
       "requires_context": [
         "Dosisberechnung-Algorithmen"
@@ -3751,7 +3697,8 @@
         "Lunge: 0.2–0.3 g/cm³",
         "Pencil Beam: überschätzt 5–15%",
         "SBRT Lunge: Acuros/MC obligat"
-      ]
+      ],
+      "parent": "q_dbert_01"
     },
     {
       "id": "q_bild_mrt_03",
@@ -3771,7 +3718,8 @@
         "Unity: 1.5T, MRIdian: 0.35T",
         "Tägl. Online-ART: 30–60 min",
         "B-Feld → Sekundärelektronen verändert"
-      ]
+      ],
+      "parent": "q_mribild_01"
     },
     {
       "id": "q_str_ph_01",
@@ -3795,8 +3743,7 @@
       "block": "b16",
       "weight": 3,
       "tags": [
-        "Dosisbegriffe-SS",
-        "Gesetzgebung-CH"
+        "Dosisbegriffe-SS"
       ],
       "question": "Was sind die Anforderungen an die Personendosimetrie in der Schweiz? Wer trägt ein Dosimeter?",
       "answer": "**Personendosimetrie-Anforderungen Schweiz:**\n\n**Pflicht für:**\n• Alle beruflich strahlenexponierten Personen mit >1 mSv/Jahr erwartet\n• In der Radioonkologie: Ärzte, Physiker, RTF, Pflegepersonal (Brachytherapie)\n\n**Messgrösse:**\n• Hp(10) [mSv] = Personenäquivalentdosis 10 mm Tiefe\n\n**Dosimeter-Typen:**\n• TLD (Thermolumineszenzdosimeter) oder OSL (optisch stimuliert)\n• Auswertung durch akkreditiertes Labor\n\n**Nationales System Schweiz:**\n• **PEDOS** (Person Dose System): nationales Register\n• BAG führt Register aller beruflich strahlenexponierten Personen\n• Arbeitgeber meldet Ergebnisse monatlich\n\n**Auswertungsintervall:**\n• Monatlich (empfohlen) oder quartalsweise\n\n**Zusätzliche Dosimeter:**\n• Ringdosimeter Hp(0.07): Hände bei Brachytherapie\n• Augendosimeter Hp(3): bei Kopfexposition (ab 20 mSv/Jahr Augenlinse)\n• Schwangere: zusätzliches Bauchdosimeter\n\n**Dosisgrenzen:**\n• Beruflich: 20 mSv/Jahr Hp(10)\n• Augenlinse: 20 mSv/Jahr Hp(3)",
@@ -3869,7 +3816,8 @@
         "BED₁₀ = 151 Gy₁₀",
         "BED₃ = 378 Gy₃",
         "LQ-Grenzen bei SBRT beachten!"
-      ]
+      ],
+      "parent": "q_bed_01"
     },
     {
       "id": "q_zell_04",
@@ -3889,7 +3837,8 @@
         "Taxane: G2/M-Arrest (sensibelst)",
         "Cisplatin: hemmt DNA-Reparatur",
         "In vivo: Synchronisation schnell verloren"
-      ]
+      ],
+      "parent": "q_zell_01"
     },
     {
       "id": "q_setr_01",
@@ -3911,15 +3860,15 @@
         "RBE: 2–3 im Tumor",
         "OER≈1: kein Sauerstoffeffekt",
         "Fragmentierung: Dosis-Tail hinter Peak"
-      ]
+      ],
+      "parent": "q_rbe_01"
     },
     {
       "id": "q_ntcz_05",
       "block": "b26",
       "weight": 3,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "Stochastisch-Deterministisch"
+        "Normalgewebstoxizitaet"
       ],
       "requires_context": [
         "Normalgewebstoxizitaet"
@@ -3938,8 +3887,7 @@
       "block": "b26",
       "weight": 3,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "QUANTEC-Constraints"
+        "Normalgewebstoxizitaet"
       ],
       "requires_context": [
         "Normalgewebstoxizitaet"
@@ -3958,8 +3906,7 @@
       "block": "b15",
       "weight": 3,
       "tags": [
-        "Strahlenschutz-Prinzipien",
-        "Gesetzgebung-CH"
+        "Strahlenschutz-Prinzipien"
       ],
       "question": "Was sind die Strahlenrisiken für Patienten bei diagnostischer Bildgebung? Wie kommuniziert man das?",
       "answer": "**Strahlenrisiken diagnostische Bildgebung:**\n\n**Effektive Dosen:**\n| Untersuchung | Effektive Dosis |\n|---|---|\n| Röntgen Thorax | ~0.02 mSv |\n| CT Schädel | ~2 mSv |\n| CT Thorax | ~7 mSv |\n| CT Abdomen/Becken | ~10 mSv |\n| PET/CT (ganzkörper) | ~10–15 mSv |\n| Natürliche HGS CH/Jahr | ~4.5 mSv |\n\n**Risikokommunikation:**\n• CT Abdomen (~10 mSv): LNT → ~1/2000 zusätzliches Krebsrisiko\n• Hintergrundrisiko Krebs: ~25–30% → sehr kleines relatives Risiko\n• Absolutrisiko klinisch irrelevant für meisten Erwachsenen\n• Kinder: höheres relatives Risiko → Rechtfertigung wichtiger\n\n**ALARA für Diagnostik:**\n• Niedrigstmögliche Dosis (Protokolloptimierung, Röhrenstrommodulation)\n• Nur anfordern wenn klinisch gerechtfertigt\n• Alternative (MRT, Ultraschall) bevorzugen wenn möglich\n\n**Vergleich zu RT:**\n• CT ~10 mSv vs. RT-Tumor-Dosis 60'000 mGy = 6000-fach höher\n• RT: Nutzen überwiegt klar → keine effektive Dosis berechnen",
@@ -3978,8 +3925,7 @@
       "block": "b19",
       "weight": 2,
       "tags": [
-        "Life-Span-Study",
-        "Stochastisch-Deterministisch"
+        "Life-Span-Study"
       ],
       "requires_context": [
         "Life-Span-Study"
@@ -3991,7 +3937,8 @@
         "INWORKS: Nukleararbeiter, chronisch",
         "UK-Kinder: pränat. CT → 2× Leukämie",
         "BEIR VII: LNT bestätigt"
-      ]
+      ],
+      "parent": "q_sekkz_01"
     },
     {
       "id": "q_rpr_03",
@@ -4011,7 +3958,8 @@
         "SLD: Elkind-Reparatur → Schulter",
         "PLD: reparierbar bei Wachstumshemmung",
         "PLD: evtl. Radioresistenz langsamer Tumoren"
-      ]
+      ],
+      "parent": "q_rpr_01"
     },
     {
       "id": "q_lqm_06",
@@ -4032,15 +3980,15 @@
         "SABR: >8 Gy/Fx ablativ",
         "LQ überschätzt Letalität bei hohen Dosen",
         "Vaskuläre Disruption + Immuneffekt"
-      ]
+      ],
+      "parent": "q_bed_01"
     },
     {
       "id": "q_schutz_03",
       "block": "b15",
       "weight": 2,
       "tags": [
-        "Strahlenschutz-Prinzipien",
-        "Dosisbegriffe-SS"
+        "Strahlenschutz-Prinzipien"
       ],
       "question": "Was ist Hormesis? Was ist das LNT-Modell? Was ist die wissenschaftliche Evidenz?",
       "answer": "**Hormesis:**\n• Hypothese: niedrige Strahlendosen wirken schützend (stimulierend)\n• Mechanismus: Stimulation DNA-Reparatur, Immunsystem, Antioxidanzien\n• Beobachtungen:\n  - Zellkulturen: Hormesis bei 10–100 mGy\n  - Tiermodelle: verlängerte Lebensdauer bei niedrigen Dosen\n  - Radon-Bergarbeiter: in manchen Studien kein erhöhtes Krebsrisiko\n\n**LNT-Modell:**\n• Linear No Threshold: jede Dosis verursacht proportional Krebsrisiko\n• Keine sichere Untergrenze\n• Konservatives Schutzmodell (ICRP, WHO)\n\n**Wissenschaftlicher Status:**\n• Hormesis: nicht allgemein akzeptiert, kein Regulierungsstatus\n• LNT: operationales Modell für Strahlenschutz\n• Reales Risiko <100 mSv: statistisch nicht direkt messbar (zu klein vs. Hintergrund)\n\n**Praktisch:**\n• LNT → ALARA-Prinzip\n• Beide Modelle konsistent mit Daten (Daten erlauben keine Unterscheidung <100 mSv)\n• Für klinische Entscheidungen: LNT-basierte Risikoschätzungen als obere Grenze",
@@ -4059,9 +4007,7 @@
       "block": "b28",
       "weight": 1,
       "tags": [
-        "PET-SPECT",
-        "CT-Bildgebung",
-        "Radioaktiver-Zerfall"
+        "PET-SPECT"
       ],
       "question": "Was ist SUV (Standardized Uptake Value)? Wie wird er für die Bestrahlungsplanung genutzt?",
       "answer": "**SUV (Standardized Uptake Value):**\n• Standardisiertes Mass für den Tracer-Uptake in PET\n• SUV = Aktivität in ROI [MBq/g] / (injizierte Aktivität [MBq] / Körpergewicht [g])\n• Normalisiert auf Körpergewicht und injizierte Aktivität\n• Dimensionslos, typische Werte: 1–30\n\n**Interpretation:**\n• SUV = 1: Uptake entspricht Gleichverteilung im Körper\n• SUV >2.5: oft als pathologisch angesehen (FDG-PET)\n• Hoher SUV Primärtumor: hohe Glukose-Metabolismus → aggressiver Tumor?\n\n**Varianten:**\n• SUVmax: maximaler Voxel in ROI (reproduzibler, aber anfällig für Rauschen)\n• SUVmean: Mittelwert (stabiler, aber ROI-abhängig)\n• SUVpeak: Mittelwert in 1-cm³-Sphäre um Max\n\n**Für RT-Planung:**\n• GTV-Definition bei FDG-PET: meist SUV-Schwellenwert 40–50% des SUVmax\n• PSMA-PET bei Prostata: metabolisches GTV-Kontouring\n• FET-PET Gliom: biologisches Tumorvolumen für GTV\n\n**Limitierungen:**\n• Verschiedene Scanner und Protokolle → SUV nicht direkt vergleichbar\n• Bewegung (Atmung): SUV unterschätzt (partial volume effect)\n• Hyperglykämie: reduziert FDG-Uptake (Glukose kompetiert)",
@@ -4092,15 +4038,15 @@
         "STIR: Fett supprimiert",
         "FLAIR: Liquor supprimiert",
         "DWI: Diffusion = Zellularität"
-      ]
+      ],
+      "parent": "q_mribild_01"
     },
     {
       "id": "q_adapt_01",
       "block": "b29",
       "weight": 2,
       "tags": [
-        "IMRT-VMAT",
-        "MRI-Bildgebung"
+        "IMRT-VMAT"
       ],
       "question": "Was ist online-adaptive Strahlentherapie? Welche Systeme ermöglichen sie heute?",
       "answer": "**Online-adaptive RT:**\n• Anpassung des Bestrahlungsplans vor JEDER Fraktion basierend auf täglicher Bildgebung\n• Workflow: CBCT/MRT → Rekonturierung → neue Optimierung → QA → Bestrahlung\n\n**Systeme:**\n• **MR-Linac (Unity, MRIdian):** MRT-basierte Adaptation\n  - Überlegener Weichteilkontrast\n  - 30–60 min pro Fraktion\n• **Ethos (Varian):** CBCT-basierte Adaptation\n  - Vollautomatisierter Workflow\n  - 15–20 min pro Fraktion\n• **Radixact Synchrony:** Echtzeit-Tracking + Adaptation\n\n**Indikationen:**\n• Pankreas (grosse Lageunsicherheit, nahe Duodenum)\n• Blase (variables Füllungsvolumen)\n• Prostata (Rektum-Füllung variabel)\n• Zervix (Uteruspositon sehr variabel)\n• Rektum (akute Schrumpfung unter RT)\n\n**Vorteil:**\n• Kleineres PTV möglich → mehr OAR-Schonung\n• Exaktere Tumordosis trotz anatomischer Variabilität\n\n**Herausforderungen:**\n• Zeitaufwand (Arzt täglich für Rekonturierung)\n• QA des täglich neuen Plans (verkürzte Zeit)\n• Personalaufwand",
@@ -4112,15 +4058,15 @@
         "Tägl. neuer Plan vor jeder Fraktion",
         "MR-Linac: 30–60 min/Fx",
         "Ethos (CBCT): 15–20 min/Fx"
-      ]
+      ],
+      "parent": "q_imrt_01"
     },
     {
       "id": "q_schutz_04",
       "block": "b15",
       "weight": 2,
       "tags": [
-        "Strahlenschutz-Prinzipien",
-        "Dosisbegriffe-SS"
+        "Strahlenschutz-Prinzipien"
       ],
       "question": "Was ist die Strahlenbelastung des Personals in der Radioonkologie? Was sind typische Jahresdosen?",
       "answer": "**Strahlenbelastung Personal Radioonkologie:**\n\n**Typische Jahresdosen:**\n• Strahlentherapie-Fachpersonen (RTF): 0.5–2 mSv/Jahr (weit unter 20 mSv)\n• Ärzte (nicht im Bunker): <1 mSv/Jahr\n• Medizinphysiker (Messungen im Bunker): 1–5 mSv/Jahr\n\n**Hauptquellen:**\n• Streuung aus Patient während IGRT/Bildgebung\n• Brachytherapie (HDR): Personal verlässt Raum → minimal\n• In-vivo-Dosimetrie: kleine Exposition\n\n**Vergleich beruflicher Grenzwert:**\n• 20 mSv/Jahr beruflich\n• Typische RT-Exposition: 1–10% des Grenzwerts\n• Radiologie (interventionell): bis zu 10–15 mSv/Jahr (viel höher!)\n\n**Messgeräte:**\n• TLD oder OSL-Dosimeter (Brust/Bauch)\n• Ringdosimeter bei Brachytherapie-Handhabung\n• PEDOS-Registrierung BAG\n\n**Schutzkonzept:**\n• Bunker: primäre Abschirmung (Personal draussen während Bestrahlung)\n• Interlock: Strahlstop bei geöffneter Tür\n• Abstand + kurze Aufenthaltszeit bei Brachytherapie",
@@ -4172,7 +4118,8 @@
         "TBI SSD: 350–400 cm",
         "1/r²: stark reduzierte Dosisrate",
         "Lungenshields: Dmax <8–9 Gy"
-      ]
+      ],
+      "parent": "q_pddph_01"
     },
     {
       "id": "q_pdde_04",
@@ -4203,8 +4150,7 @@
         "Monitor-Units"
       ],
       "requires_context": [
-        "Linac-Aufbau",
-        "Monitor-Units"
+        "Linac-Aufbau"
       ],
       "question": "Was ist der Unterschied zwischen Dosisleistungsregulation und Pulsfrequenzregulation beim Linac?",
       "answer": "**Dosisleistungsregulation:**\n• Linac regelt Mikrowellenleistung → Dosisrate in MU/min einstellbar\n• Bei zu hoher Dosisrate: Leistung reduziert\n• Bei zu niedriger: Leistung erhöht\n• Feedback-Loop: Ionisationskammer im Kopf misst kontinuierlich → Regelkreis\n\n**Pulsdosisrate (PDR):**\n• Brachytherapie-Konzept (nicht Linac)\n• ¹⁹²Ir HDR-Quelle: kurze Pulse stündlich (1 Pulse/h, ca. 10–30 min/Pulse)\n• Simuliert biologisch LDR-Brachytherapie (Reparatur zwischen Pulsen)\n• Vorteile: LDR-Äquivalente Biologie, aber mit Afterloading-Technologie\n• Indikation: Zervix, Harnblase\n\n**Vergleich HDR vs. PDR vs. LDR:**\n| | HDR | PDR | LDR |\n|---|---|---|---|\n| Dosisrate | >12 Gy/h | Puls/h | <2 Gy/h |\n| Ambulant | ja | stationär | stationär |\n| Biologisch | anders als LDR | ≈ LDR | Referenz |\n| Nuklid | ¹⁹²Ir | ¹⁹²Ir | ¹²⁵I, ¹⁰³Pd |",
@@ -4220,8 +4166,7 @@
       "block": "b12",
       "weight": 3,
       "tags": [
-        "IMRT-VMAT",
-        "Forward-Inverse-Planning"
+        "IMRT-VMAT"
       ],
       "requires_context": [
         "IMRT-VMAT"
@@ -4233,7 +4178,8 @@
         "SIB: Boost+Elektiv in einem Plan",
         "Nur mit IMRT/VMAT",
         "H&N: 70Gy+56Gy in 35 Fx"
-      ]
+      ],
+      "parent": "q_imrt_01"
     },
     {
       "id": "q_brch_03",
@@ -4268,7 +4214,7 @@
       "question": "Was ist 4D-CT? Was ist atemkorrelierte CT? Wie wird es für bewegliche Tumoren verwendet?",
       "answer": "**4D-CT (atemkorrelierte CT):**\n• Mehrfache CT-Aufnahmen während Atemzyklus (~10 Phasen)\n• Retrospektive Sortierung nach Atemsignal (Atemgürtel oder Marker)\n• Resultat: 10 Phasen-CT + maximale Intensitätsprojektion (MIP)\n\n**Atemsignal:**\n• RPM-System (Real-time Position Management): Atemgürtel am Bauch\n• Markerblock auf Brust\n• Alternativ: spirometriebasiert\n\n**Anwendungen:**\n\n**ITV-Konzept:**\n• GTV in allen Atemphasen konturieren\n• Hüllkurve aller GTVs = ITV\n• PTV = ITV + Setup-Margin\n• Kein Gating nötig, einfachere Durchführung\n\n**Gating-Planung:**\n• Nur bestimmte Atemphasen (z.B. Exspiration) → strahlen\n• Kleineres PTV möglich\n• Längere Bestrahlungszeit (nur ~30% der Atemzeit)\n\n**MIP (Maximum Intensity Projection):**\n• Maximale HU-Wert über alle Phasen\n• Tumor gut sichtbar (heller als umliegende Lunge)\n• Nützlich für GTV-Delineation (überschätzt Tumorausdehnung leicht)\n\n**Klinisch für:** Lungen-SBRT, Leber-SBRT, Abdominale Tumoren",
       "requires_context": [
-        "PDD-Photonen"
+        "PTV-Konzepte"
       ],
       "cluster": "B",
       "chips": [
@@ -4282,8 +4228,7 @@
       "block": "b15",
       "weight": 1,
       "tags": [
-        "Strahlenschutz-Prinzipien",
-        "Gesetzgebung-CH"
+        "Strahlenschutz-Prinzipien"
       ],
       "question": "Was sind radioaktive Abfälle? Wie werden sie in der Schweiz entsorgt?",
       "answer": "**Radioaktive Abfälle in der Schweiz:**\n\n**Kategorien:**\n• Schwach- und mittelaktive Abfälle (SMA): medizinisch, Industrie, Forschung\n• Stark aktive Abfälle: aus KKW (hier nicht relevant)\n\n**Medizinische Abfälle:**\n• Verbrauchte Brachytherapie-Quellen (¹⁹²Ir Seeds)\n• Abgelaufene Radiopharmaka (¹³¹I, ¹⁷⁷Lu, ²²³Ra)\n• Kontaminierte Materialien (Spritzen, Filter, Schutzkleidung)\n\n**Entsorgung (StSV, ENSI):**\n• Kurz-lebende Abfälle (T½ <100 Tage): Lagerung bis Freigabewert erreicht\n  - 10 Halbwertszeiten warten → Aktivität <0.1% → normale Entsorgung\n• Lang-lebende Abfälle: zertifizierter Abfallbehälter → ZWILAG (Würenlingen AG)\n• ZWILAG: Zwischenlager Würenlingen → nationales Zwischenlager\n\n**Freigabewerte:**\n• ENSI definiert Freigabewerte für verschiedene Nuklide\n• Unter Freigabewert → konventionelle Entsorgung erlaubt\n\n**Dokumentation:**\n• Jede Quelle registriert und rückverfolgbar\n• Jährliche Meldung an ENSI\n• Abfallkataster",
@@ -4400,15 +4345,15 @@
         "RBE steigt distal: bis 1.5",
         "Klinisch: RBE=1.1 (Vereinfachung)",
         "OAR nicht distal vom SOBP platzieren"
-      ]
+      ],
+      "parent": "q_pddp_01"
     },
     {
       "id": "q_reox_02",
       "block": "b21",
       "weight": 2,
       "tags": [
-        "Reoxygenierung-OER",
-        "Strahlenarten"
+        "Reoxygenierung-OER"
       ],
       "requires_context": [
         "Reoxygenierung-OER"
@@ -4420,19 +4365,18 @@
         "Nimorazol: DAHANCA-Standard DK",
         "Nitroimidazole: fixieren Radikale",
         "C-Ionen: OER=1 (beste Lösung)"
-      ]
+      ],
+      "parent": "q_reox_01"
     },
     {
       "id": "q_ntcz_07",
       "block": "b26",
       "weight": 3,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "LQ-Modell"
+        "Normalgewebstoxizitaet"
       ],
       "requires_context": [
-        "Normalgewebstoxizitaet",
-        "LQ-Modell"
+        "Normalgewebstoxizitaet"
       ],
       "question": "Was ist Strahlennephropathie? Was ist Strahlenpneumonitis? Wie werden sie behandelt?",
       "answer": "**Strahlennephropathie:**\n• Niere: paralleles Organ (viele Nephrone, Redundanz)\n• Toleranzdosis: TD5/5 (Gesamtniere) ~23 Gy; TD50/5 ~28 Gy\n• QUANTEC: V20 <32% oder Dmean <15–18 Gy → Nephropathie <5%\n• Latenz: Monate bis Jahre\n• Klinik: Hypertonie, Proteinurie, Niereninsuffizienz → chronische Nierenerkrankung\n• Bilateral kritisch: eine Niere toleriert mehr, wenn andere geschont\n\n**Strahlenpneumonitis:**\n• Lunge: paralleles Organ\n• Akute Phase (4–12 Wochen nach RT): Alveolitis\n  - Symptome: trockener Husten, Dyspnoe, subfebrile Temperatur\n  - Behandlung: Kortikosteroide (Prednison 1 mg/kg)\n• Chronische Phase (>6 Monate): Fibrose → irreversibel\n  - Restriktive Ventilationsstörung, Dyspnoe belastungsabhängig\n\n**Risikofaktoren Pneumonitis:**\n• V20 >30%, Dmean >20 Gy\n• Simultane Chemotherapie (Cisplatin, Taxane → stark erhöht Risiko!)\n• Vorbestehende COPD\n• Niedrige FEV1 (<40%): schlechte pulmonale Reserve\n\n**Prophylaxe:**\n• QUANTEC-Constraints einhalten\n• V20 <25–27% bei ChemoRT",
@@ -4449,12 +4393,10 @@
       "weight": 3,
       "tags": [
         "Normalgewebstoxizitaet",
-        "BED-EQD2",
-        "QUANTEC-Constraints"
+        "BED-EQD2"
       ],
       "requires_context": [
-        "Normalgewebstoxizitaet",
-        "QUANTEC-Constraints"
+        "Normalgewebstoxizitaet"
       ],
       "question": "Wie beeinflusst die Chemotherapie die Strahlentoleranz des Normalgewebes?",
       "answer": "**Chemotherapie und Strahlentoleranz:**\n\n**Zwei Effekte — gegensätzlich:**\n\n**Radiosensibilisierung (gewollt therapeutisch):**\n• Chemo stört DNA-Reparatur → Strahlenschäden schwerer reparierbar\n• Zellzyklus-Synchronisation in strahlensensible Phasen\n• Anti-angiogene Effekte → Tumor hypoxischer? (umstritten)\n• Therapeutisch genutzt: Cisplatin (H&N, Zervix, Lunge), 5-FU (Rektum), Taxane\n\n**Erhöhte Toxizität (unerwünscht):**\n• Normalgewebe ebenfalls sensitiver\n• Effektive Toleranzdosen sinken!\n• QUANTEC-Constraints gelten für RT alleine → bei ChemoRT verschärfen\n  - Lunge V20: <30% → bei ChemoRT <25–27%\n  - Ösophagus: Dmean <34 Gy → verschärfen\n  - Herz: Dmean <26 Gy → verschärfen\n\n**Sequenz vs. simultan:**\n• Simultan: mehr Wirkung auf Tumor UND mehr Toxizität\n• Sequentiell: weniger gegenseitige Verstärkung, sicherer\n\n**Klinisch wichtig:**\n• Immer angeben ob + Chemotherapie → Constraints anpassen\n• Platinbasierte Chemo: stärkste Radiosensibilisierung",
@@ -4471,8 +4413,7 @@
       "weight": 3,
       "tags": [
         "LQ-Modell",
-        "alpha-beta",
-        "4Rs"
+        "alpha-beta"
       ],
       "requires_context": [
         "LQ-Modell",
@@ -4492,8 +4433,7 @@
       "block": "b25",
       "weight": 3,
       "tags": [
-        "Stochastisch-Deterministisch",
-        "Sekundaerkarzinome"
+        "Stochastisch-Deterministisch"
       ],
       "requires_context": [
         "Stochastisch-Deterministisch"
@@ -4572,8 +4512,7 @@
       "block": "b18",
       "weight": 1,
       "tags": [
-        "QA-Dosimetrie",
-        "Gesetzgebung-CH"
+        "QA-Dosimetrie"
       ],
       "requires_context": [
         "QA-Dosimetrie"
@@ -4592,8 +4531,7 @@
       "block": "b19",
       "weight": 1,
       "tags": [
-        "Life-Span-Study",
-        "Stochastisch-Deterministisch"
+        "Life-Span-Study"
       ],
       "requires_context": [
         "Life-Span-Study"
@@ -4605,15 +4543,15 @@
         "BEIR VII: LNT bestätigt",
         "100 mSv: ~0.8–1.3% Krebszusatzrisiko",
         "DDREF: 1.5 (akut vs. chronisch)"
-      ]
+      ],
+      "parent": "q_sekkz_01"
     },
     {
       "id": "q_dbert_04",
       "block": "b12",
       "weight": 3,
       "tags": [
-        "Dosisberechnung-Algorithmen",
-        "Forward-Inverse-Planning"
+        "Dosisberechnung-Algorithmen"
       ],
       "requires_context": [
         "Dosisberechnung-Algorithmen"
@@ -4625,7 +4563,8 @@
         "MC: statistische Simulation",
         "Goldstandard für Lunge/SBRT",
         "GPU: heute Minuten statt Stunden"
-      ]
+      ],
+      "parent": "q_dbert_01"
     },
     {
       "id": "q_linac_14",
@@ -4652,8 +4591,7 @@
       "block": "b11",
       "weight": 3,
       "tags": [
-        "Röntgenröhre",
-        "CT-Bildgebung"
+        "Röntgenröhre"
       ],
       "requires_context": [
         "Röntgenröhre"
@@ -4709,8 +4647,7 @@
       "block": "b16",
       "weight": 4,
       "tags": [
-        "Dosisbegriffe-Physik",
-        "Dosimetrie-Geraete"
+        "Dosisbegriffe-Physik"
       ],
       "question": "Was ist eine Ionisationskammer? Wie funktioniert sie für die Strahlungsmessung?",
       "answer": "**Ionisationskammer — Aufbau und Funktion:**\n\n**Aufbau:**\n• Gasvolumen (Luft, bei Atmosphärendruck) zwischen zwei Elektroden\n• Angelegte Spannung: 200–400 V\n• Zentralelektrode (Anode) + Aussenelektrode (Kathode)\n\n**Funktionsprinzip:**\n• Ionisierende Strahlung erzeugt Ionen + Elektronen im Gas\n• Elektrisches Feld trennt Ladungspaare\n• Elektronen → Anode, Ionen → Kathode → messbarer Strom\n• Ladung Q ∝ deponierte Energie ∝ Dosis\n\n**Umrechnung in Dosis:**\n• D = Q/m_Luft × (W/e) × Korrekturfaktoren\n• W/e = 34 J/C (mittlere Energie zur Ionenpaarerzeugung in Luft)\n\n**Korrekturfaktoren (TRS-398/TG-51):**\n• kQ: Strahlqualität (Energie)\n• kTP: Temperatur und Druck\n• kelec: Elektrometer\n• kpol: Polarität\n• kion: Ionenrekombination\n\n**Sättigungsbereich:**\n• Spannung hoch genug → alle Ionen gesammelt → keine Rekombination\n• Bei zu hoher Spannung: Gasverstärkung (nicht gewünscht)\n\n**Typen:**\n• Farmer (0.6 cm³): Absolutdosimetrie\n• Parallelplatten: Elektronen, oberflächennah\n• Pinpoint (0.016 cm³): kleine Felder",
@@ -4750,7 +4687,6 @@
       "weight": 3,
       "tags": [
         "Forward-Inverse-Planning",
-        "Flattening-Filter-FFF",
         "BED-EQD2"
       ],
       "question": "Was ist SBRT der Lunge? Welche Fraktionierungsschemata werden verwendet?",
@@ -4764,7 +4700,8 @@
         "Peripher: 3×18 Gy (BED₁₀=151)",
         "Zentral: 8×7.5 Gy",
         "LC peripher: 90–95% nach 3J"
-      ]
+      ],
+      "parent": "q_sbrt_01"
     },
     {
       "id": "q_prost_rt_02",
@@ -4772,8 +4709,7 @@
       "weight": 3,
       "tags": [
         "IMRT-VMAT",
-        "BED-EQD2",
-        "DVH"
+        "BED-EQD2"
       ],
       "question": "Was sind die Bestrahlungsoptionen beim Prostatakarzinom? Welche Fraktionierungen werden eingesetzt?",
       "answer": "**Bestrahlungsoptionen Prostatakarzinom:**\n\n**Externe RT — konventionell:**\n• 37–39 Fraktionen × 2 Gy = 74–78 Gy\n• IMRT/VMAT mit täglichem CBCT\n• Evidenz: sehr gut, >20 Jahre Langzeit-Daten\n\n**Externe RT — moderate Hypofraktionierung:**\n• 20 × 3 Gy = 60 Gy (CHHiP: non-inferior) ← heute häufiger Standard\n• 28 × 2.5 Gy = 70 Gy (PROFIT)\n• Kürzer für Patient, gleiche Outcome\n\n**SBRT (ultra-Hypofraktionierung):**\n• 5 × 7.25 Gy = 36.25 Gy (PACE-B: non-inferior)\n• BED₁.₅ = sehr hoch\n• Wöchentlich oder tägliche Applikation\n\n**HDR Brachytherapie (allein oder Boost):**\n• Als Boost nach EBRT: 2 × 8.5–9.5 Gy nach 45–50 Gy EBRT\n• Als Monotherapie (Low/Intermediate risk): 2 × 13.5 Gy\n\n**LDR Seeds (¹²⁵I):**\n• Monotherapie Low-risk: 145 Gy (TG-43)\n• Ambulant, einmalige Implantation\n• Sexualfunktion oft besser erhalten\n\n**Indikationen:**\n• Low risk: SBRT oder Seeds oder konventionell RT\n• Intermediate: IMRT ± BT-Boost ± kurzfristige ADT\n• High risk: IMRT + LDT 2–3 Jahre",
@@ -4794,8 +4730,7 @@
       "weight": 3,
       "tags": [
         "IMRT-VMAT",
-        "PTV-Konzepte",
-        "DVH"
+        "PTV-Konzepte"
       ],
       "question": "Was sind typische GTV, CTV und OAR-Constraints beim Kopf-Hals-Karzinom?",
       "answer": "**Kopf-Hals-Karzinom — GTV, CTV, OAR:**\n\n**Typische Zielvolumina:**\n• GTV_P: Primärtumor (CT + MRT + PET)\n• GTV_N: befallene Lymphknoten\n• CTV1 (hochrisiko): GTV + 5–10 mm → 66–70 Gy\n• CTV2 (mittelrisiko): subklinisches Befallsgebiet → 60 Gy\n• CTV3 (elektiv): Lymphabflusswege → 54–56 Gy\n• PTV = CTV + 3–5 mm Setup-Margin\n\n**SIB-Schema typisch:**\n• 30 Fraktionen simultan:\n  - PTV1: 2.2 Gy/Fx = 66 Gy\n  - PTV2: 2.0 Gy/Fx = 60 Gy\n  - PTV3: 1.8 Gy/Fx = 54 Gy\n\n**Wichtige OAR-Constraints (QUANTEC):**\n| OAR | Constraint |\n|---|---|\n| Rückenmark | Dmax <45 Gy |\n| Hirnstamm | Dmax <54 Gy |\n| Parotis | Dmean <25 Gy |\n| Mandibula | Dmax <70 Gy (ORN!) |\n| Larynx | Dmean <44 Gy |\n| Pharynx-Konstriktor | Dmean <50 Gy |\n| Sehnerv/Chiasma | D0.03cc <54 Gy |\n\n**Besondere Herausforderung H&N:**\n• Viele kritische Strukturen eng beieinander\n• IMRT/VMAT obligat\n• Wöchentliches CBCT für Anatomieänderungen (Gewichtsverlust)",
@@ -4835,8 +4770,7 @@
       "block": "b25",
       "weight": 2,
       "tags": [
-        "Stochastisch-Deterministisch",
-        "Dosisbegriffe-SS"
+        "Stochastisch-Deterministisch"
       ],
       "question": "Was ist das Strahlenrisiko für Kinder? Was sind die Unterschiede zu Erwachsenen?",
       "answer": "**Strahlenrisiko Kinder:**\n• 2–3× höheres Lebenszeit-Krebsrisiko als Erwachsene bei gleicher Dosis\n• Gründe:\n  - Höhere Zellteilungsrate → mehr Zellen in radiosensitiver Mitose\n  - Mehr Lebenserwartung → mehr Zeit für Sekundärkarzinom-Latenz\n  - Manche Organe sensitiver (Schilddrüse, Knochenmark)\n\n**Embryo/Fötus (besonders sensitiv):**\n• <8 SSW: Organogenese → teratogene Effekte (Fehlbildungen) bei >100 mGy\n• 8–25 SSW: ZNS-Entwicklung → geistige Retardierung bei >100–200 mGy\n• >25 SSW: weniger sensitiv (ähnlich wie Kleinkind)\n• Krebsrisiko des Fötus: 3× höher als Erwachsener\n\n**Konsequenzen:**\n• Diagnostik: strenge Indikation in der Schwangerschaft\n• RT bei Schwangeren: letzte Option, oder nach Entbindung\n• Personal: Fötus-Grenzwert 1 mSv während Schwangerschaft\n\n**Organe mit besonders hohem Risiko bei Kindern:**\n• Schilddrüse (Tschernobyl: 6000 Schilddrüsenkarzinome bei Kindern)\n• Knochenmark (Leukämie)\n• Brust (prädisponiert bis pubertäres Alter)",
@@ -4848,7 +4782,8 @@
         "Kinder: 2–3× höheres Risiko",
         "Fötus <8 SSW: Organogenese sensitiv",
         "Schilddrüse: besonders risikoreich"
-      ]
+      ],
+      "parent": "q_stdet_04"
     },
     {
       "id": "q_pddp_06",
@@ -4869,15 +4804,15 @@
         "Halo: breite diffuse Dosiskomponente",
         "C-Ionen: Fragmentierung → Tail",
         "Recoil-Kern: hoher LET, kurze Reichweite"
-      ]
+      ],
+      "parent": "q_pddp_01"
     },
     {
       "id": "q_dbert_05",
       "block": "b12",
       "weight": 2,
       "tags": [
-        "Dosisberechnung-Algorithmen",
-        "IMRT-VMAT"
+        "Dosisberechnung-Algorithmen"
       ],
       "requires_context": [
         "Dosisberechnung-Algorithmen"
@@ -4889,15 +4824,15 @@
         "Lernt aus Planungsbibliothek",
         "RapidPlan: kommerzieller KBP",
         "30–60% kürzere Planungszeit"
-      ]
+      ],
+      "parent": "q_dbert_01"
     },
     {
       "id": "q_schutz_09",
       "block": "b15",
       "weight": 1,
       "tags": [
-        "Strahlenschutz-Prinzipien",
-        "Gesetzgebung-CH"
+        "Strahlenschutz-Prinzipien"
       ],
       "question": "Was sind radioaktive Abfälle in der Radioonkologie? Wie werden sie in der Schweiz entsorgt?",
       "answer": "**Radioaktive Abfälle in der Radioonkologie:**\n\n**Quellen:**\n• Verbrauchte Brachytherapie-Quellen (¹⁹²Ir HDR, ¹²⁵I Seeds)\n• Kontaminierte Handschuhe, Spritzen bei Nuklearmedizin\n• Abgelaufene Radionuklid-Therapie-Abfälle (¹³¹I, ¹⁷⁷Lu)\n\n**Entsorgungsweg (T½ <100 Tage, z.B. ¹⁹²Ir 73.8 Tage):**\n• 10 Halbwertszeiten abwarten (~2 Jahre für ¹⁹²Ir)\n• Aktivität auf <Freigabewert → normale Entsorgung möglich\n\n**Entsorgungsweg (lang-lebend):**\n• Zertifizierter Sammelbehälter → akkreditierter Sammler → ZWILAG\n\n**Regulierung:**\n• ENSI: Aufsicht über radioaktive Abfälle\n• BAG: medizinische Anwendungen\n• StSV Art. 97: Abfallvorschriften\n\n**Praktisch in der Klinik:**\n• Abklingraum: für kurzlebige Abfälle bis Freigabewert erreicht\n• Bleiabschirmung der Abfallbehälter\n• Protokoll und Dosimetrie bei Quellenwechsel ¹⁹²Ir",
@@ -4917,8 +4852,7 @@
       "weight": 3,
       "tags": [
         "BED-EQD2",
-        "LQ-Modell",
-        "Normalgewebstoxizitaet"
+        "LQ-Modell"
       ],
       "requires_context": [
         "BED-EQD2",
@@ -4931,7 +4865,8 @@
         "EQD2_total = Kurs1 + Kurs2",
         "Erholung: ~50% nach 12 Mo (unsicher)",
         "Rückenmark: sehr konservativ!"
-      ]
+      ],
+      "parent": "q_bed_01"
     },
     {
       "id": "q_lqm_10",
@@ -4952,15 +4887,15 @@
         "BED = n×d×(1+d/(α/β))",
         "EQD2 für direkten Vergleich",
         "Zeitfaktor fehlt!"
-      ]
+      ],
+      "parent": "q_bed_01"
     },
     {
       "id": "q_imrt_06",
       "block": "b12",
       "weight": 2,
       "tags": [
-        "IMRT-VMAT",
-        "Forward-Inverse-Planning"
+        "IMRT-VMAT"
       ],
       "requires_context": [
         "IMRT-VMAT"
@@ -4972,15 +4907,15 @@
         "CT→Fusion→Kontur→Verschreibung",
         "Inverse Planung: Ziele→TPS→Fluenz",
         "QA: Gamma + MU-Verifikation"
-      ]
+      ],
+      "parent": "q_imrt_01"
     },
     {
       "id": "q_phys_01",
       "block": "b01",
       "weight": 3,
       "tags": [
-        "Strahlung-Grundlagen",
-        "Dosisbegriffe-Physik"
+        "Radioaktiver-Zerfall"
       ],
       "question": "Was sind die verschiedenen Einheiten der Radioaktivität? Was ist der Unterschied zwischen Curie und Becquerel?",
       "answer": "**Einheiten der Radioaktivität:**\n\n**Becquerel [Bq] (SI-Einheit):**\n• 1 Bq = 1 Zerfall pro Sekunde\n• Praktisch: kBq, MBq, GBq, TBq verwendet\n• Nuklearmedizin: ¹⁸F-FDG typisch 200–400 MBq\n\n**Curie [Ci] (historisch, USA noch verbreitet):**\n• 1 Ci = 3.7 × 10¹⁰ Bq (Zerfallsrate von 1 g ²²⁶Ra)\n• 1 mCi = 37 MBq\n• Brachytherapie: ¹⁹²Ir HDR: ~10 Ci = 370 GBq\n\n**Luftkerma-Stärke [µGy·m²/h] (Brachytherapie-Quellen):**\n• Beschreibt Stärke einer Brachytherapie-Quelle\n• Besser als Aktivität (berücksichtigt Geometrie und Energie der Quelle)\n• Symbol: S_K\n• Basis für TG-43 Dosisberechnung\n\n**Umrechnung:**\n• 1 Ci = 37 GBq\n• 1 MBq = 27 µCi\n• ¹⁹²Ir 10 Ci = 370 GBq → S_K ≈ 40'000 µGy·m²/h\n\n**Halbwertszeit und Aktivität:**\n• A = λ × N = N × ln(2)/T½\n• Bei 10 T½: A < 0.1% → abgeklungen",
@@ -5019,8 +4954,7 @@
       "block": "b18",
       "weight": 1,
       "tags": [
-        "QA-Dosimetrie",
-        "Gesetzgebung-CH"
+        "QA-Dosimetrie"
       ],
       "question": "Was ist ein Strahlenunfall in der RT? Was sind häufige Fehlerquellen? Wie wird das Risiko minimiert?",
       "answer": "**Strahlenunfall in der RT:**\n• Unbeabsichtigte Bestrahlung die signifikant von der geplanten abweicht\n• Meldepflichtig an BAG wenn Kriterien erfüllt (>25% Dosisfehler, falscher Patient etc.)\n\n**Häufige Fehlerquellen (Eindhoven-Klassifikation):**\n• Mensch: Kommunikationsfehler, Verwechslung, Ablenkung\n• Organisation: unklare Prozesse, fehlende Checklisten\n• Technik/Software: Bug, Displayfehler, Einheitenproblem\n\n**Historische Fälle:**\n• Therac-25 (1985–87): Softwarefehler → Überdosierung, mehrere Tote\n• Panama (2001): TPS-Fehler bei Blockkonstruktion → überhöhte Dosis\n• Toledo (2009): Falscher Multiplikationsfaktor MU\n\n**Swiss Cheese Model:**\n• Mehrere Sicherheitsbarrieren nötig (Käse-Scheiben)\n• Wenn alle Löcher übereinanderfallen → Fehler erreicht Patienten\n• Konsequenz: redundante Checks auf jeder Stufe\n\n**Prävention:**\n• Timeout-Verfahren (wie in OP)\n• Patientenidentifikation an jedem Schritt\n• Unabhängige MU-Verifikation\n• Checklisten (z.B. ASTRO/IAEA)\n• Meldung von Near-misses (ROSIS)",
@@ -5061,8 +4995,7 @@
       "block": "b15",
       "weight": 1,
       "tags": [
-        "Strahlenschutz-Prinzipien",
-        "Dosisbegriffe-SS"
+        "Gesetzgebung-CH"
       ],
       "question": "Was ist die Ausbildungsanforderung für Medizinphysiker in der Schweiz? Was ist die Fachanerkennung SGSMP?",
       "answer": "**Ausbildung Medizinphysiker Schweiz:**\n\n**Studium:**\n• MSc Physik, Medizinphysik, Biomedizinische Technik (4–5 Jahre)\n• Universitäten: ETHZ, EPFL, Universität Bern, Basel, Zürich\n\n**Klinische Weiterbildung:**\n• 3–4 Jahre klinische Ausbildung in akkreditierter Klinik\n• Bereiche: Strahlentherapie, Nuklearmedizin, Diagnostische Radiologie\n• Protokolliertes Logbuch (SGSMP-Anforderungen)\n\n**Fachprüfung / Anerkennung:**\n• SGSMP (Schweizerische Gesellschaft für Strahlenbiologie und Medizinische Physik)\n• Schriftliche und praktische Prüfung\n• Anerkennungskommission SGSMP\n• Nach Anerkennung: «Anerkannter Medizinphysiker» (klinisch selbstständig)\n\n**Gesetzliche Anforderung:**\n• Beschleunigerverordnung: mind. 1 anerkannter MPHYS pro Gerät\n• Ohne anerkannten MPHYS: keine BAG-Betriebsbewilligung\n\n**Fortbildung:**\n• Kontinuierliche Weiterbildung obligat (CME-Punkte SGSMP)\n• Strahlenschutz-Sachverständige: zusätzliche Ausbildung BAG",
@@ -5081,8 +5014,7 @@
       "block": "b26",
       "weight": 2,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "LQ-Modell"
+        "Normalgewebstoxizitaet"
       ],
       "requires_context": [
         "Normalgewebstoxizitaet"
@@ -5101,8 +5033,7 @@
       "block": "b05",
       "weight": 2,
       "tags": [
-        "PDD-Photonen",
-        "Dosisberechnung-Algorithmen"
+        "PDD-Photonen"
       ],
       "requires_context": [
         "PDD-Photonen"
@@ -5156,7 +5087,8 @@
         "Eingang LET: ~0.5 keV/µm",
         "Distaler Rand: 40–80+ keV/µm",
         "RBE: 1.0→1.1→1.5 (distal)"
-      ]
+      ],
+      "parent": "q_rbe_01"
     },
     {
       "id": "q_reox_03",
@@ -5176,7 +5108,8 @@
         "Schnell: Stunden (Perfusion)",
         "Mittel: Tage (Diffusion)",
         "Langsam: Wochen (Schrumpfung)"
-      ]
+      ],
+      "parent": "q_reox_01"
     },
     {
       "id": "q_dosa_07",
@@ -5237,7 +5170,8 @@
         "MRS: Cholin↑, NAA↓ = Tumor",
         "Perfusion: rCBV hoch = Tumor",
         "Pseudoprogress: niedrig rCBV"
-      ]
+      ],
+      "parent": "q_mribild_01"
     },
     {
       "id": "q_physik_02",
@@ -5281,26 +5215,6 @@
       ]
     },
     {
-      "id": "q_MLC_01",
-      "block": "b09",
-      "weight": 1,
-      "tags": [
-        "MLC-Kollimation",
-        "IMRT-VMAT"
-      ],
-      "requires_context": [
-        "IMRT-VMAT"
-      ],
-      "question": "Was ist das Tongue-and-Groove-Problem? Was ist Interdigitierung?",
-      "answer": "**Tongue-and-Groove-Problem:**\n• MLC-Leaves überlappen seitlich (T&G-Geometrie) um Leckstrahlung zu reduzieren\n• Problem: wenn benachbarte Leaves verschiedene Positionen haben\n• Zwischenraum wo T&G überlappt: unterbelichtet → Dosisunterdosierung\n• Klinisch: Streifenmuster in der Dosisverteilung bei Step-and-Shoot IMRT\n• Lösung: TPS-Algorithmus berücksichtigt T&G, Sequenz-Optimierung, DMLC vermeidet T&G\n\n**Interdigitierung:**\n• Leaves können von Bank A und Bank B ineinandergreifen (interdigitieren)\n• Erlaubt: Feld vollständig zu schliessen (Leaves von beiden Seiten überqueren Mittellinie)\n• Wichtig für: Feld-Trennung bei IMRT, Sicherheitsinterlocks\n• Nicht alle Linac-MLCs erlauben volle Interdigitierung\n\n**Leckstrahlung durch MLC:**\n• Zwischen den Leaves: ~2% Transmission\n• Durch die Leaves: <0.5%\n• TPS berücksichtigt Leckstrahlung (Commissioning)\n• Bei grossen Feldern mit vielen geschlossenen Leaves: summiert sich\n\n**QA:**\n• Picket-Fence-Test: prüft Leaf-Position ±0.5 mm\n• Leckstrahlung: jährliche Messung",
-      "cluster": "B",
-      "chips": [
-        "T&G: Unterdosierung zwischen Leaves",
-        "Interdigitierung: Leaves können kreuzen",
-        "Leckstrahlung: ~2% inter-leaf"
-      ]
-    },
-    {
       "id": "q_dssmt_01",
       "block": "b16",
       "weight": 4,
@@ -5319,15 +5233,15 @@
         "H = wR×D [Sv]",
         "E = Σ(wT×HT) [Sv]",
         "RT: E ungeeignet (>1 Sv, inhomogen)"
-      ]
+      ],
+      "parent": "q_doss_01"
     },
     {
       "id": "q_ntcz_10",
       "block": "b26",
       "weight": 2,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "QUANTEC-Constraints"
+        "Normalgewebstoxizitaet"
       ],
       "requires_context": [
         "Normalgewebstoxizitaet"
@@ -5346,8 +5260,7 @@
       "block": "b19",
       "weight": 1,
       "tags": [
-        "Life-Span-Study",
-        "Stochastisch-Deterministisch"
+        "Life-Span-Study"
       ],
       "requires_context": [
         "Life-Span-Study"
@@ -5359,7 +5272,8 @@
         "LSS: eine Kohorte, akut, japanisch",
         "BEIR VII: Meta-Analyse, DDREF=1.5",
         "INWORKS: chronisch niedrige Dosen"
-      ]
+      ],
+      "parent": "q_sekkz_01"
     },
     {
       "id": "q_bio_10",
@@ -5387,8 +5301,7 @@
       "block": "b03",
       "weight": 2,
       "tags": [
-        "Photon-WW",
-        "Schwächungskoeffizient"
+        "Photon-WW"
       ],
       "requires_context": [
         "Photon-WW"
@@ -5441,19 +5354,18 @@
         "Pädiatrie: klarer Vorteil",
         "Chordome Schädelbasis: nur Protonen",
         "NTCP-Reduktion >10%"
-      ]
+      ],
+      "parent": "q_pddp_01"
     },
     {
       "id": "q_plan_01",
       "block": "b12",
       "weight": 2,
       "tags": [
-        "Forward-Inverse-Planning",
-        "DVH"
+        "Forward-Inverse-Planning"
       ],
       "requires_context": [
-        "Forward-Inverse-Planning",
-        "DVH"
+        "Forward-Inverse-Planning"
       ],
       "question": "Was sind Phantom-Messungen zur Plan-Verifikation? Was ist der Unterschied zwischen Matrixa- und Punkt-Messungen?",
       "answer": "**Phantom-Messungen zur Plan-Verifikation:**\n• Vor erster Fraktionen: Plan wird in Phantom (statt Patient) bestrahlt und gemessen\n• Vergleich: Messung vs. TPS-Berechnung → Gammanalyse\n\n**Ionisations-Arrays (2D):**\n• Matrizenkammer aus vielen Ionisationskammern (z.B. OCTAVIUS 1500, Matrixx)\n• Planar: eine 2D-Schicht pro Gantry-Position\n• Schnell, online-Auswertung möglich\n\n**ArcCHECK (3D-Array):**\n• Zylindrisches Phantom mit Dioden-Matrix auf der Oberfläche\n• Misst während VMAT-Gantryrotation → 4D-Messung\n• Gesamter VMAT-Bogen in einem Scan\n\n**EPID-basierte QA:**\n• Electronic Portal Imaging Device → misst hinter Patient/Phantom\n• Kein Phantomaufbau nötig → schnell\n• Pre-treatment oder in-vivo\n\n**Deltam4 Transit Dosimetry:**\n• EPID misst hinter Patient → Vorwärts-Rückrechnung\n• Vergleich mit erwartetem Transmissions-Signal\n\n**Auswertung:**\n• Gamma-Analyse: 3mm/3%, >95% Punkte mit γ<1\n• SBRT: 2mm/2%, >95%\n• Klinisch relevante Fehler identifizieren: Dosisfehler, Lücken, Fraktionierungsfehler",
@@ -5469,8 +5381,7 @@
       "block": "b26",
       "weight": 1,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "LQ-Modell"
+        "Normalgewebstoxizitaet"
       ],
       "question": "Was sind die Spätfolgen am Hoden/Ovar? Welche Konsequenzen hat Gonadenbestrahlung?",
       "answer": "**Gonadenbestrahlung — Spätfolgen:**\n\n**Hoden:**\n• Temporäre Sterilität: ab 0.15 Gy (Spermatogenese-Störung)\n• Permanente Sterilität: ab 3.5–6 Gy (Stammzellen in Tubuli)\n• Erholung: 12–18 Monate nach <2 Gy möglich\n• Leydig-Zellen (Testosteron): resistenter → Androgen-Produktion bleibt oft erhalten\n\n**Ovar:**\n• Sehr strahlensensibel, altersabhängig!\n• Junge Frauen: LD50 ~2 Gy (frühzeitige Menopause)\n• Ältere Frauen (40+): LD50 ~6 Gy (weniger Follikel)\n• Permanente Ovarialinsuffizienz → Östrogen-Mangel → Osteoporose, Klimakterium\n\n**Klinische Konsequenzen:**\n• Fertilitätserhalt vor RT: Sperma-Kryokonservierung, Eizell-Kryokonservierung\n• Ovar-Transposition (Oophoropexie): chirurgisches Herausdrehen aus Strahlenfeld\n• Hormonersatz nach RT wenn Ovarialinsuffizienz\n\n**Shielding:**\n• Gonadenschutz bei Becken-RT: wenn möglich\n• Prostata-RT: Skrotum-Abstand maximieren\n• TBI: Gonaden immer exponiert (Ganzkörper)",
@@ -5509,8 +5420,7 @@
       "block": "b11",
       "weight": 2,
       "tags": [
-        "Röntgenröhre",
-        "Linac-Aufbau"
+        "Röntgenröhre"
       ],
       "question": "Was ist der Anode-Heel-Effekt? Wie beeinflusst er die Dosisverteilung?",
       "answer": "**Anode-Heel-Effekt:**\n• Durch die schräge Anodenoberfläche der Röntgenröhre entsteht Intensitätsabfall zur Anodenseite\n• Ursache: Röntgenphotonen die in Richtung Anode emittiert werden müssen durch mehr Wolfram-Material\n• Kathoden-Seite: höhere Intensität\n• Anoden-Seite: niedrigere Intensität\n• Effekt stärker bei: kleinerem Anodenwinkel, kurzem Film-Fokus-Abstand\n\n**Quantitativ:**\n• Asymmetrie: bis 30–50% zwischen Kathode und Anode-Seite\n• Bei typischem Anodenwinkel 7–15°\n\n**Klinische Nutzung:**\n• Mammographie: Anode-Heel-Effekt genutzt → dichteres Brustgewebe zur Kathode (mehr Intensität)\n• Extremitäten: dickeres Ende zur Kathode → homogeneres Bild\n\n**Konsequenz Dosisprofil:**\n• Strahlenfeld inhomogen → Flachfeldkorrektur in CT/DR\n• In der RT: Linac hat kein Heel-Effekt (Elektronen in Target: keine Schräge wie Röhre)\n• Nur relevant für diagnostische Röntgenröhren",
@@ -5529,8 +5439,7 @@
       "block": "b12",
       "weight": 2,
       "tags": [
-        "Dosisberechnung-Algorithmen",
-        "PDD-Photonen"
+        "Dosisberechnung-Algorithmen"
       ],
       "requires_context": [
         "Dosisberechnung-Algorithmen"
@@ -5542,15 +5451,15 @@
         "D = Ψ ⊗ h (Faltung)",
         "Besser als Pencil Beam in Inhomogenitäten",
         "CCC: Standard, aber Lunge: Grenzen"
-      ]
+      ],
+      "parent": "q_dbert_01"
     },
     {
       "id": "q_pddph_18",
       "block": "b05",
       "weight": 2,
       "tags": [
-        "PDD-Photonen",
-        "Dosisbegriffe-Physik"
+        "PDD-Photonen"
       ],
       "requires_context": [
         "PDD-Photonen"
@@ -5569,8 +5478,7 @@
       "block": "b15",
       "weight": 2,
       "tags": [
-        "Strahlenschutz-Prinzipien",
-        "Gesetzgebung-CH"
+        "Strahlenschutz-Prinzipien"
       ],
       "question": "Was sind die Grundprinzipien der Rechtfertigung in der Radioonkologie? Welche drei Stufen gibt es?",
       "answer": "**Rechtfertigung in der Radiologie (EURATOM 97/43):**\n\n**Drei Ebenen:**\n\n**Stufe 1 (Allgemein):**\n• Ist die Anwendung ionisierender Strahlung für diesen medizinischen Bereich grundsätzlich gerechtfertigt?\n• Einmalig durch Fachgesellschaften/Regulatoren entschieden\n• Beispiel: Thorax-CT für Lungenkarzinom-Screening → allgemein gerechtfertigt\n\n**Stufe 2 (Spezifisch/Leitlinien):**\n• Ist diese Untersuchung für diese klinische Fragestellung geeignet?\n• Leitlinien (z.B. ESR iGuide, ACR Appropriateness Criteria)\n• Radiologisch zuweisender Arzt: «Ist eine CT bei Bauchschmerzen gerechtfertigt?»\n\n**Stufe 3 (Individuell):**\n• Überwiegt der Nutzen für diesen spezifischen Patienten das Risiko?\n• Arzt bewertet: Kontraindikationen, Alternativen, klinische Situation\n• Schwangerschaft, Kinder: besondere Abwägung\n\n**Rechtfertigungspflicht:**\n• Jede Strahlenanwendung muss gerechtfertigt sein (StSG, EURATOM)\n• Anforderung: schriftliche Anforderung mit klinischer Fragestellung\n• Radiologe prüft Indikation (rechtfertigende Indikation = Pflichttext)\n\n**Nicht gerechtfertigt:**\n• Routine-Röntgen ohne klinische Indikation\n• Ganzkörper-CT für «Check-up» ohne Risikofaktoren",
@@ -5589,8 +5497,7 @@
       "block": "b18",
       "weight": 3,
       "tags": [
-        "QA-Dosimetrie",
-        "Forward-Inverse-Planning"
+        "QA-Dosimetrie"
       ],
       "question": "Was ist der Unterschied zwischen Präzision und Akkuratheit (Genauigkeit) in der Dosimetrie?",
       "answer": "**Präzision vs. Akkuratheit:**\n\n**Präzision (Genauigkeit, Reproduzierbarkeit):**\n• Streuung wiederholter Messungen um den Mittelwert\n• Kleines σ = präzise (Messungen eng beieinander)\n• Bezieht sich auf Zufallsfehler (random errors)\n• Messung kann präzise aber unakkurat sein (systematisch falsch)\n\n**Akkuratheit (Richtigkeit):**\n• Übereinstimmung des Messwerts mit dem wahren Wert\n• Kleiner Bias = akkurat\n• Bezieht sich auf systematischen Fehler\n• Messung kann akkurat aber unpräzise sein\n\n**Analogie: Schiessen auf Zielscheibe:**\n• Präzise + akkurat: enge Gruppe im Zentrum (ideal)\n• Präzise + nicht akkurat: enge Gruppe, aber nicht im Zentrum (systematischer Fehler)\n• Nicht präzise + akkurat: streut um Zentrum (Zufallsfehler)\n• Weder: Streuung überall\n\n**In der Strahlentherapie:**\n• Präzision: IGRT-Reproduzierbarkeit (Zufallsfehler der Lagerung)\n• Akkuratheit: Systematic Error (CT-Kalibrierung, Laser-Offset)\n• Systematischer Fehler viel wichtiger als Zufallsfehler (van Herk: Faktor 2.5 vs. 0.7)\n• Beide durch QA adressiert",
@@ -5609,7 +5516,6 @@
       "block": "b12",
       "weight": 2,
       "tags": [
-        "QA-Dosimetrie",
         "CT-Bildgebung"
       ],
       "requires_context": [
@@ -5636,7 +5542,7 @@
       "answer": "**LNT-Modell (Linear No Threshold):**\n• Jede Strahlungsdosis, egal wie klein, verursacht proportional Krebsrisiko\n• Keine Schwellendosis (kein 'sicherer' Bereich)\n• Basis für Strahlenschutz-Regulierung (ICRP)\n• Konservatives Modell (Schutzzweck)\n\n**Hormesis-Hypothese:**\n• Niedrige Strahlung könnte schützend wirken\n• Mechanismus: Stimulation DNA-Reparatur, Immunsystem\n• In Zellkulturen und Tiermodellen gezeigt\n• Bevölkerungsstudien: keine erhöhten Krebsraten in Hochhintergrundstrahlungsgebieten\n\n**Schwellenmodell:**\n• Unterhalb einer Schwellendosis: kein Risiko\n• Mehr biologisch plausibel für deterministisch, umstritten für stochastisch\n\n**Wissenschaftlicher Konsens:**\n• ICRP, BEIR VII, WHO: LNT für Strahlenschutz-Zwecke angemessen\n• Hormesis: kein Konsens, nicht für Regulierung akzeptiert\n• Reales Risiko <100 mSv: wissenschaftlich unsicher\n\n**Für Kliniker:**\n• LNT-Risikoabschätzung ist konservativ → obere Grenze des Risikos\n• Reales Risiko möglicherweise kleiner\n• Trotzdem: ALARA-Prinzip anwenden",
       "cluster": "A",
       "requires_context": [
-        "Strahlung-Grundlagen"
+        "Stochastisch-Deterministisch"
       ],
       "chips": [
         "LNT: kein Schwellenwert",
@@ -5649,8 +5555,7 @@
       "block": "b01",
       "weight": 3,
       "tags": [
-        "Strahlung-Grundlagen",
-        "Photoeffekt"
+        "Schwächungskoeffizient"
       ],
       "question": "Was ist der Massenabsorptionskoeffizient? Wie hängt er von der Energie und dem Material ab?",
       "answer": "**Massenabsorptionskoeffizient µen/ρ [cm²/g]:**\n• Nur Kollisionsanteil der Schwächung (ohne Streuung)\n• Proportional zur Energiedeposition im Medium\n• Dosis ∝ Ψ × (µen/ρ) (Energiefluenz × Massenabsorptionskoeffizient)\n\n**Unterschied zu µ/ρ:**\n• µ/ρ: gesamter Massenschwächungskoeffizient (Streuung + Absorption)\n• µen/ρ: nur absorbierter Anteil (relevant für Dosis)\n• µ/ρ > µen/ρ (Streuung entfernt Photonen ohne lokale Energiedeposition)\n\n**Energieabhängigkeit:**\n• Photoeffekt dominiert (<100 keV): µen/ρ stark mit Z³ → stark Z-abhängig\n• Compton dominiert (100 keV–10 MeV): µen/ρ nahezu konstant für alle biologischen Gewebe\n• Paarbildung (>10 MeV): µen/ρ steigt wieder (Z-abhängig)\n\n**Klinisch:**\n• Bei therapeutischen Energien (Compton): µen/ρ ähnlich für Knochen + Weichteil\n• → Ähnliche Dosis pro Gramm → homogene Dosisverteilung\n• Bei kV: µen/ρ sehr Z-abhängig → Knochen überdosiert\n\n**Ionisationskammer:**\n• Misst Ionisation in Luft → µen/ρ für Luft\n• Umrechnung via Verhältnis µen/ρ (Wasser) / µen/ρ (Luft)",
@@ -5709,8 +5614,7 @@
       "block": "b02",
       "weight": 1,
       "tags": [
-        "Radioaktiver-Zerfall",
-        "Strahlenarten"
+        "Radioaktiver-Zerfall"
       ],
       "question": "Was ist Beta-Plus-Zerfall? Was sind Positronen? Was ist Paarvernichtung (Annihilation)?",
       "answer": "**Beta-Plus-Zerfall:**\n• Protonen-reicher Kern → Proton wird zu Neutron\n• Emission: Positron (β⁺) + Neutrino (νe)\n• Z sinkt um 1, A bleibt gleich\n• Voraussetzung: Tochterkern stabiler als Mutterkern\n\n**Positron (e⁺):**\n• Antiteilchen des Elektrons\n• Gleiche Masse (0.511 MeV/c²), entgegengesetzte Ladung (+1)\n• Verlangsamt sich im Gewebe (kurze Reichweite: mm)\n\n**Annihilation:**\n• Positron + Elektron → vollständige Vernichtung\n• 2 Photonen à 511 keV in entgegengesetzte Richtungen (180°)\n• Winkel-Korrelation: Koinzidenzdetektion → LOR (Line of Response)\n• Basis des PET-Scanners!\n\n**Beispiele:**\n• ¹⁸F → ¹⁸O + e⁺ + νe (T½ = 110 min)\n• ⁶⁸Ga → ⁶⁸Zn + e⁺ + νe (T½ = 68 min)\n• ¹¹C, ¹³N, ¹⁵O: kurze T½ für Brain-PET\n\n**Unterschied zu β⁻:**\n• β⁻: Neutron → Proton, Z steigt, Elektron emittiert\n• β⁺: Proton → Neutron, Z sinkt, Positron emittiert",
@@ -5729,8 +5633,7 @@
       "block": "b02",
       "weight": 1,
       "tags": [
-        "Radioaktiver-Zerfall",
-        "Strahlenarten"
+        "Radioaktiver-Zerfall"
       ],
       "question": "Was ist Isomerer Übergang? Was ist ⁹⁹ᵐTc? Warum ist es in der Nuklearmedizin so wichtig?",
       "answer": "**Isomerer Übergang:**\n• Übergang eines angeregten Kernzustands (metastabiler Zustand) zum Grundzustand\n• Emission eines Gammaquants (keine Teilchenemission)\n• Symbol: ᵐ (metastabil), z.B. ⁹⁹ᵐTc\n\n**⁹⁹ᵐTc (Technetium-99m):**\n• T½ = 6.01 Stunden (ideal für diagnostische Nuklearmedizin)\n• Energie: 140 keV γ (ideal für Gammakamera/SPECT)\n• Erzeugt aus: ⁹⁹Mo/⁹⁹ᵐTc-Generator (Mo-Kuh)\n• ⁹⁹Mo (T½ 66h) → ⁹⁹ᵐTc (durch β⁻-Zerfall) → ⁹⁹Tc + γ (140 keV)\n\n**Warum ideal für Diagnostik:**\n• 140 keV: gut detektierbar mit Gammakamera, wenig Absorption im Gewebe\n• T½ 6h: kurz genug (wenig Dosis), lang genug (Untersuchung möglich)\n• Chemisch vielseitig: an viele Trägermoleküle koppelbar\n• Kein Partikel-Emission → keine unnötige Dosis\n\n**Anwendungen:**\n• ⁹⁹ᵐTc-MDP: Knochenszintigraphie\n• ⁹⁹ᵐTc-MIBI: Schilddrüse, Herzperfusion\n• ⁹⁹ᵐTc-MAG3: Nierenfunktion",
@@ -5762,15 +5665,15 @@
         "Passiv: Streufolien+Bolus, robust",
         "PBS: magnetisch, IMPT möglich",
         "Neue Zentren: PBS Standard"
-      ]
+      ],
+      "parent": "q_pddp_01"
     },
     {
       "id": "q_strahbio_03",
       "block": "b24",
       "weight": 1,
       "tags": [
-        "LET",
-        "Strahlenarten"
+        "LET"
       ],
       "requires_context": [
         "LET"
@@ -5809,8 +5712,7 @@
       "block": "b28",
       "weight": 1,
       "tags": [
-        "PET-SPECT",
-        "Radioaktiver-Zerfall"
+        "PET-SPECT"
       ],
       "question": "Was ist SPECT? Was ist der Unterschied zu PET? Was sind typische SPECT-Tracer?",
       "answer": "**SPECT (Single Photon Emission CT):**\n• 3D-nuklearmedizinische Bildgebung\n• Prinzip: γ-emittierende Tracer → Kollimator definiert Richtung → 2D-Projektion\n• Rotation der Kamera um Patienten → 3D-Rekonstruktion\n\n**Tracer:**\n• ⁹⁹ᵐTc: Knochenszintigraphie, Herz (MIBI), Niere\n• ¹²³I: Schilddrüse, MIBG (Phäochromozytom, Neuroblastom)\n• ¹¹¹In: Octreotide (NETs)\n\n**Unterschied zu PET:**\n| | SPECT | PET |\n|---|---|---|\n| Prinzip | γ + Kollimator | β⁺ Koinzidenz |\n| Auflösung | 8–15 mm | 4–5 mm |\n| Empfindlichkeit | niedriger | höher |\n| Quantitativ | begrenzt | gut (SUV) |\n| Kosten | niedriger | höher |\n| Verfügbarkeit | weit verbreitet | weniger verbreitet |\n\n**Typische SPECT-Anwendungen in der RT:**\n• Knochenszintigraphie: Metastasen-Staging\n• MIBI-SPECT: Parathyreoidea-Adenom (vor OP oder RT)\n• MIBG-SPECT: Neuroblastom (Pädiatrie)\n\n**SPECT/CT:**\n• Hybridgerät: anatomische Lokalisation der SPECT-Befunde\n• Standard heute (ähnlich PET/CT)",
@@ -5829,8 +5731,7 @@
       "block": "b26",
       "weight": 1,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "Stochastisch-Deterministisch"
+        "Normalgewebstoxizitaet"
       ],
       "requires_context": [
         "Normalgewebstoxizitaet"
@@ -5890,8 +5791,7 @@
       "block": "b15",
       "weight": 1,
       "tags": [
-        "Strahlenschutz-Prinzipien",
-        "Gesetzgebung-CH"
+        "Strahlenschutz-Prinzipien"
       ],
       "question": "Was ist Strahlenschutz bei Nuklearkatastrophen? Was sind die relevanten Grundsätze für die Medizin?",
       "answer": "**Strahlenschutz bei Nuklearkatastrophen:**\n\n**Relevante Ereignisse:**\n• Tschernobyl 1986: INES-7, Schilddrüsenkarzinome bei Kindern durch ¹³¹I\n• Fukushima 2011: INES-7, geringe gesundheitliche Folgen (evakuierungsbedingte Risiken höher)\n\n**Akutmassnahmen (IAEO-Empfehlungen):**\n• Evakuierung: bei hoher Dosisleistung (<100 mGy/h → Evakuierung)\n• Jodid-Prophylaxe: Kaliumjodid (KI) blockiert Schilddrüsen-Aufnahme von ¹³¹I\n  - Effektiv wenn eingenommen innerhalb 24h vor Exposition\n  - Nur für Schilddrüse schützend! (nicht für Ganzkörper)\n  - Alter <18 J: prioritär\n\n**Schweizer Notfallplanung:**\n• KKW-Gefahrenzonen: Zone 1 (0–3 km), Zone 2 (3–10 km), Zone 3 (10–20 km)\n• Jodidtabletten: vorverteilt an Bevölkerung in Zonen 1+2\n• BAG koordiniert im Ereignisfall\n\n**Langzeitfolgen Tschernobyl:**\n• 6000+ Schilddrüsenkarzinome bei Kindern in Belarus/Ukraine\n• Liquidatoren: leicht erhöhte Leukämierate\n• Kein signifikanter Anstieg anderer Karzinome in Bevölkerung (ausser Stress-bedingt)",
@@ -5910,8 +5810,7 @@
       "block": "b21",
       "weight": 2,
       "tags": [
-        "4Rs",
-        "Reparaturmechanismen"
+        "4Rs"
       ],
       "requires_context": [
         "4Rs"
@@ -5923,15 +5822,15 @@
         "T_kick: Woche 3–4",
         "H&N: ~0.6 Gy/Tag Verlust",
         "6-Tage-Woche: bessere Kontrolle"
-      ]
+      ],
+      "parent": "q_4rs_02"
     },
     {
       "id": "q_hn_rt_04",
       "block": "b30",
       "weight": 2,
       "tags": [
-        "IMRT-VMAT",
-        "Normalgewebstoxizitaet"
+        "IMRT-VMAT"
       ],
       "requires_context": [
         "IMRT-VMAT"
@@ -5950,8 +5849,7 @@
       "block": "b26",
       "weight": 1,
       "tags": [
-        "Normalgewebstoxizitaet",
-        "BED-EQD2"
+        "Normalgewebstoxizitaet"
       ],
       "question": "Was ist Xerostomie? Was sind die funktionellen Konsequenzen? Was sind Therapieoptionen?",
       "answer": "**Xerostomie:**\n• Mundtrockenheit durch Schädigung der Speicheldrüsen nach Kopf-Hals-RT\n• Häufigste irreversible Spätfolge nach H&N-RT (>50% ohne Parotis-Schonung)\n\n**Pathophysiologie:**\n• Parotis: Hauptquelle stimulierten Speichels (seros, wasserreich)\n• Seröse Azinuszellen sehr strahlensensibel (α/β ~3–4 Gy)\n• Dmean Parotis >40 Gy → fast vollständiger irreversibler Funktionsverlust\n• Dmean <25 Gy → meist ausreichende Funktion erhalten\n\n**Funktionelle Konsequenzen:**\n• Karies (Schutzfunktion Speichel fehlt): RA-Zähne vor RT sanieren!\n• Dysphagie (Lubrifikation fehlt)\n• Mukositis verstärkt (Pufferfunktion fehlt)\n• Osteoradionekrose-Risiko erhöht\n• Schlafstörungen, Geschmacksstörung, psychosoziale Belastung\n\n**Behandlung:**\n• Pilocarpin (Muskarinagonist): Restfunktion stimulieren\n• Künstlicher Speichel (Methylcellulose-Gel)\n• Häufiges Trinken\n• IMRT-Parotisschonung: Dmean <25 Gy → Standard",
@@ -5990,8 +5888,7 @@
       "block": "b09",
       "weight": 2,
       "tags": [
-        "Linac-Aufbau",
-        "Strahlenarten"
+        "Linac-Aufbau"
       ],
       "requires_context": [
         "Linac-Aufbau"
@@ -6014,6 +5911,7 @@
         "RBE"
       ],
       "requires_context": [
+        "RBE",
         "LET"
       ],
       "question": "Was passiert mit dem RBE beim Overkill-Effekt? Warum sinkt RBE bei sehr hohem LET?",
@@ -6023,15 +5921,15 @@
         "Overkill: LET >100 keV/µm → RBE sinkt",
         "Optimum: ~80–100 keV/µm",
         "C-Ionen: optimales LET im Bragg-Peak"
-      ]
+      ],
+      "parent": "q_rbe_02"
     },
     {
       "id": "q_stdet_06",
       "block": "b25",
       "weight": 3,
       "tags": [
-        "Stochastisch-Deterministisch",
-        "Strahlenschutz-Prinzipien"
+        "Stochastisch-Deterministisch"
       ],
       "question": "Was ist der Unterschied zwischen somatischen und genetischen Strahleneffekten?",
       "answer": "**Somatische Strahleneffekte:**\n• Betreffen die bestrahlte Person selbst\n• Akut: ARS, Radiodermitis, Mukositis\n• Spät: Fibrose, Myelopathie, Katarakt, Sekundärkarzinome\n• Klinisch: direkter Zusammenhang Dosis → Effekt\n\n**Genetische (vererbbare) Strahleneffekte:**\n• Schäden in Keimzellen (Ei- oder Samenzellen) → weitergegeben an Nachkommen\n• Stochastisch: Wahrscheinlichkeit erhöht, Schwere variabel\n• In Tierexperimenten klar gezeigt (Mäuse)\n• In epidemiologischen Studien beim Menschen: **bisher kein signifikanter Nachweis**\n• LSS: Kinder der A-Bomben-Überlebenden zeigen keine erhöhte Malformationsrate\n\n**Warum kaum nachweisbar beim Menschen:**\n• Spontanmutationsrate sehr hoch (~100 Mutationen/Generat.)\n• Strahleninduzierte genetische Schäden: kleiner Zusatz, statistisch nicht abgrenzbar\n• ICRP berücksichtigt trotzdem einen genetischen Risikoanteil (konservativ)\n\n**ICRP-Schätzung:**\n• Genetisches Risiko: ~5–10% des Krebsrisikos (sehr unsicher)\n• Gewichtungsfaktor Gonaden (wT=0.08) berücksichtigt genetisches Risiko mit",
@@ -6072,7 +5970,6 @@
       "block": "b12",
       "weight": 3,
       "tags": [
-        "Dosisberechnung-Algorithmen",
         "CT-Bildgebung"
       ],
       "question": "Was ist Hounsfield-Einheit (HU)? Wie wird aus HU die Elektronendichte für die Dosisberechnung abgeleitet?",
@@ -6085,7 +5982,8 @@
         "HU → ED für Photonen",
         "HU → RSP für Protonen",
         "DECT: genauere RSP-Bestimmung"
-      ]
+      ],
+      "parent": "q_ctbild_01"
     },
     {
       "id": "q_eww_01",
@@ -6110,7 +6008,6 @@
       "weight": 5,
       "tags": [
         "Strahlenarten",
-        "Direkt-Indirekt-Ionisierend",
         "LET"
       ],
       "requires_context": [
@@ -6130,8 +6027,7 @@
       "block": "b03",
       "weight": 5,
       "tags": [
-        "Strahlenarten",
-        "PDD-Elektronen"
+        "Strahlenarten"
       ],
       "requires_context": [
         "Strahlenarten"
@@ -6150,8 +6046,7 @@
       "block": "b03",
       "weight": 4,
       "tags": [
-        "Strahlenarten",
-        "PDD-Elektronen"
+        "Strahlenarten"
       ],
       "requires_context": [
         "Strahlenarten"
@@ -6170,8 +6065,7 @@
       "block": "b03",
       "weight": 4,
       "tags": [
-        "Strahlenarten",
-        "Direkt-Indirekt-Ionisierend"
+        "Strahlenarten"
       ],
       "question": "Was sind δ-Elektronen (Knock-on electrons)? Was ist ihre Bedeutung für die Dosisverteilung?",
       "answer": "**δ-Elektronen (Sekundärelektronen)**\n• Entstehen wenn ein primäres Elektron einem Hüllenelektron genug Energie überträgt um es aus dem Atom zu schleudern\n• Energiereiches Sekundärelektron → kann selbst weitere Ionisationen verursachen\n• Energie bis zur Hälfte der Primärenergie möglich\n\n**Relevanz für Dosisverteilung:**\n• Deponieren ihre Energie seitlich vom primären Teilchenpfad\n• Verantwortlich für die **laterale Ausdehnung** der Dosisverteilung\n• Bei hohem LET (Ionen): δ-Elektronen kurze Reichweite → dichte, kompakte Ionisationsspur → biologisch wirksamer\n• Bei niedrigem LET (Photonen, Elektronen): δ-Elektronen weite Reichweite → diffuse Ionisation\n\n**Bedeutung für Aufbaueffekt:**\n• Photonen erzeugen Compton-Elektronen (= Art von δ-Elektronen)\n• Diese brauchen Wegstrecke um volle Energie zu deponieren → Dosis-Aufbau\n• Dmax = Reichweite der Sekundärelektronen\n\n**Penumbra:**\n• δ-Elektronen wandern seitlich aus dem Strahlenfeld → tragen zur Penumbra bei",
@@ -6190,9 +6084,7 @@
       "block": "b03",
       "weight": 4,
       "tags": [
-        "Strahlenarten",
-        "Direkt-Indirekt-Ionisierend",
-        "Schwächungskoeffizient"
+        "Strahlenarten"
       ],
       "requires_context": [
         "Strahlenarten"
