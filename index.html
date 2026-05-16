@@ -124,11 +124,10 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:linea
 .q-img-thumb{max-width:100%;max-height:200px;object-fit:contain;border-radius:8px;cursor:zoom-in;border:1px solid var(--border);background:var(--sur2);display:inline-block;transition:opacity .15s;box-shadow:0 2px 12px rgba(0,0,0,.3)}
 .q-img-thumb:hover,.q-img-thumb:active{opacity:.82}
 .q-img-hint{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--dimmer);margin-top:6px;display:block;letter-spacing:.05em}
-#lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);display:none;align-items:center;justify-content:center;padding:12px}
-#lightbox.open{display:flex}
-#lightbox img{max-width:96vw;max-height:88vh;object-fit:contain;border-radius:10px;box-shadow:0 8px 48px rgba(0,0,0,.7)}
-.lb-close{position:fixed;top:14px;right:16px;background:rgba(255,255,255,.18);border:none;color:#fff;font-size:1.2rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10000;font-family:sans-serif;line-height:1}
-.lb-close:active{background:rgba(255,255,255,.35)}
+#lightbox{position:fixed;inset:0;z-index:9999;background-color:rgba(0,0,0,.93);background-size:contain;background-repeat:no-repeat;background-position:center;display:none;cursor:zoom-out}
+#lightbox.open{display:block}
+.lb-close{position:fixed;top:14px;right:16px;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:1.3rem;width:44px;height:44px;border-radius:50%;cursor:pointer;z-index:10000;font-family:sans-serif;line-height:44px;text-align:center}
+.lb-close:active{background:rgba(255,255,255,.4)}
 
 </style>
 </head>
@@ -420,12 +419,17 @@ function togA(i){
 }
 
 
-// ── LIGHTBOX — event delegation ──
-function closeLb(){document.getElementById('lightbox').classList.remove('open');}
+// ── LIGHTBOX ──
+function closeLb(){
+  var lb=document.getElementById('lightbox');
+  lb.classList.remove('open');
+  lb.style.backgroundImage='';
+}
 document.addEventListener('click',function(e){
   if(e.target.classList.contains('q-img-thumb')){
-    document.getElementById('lb-img').src=e.target.src;
-    document.getElementById('lightbox').classList.add('open');
+    var lb=document.getElementById('lightbox');
+    lb.style.backgroundImage='url("'+e.target.src+'")';
+    lb.classList.add('open');
   }
 });
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
@@ -450,14 +454,8 @@ if('serviceWorker' in navigator)
   window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 </script>
 
-<div id="lightbox">
+<div id="lightbox" onclick="closeLb()">
   <button class="lb-close" onclick="closeLb()">✕</button>
-  <img id="lb-img" src="" alt="">
 </div>
-<script>
-document.getElementById('lightbox').addEventListener('click',function(e){
-  if(e.target.id==='lightbox')closeLb();
-});
-</script>
 </body>
 </html>
