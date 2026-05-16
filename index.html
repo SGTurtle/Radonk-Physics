@@ -114,6 +114,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:linea
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 @media(max-width:480px){.q-text{font-size:.93rem}.a-text{font-size:.83rem}}
+/* ── IMAGE THUMBNAIL & LIGHTBOX ── */
+.q-img-wrap{margin-top:14px;padding-top:13px;border-top:1px solid var(--border);text-align:center}
+.q-img-thumb{max-width:100%;max-height:200px;object-fit:contain;border-radius:8px;cursor:zoom-in;border:1px solid var(--border);background:var(--sur2);display:inline-block;transition:opacity .15s;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.q-img-thumb:hover,.q-img-thumb:active{opacity:.82}
+.q-img-hint{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--dimmer);margin-top:6px;display:block;letter-spacing:.05em}
+#lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .22s;padding:12px}
+#lightbox.open{opacity:1;pointer-events:all}
+#lightbox img{max-width:98vw;max-height:92vh;object-fit:contain;border-radius:10px;box-shadow:0 8px 48px rgba(0,0,0,.7);transform:scale(.97);transition:transform .22s}
+#lightbox.open img{transform:scale(1)}
+.lb-close{position:fixed;top:14px;right:16px;background:rgba(255,255,255,.18);border:none;color:#fff;font-size:1.2rem;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;z-index:10000;font-family:sans-serif}
+.lb-close:hover,.lb-close:active{background:rgba(255,255,255,.32)}
+
 </style>
 </head>
 <body>
@@ -341,6 +353,7 @@ function renderQ(){
       <div class="a-lbl">Modellantwort</div>
       <div class="a-text">${fmt(q.answer)}</div>
       ${chips(q.chips)}
+      ${imgBlock(q)}
     </div>`;
   document.getElementById('q-foot').innerHTML=`<button class="btn btn-reveal" onclick="reveal()">Antwort aufdecken</button>`;
   document.getElementById('q-scroll').scrollTop=0;
@@ -374,6 +387,7 @@ function finish(){
       <div class="sum-a" id="sa${i}">
         <div class="a-text">${fmt(q.answer)}</div>
         ${chips(q.chips)}
+        ${imgBlock(q)}
       </div>
       <button class="sum-tog" id="sb${i}" onclick="togA(${i})">▸ Antwort anzeigen</button>
     </div>`).join('');
@@ -384,6 +398,24 @@ function togA(i){
   const a=document.getElementById('sa'+i),b=document.getElementById('sb'+i);
   const open=a.classList.toggle('open');
   b.textContent=open?'▾ Antwort ausblenden':'▸ Antwort anzeigen';
+}
+
+
+// ── LIGHTBOX ──
+function openLb(src,e){
+  if(e){e.stopPropagation();}
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLb(e){
+  if(e&&e.target===document.getElementById('lb-img'))return;
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('lightbox').classList.remove('open');});
+
+function imgBlock(q){
+  if(!q.image)return'';
+  return'<div class="q-img-wrap"><img class="q-img-thumb" src="'+q.image+'" alt="Diagramm" onclick="openLb(this.src,event)" loading="lazy"><span class="q-img-hint">⊕ Zum Vergrössern antippen</span></div>';
 }
 
 async function init(){
@@ -400,5 +432,10 @@ init();
 if('serviceWorker' in navigator)
   window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 </script>
+
+<div id="lightbox" onclick="closeLb(event)">
+  <button class="lb-close" onclick="closeLb(event)">✕</button>
+  <img id="lb-img" src="" alt="Diagramm">
+</div>
 </body>
 </html>

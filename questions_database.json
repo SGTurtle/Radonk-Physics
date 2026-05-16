@@ -735,7 +735,8 @@
         "Photonen: ~95% aller RT",
         "Elektronen: <5cm Tiefe",
         "Protonen: keine Exitdosis"
-      ]
+      ],
+      "image": "images/Comparison_PDD_Photon_Electron_Proton.png"
     },
     {
       "id": "q_stra_02",
@@ -1021,7 +1022,8 @@
         "Wirkungsgrad: ~1%",
         "E_max = e×U",
         "Drehanode: bis 150 kW"
-      ]
+      ],
+      "image": "images/Roentgen_Roehre.png"
     },
     {
       "id": "q_rohr_03",
@@ -1078,7 +1080,8 @@
         "Klystron/Magnetron → Mikrowellen",
         "270° Bending-Magnet",
         "Isozentrum: 100 cm vom Fokus"
-      ]
+      ],
+      "image": "images/Linac_Aufbau.png"
     },
     {
       "id": "q_linac_02",
@@ -1198,7 +1201,8 @@
         "FF: flaches Profil, niedrige Dosisrate",
         "FFF: konisch, 4–6× Dosisrate",
         "FFF: weniger Kopfstreuung"
-      ]
+      ],
+      "image": "images/Linac_Head_Components_Flattening_Filter.png"
     },
     {
       "id": "q_linac_08",
@@ -1299,7 +1303,8 @@
         "6MV: Dmax=1.5cm",
         "18MV: Dmax=3.5cm",
         "Höhere Energie → mehr Skin-Sparing"
-      ]
+      ],
+      "image": "images/Photons_PDD_increasing_energy.png"
     },
     {
       "id": "q_pddph_02",
@@ -1319,7 +1324,8 @@
         "Energie↑: Dmax tiefer, Skin-Sparing ↑",
         "Feld↑: mehr Streuung, flachere PDD",
         "18MV PDD@10cm: ~80%"
-      ]
+      ],
+      "image": "images/Photon_PDD_increasing_field_size.png"
     },
     {
       "id": "q_pddph_03",
@@ -1340,7 +1346,8 @@
         "Dmax = Reichweite Sekundärelektronen",
         "6MV: 40% Eintrittsdosis",
         "Kein Aufbaueffekt = Nachteil kV-RT"
-      ]
+      ],
+      "image": "images/Kerma_vs_Dose_PDD.png"
     },
     {
       "id": "q_pddph_04",
@@ -1381,7 +1388,8 @@
         "FFF: konisch (Zentrum max.)",
         "Grosses Feld: 30–50% Abfall zum Rand"
       ],
-      "parent": "q_fff_01"
+      "parent": "q_fff_01",
+      "image": "images/Photon_beam_horizontal_profile.png"
     },
     {
       "id": "q_pdde_01",
@@ -1398,7 +1406,8 @@
         "Rp ≈ E/2 cm",
         "R50 ≈ E/3.3 cm",
         "Eintrittsdosis: 80–90%"
-      ]
+      ],
+      "image": "images/Electron_PDD_increasing_energy.png"
     },
     {
       "id": "q_pdde_02",
@@ -1456,7 +1465,8 @@
         "Keine Exitdosis",
         "SOBP = überlagerte Peaks",
         "Eintrittsdosis ~30%"
-      ]
+      ],
+      "image": "images/Proton_PDD_SOBP.png"
     },
     {
       "id": "q_pddp_02",
@@ -1519,7 +1529,8 @@
         "S ∝ z²/v²",
         "e⁻: kein Peak (Streuung)",
         "γ: kein Peak (ungeladen)"
-      ]
+      ],
+      "image": "images/Proton_PDD_SOBP.png"
     },
     {
       "id": "q_akrm_01",
@@ -1540,7 +1551,8 @@
         "Dmax = Reichweite Sekundärelektronen",
         "CPE: Dosis ≈ KERMA",
         "6MV: 40% Eintrittsdosis"
-      ]
+      ],
+      "image": "images/Kerma_vs_Dose_PDD.png"
     },
     {
       "id": "q_flds_01",
@@ -1811,7 +1823,8 @@
       "requires_context": [
         "Linac-Aufbau"
       ],
-      "parent": "q_linac_01"
+      "parent": "q_linac_01",
+      "image": "images/Use_of_wegdes.png"
     },
     {
       "id": "q_brch_01",
@@ -2237,7 +2250,8 @@
         "SF = e^(-αD-βD²)",
         "α/β: Früh ~10 Gy, Spät ~3 Gy",
         "Therapeutisches Fenster"
-      ]
+      ],
+      "image": "images/survival_curve_alpha_beta.png"
     },
     {
       "id": "q_lqm_02",
@@ -2257,7 +2271,8 @@
         "Früh/Tumor: α/β ~10 Gy",
         "Spät: α/β ~2–3 Gy",
         "Prostata: α/β ~1.5 Gy"
-      ]
+      ],
+      "image": "images/survival_curve_alpha_beta.png"
     },
     {
       "id": "q_lqm_03",
@@ -2278,7 +2293,8 @@
         "Spät: grosse Schulter (β dominiert)",
         "Früh: kleine Schulter",
         "Kleine Fraktionen schonen Spätgewebe"
-      ]
+      ],
+      "image": "images/survival_curve_alpha_beta.png"
     },
     {
       "id": "q_bed_01",
@@ -3043,7 +3059,8 @@
         "Out-of-field 2–4× erhöht",
         "Nie Keile bei Kindern!"
       ],
-      "parent": "q_keilf_01"
+      "parent": "q_keilf_01",
+      "image": "images/Use_of_wegdes.png"
     },
     {
       "id": "q_dosa_02",
@@ -4119,7 +4136,8 @@
         "1/r²: stark reduzierte Dosisrate",
         "Lungenshields: Dmax <8–9 Gy"
       ],
-      "parent": "q_pddph_01"
+      "parent": "q_pddph_01",
+      "image": "images/Photon_PDD_increasing_SSD.png"
     },
     {
       "id": "q_pdde_04",
@@ -4584,7 +4602,8 @@
         "Photonenstrahl: Target rein",
         "Elektronenstrahl: Target raus, Streufolien rein",
         "Applikator: manuell montieren"
-      ]
+      ],
+      "image": "images/Linac_Head_Components_Flattening_Filter.png"
     },
     {
       "id": "q_rohr_05",
