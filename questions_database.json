@@ -2,7 +2,7 @@
   "version": "1.0",
   "meta": {
     "description": "Facharztprüfung Radio-Onkologie – Physik, Strahlenschutz, Strahlenbiologie",
-    "totalQuestions": 292,
+    "totalQuestions": 291,
     "language": "de",
     "schema": {
       "id": "Eindeutige Fragen-ID",
@@ -814,7 +814,8 @@
         "KERMA = dE_tr/dm",
         "Aufbau: KERMA > Dosis",
         "CPE: KERMA ≈ Dosis"
-      ]
+      ],
+      "image": "images/Kerma_vs_Dose_PDD.png"
     },
     {
       "id": "q_phef_01",
@@ -1063,7 +1064,8 @@
         "Wolfram Kα: ~59 keV",
         "Schwelle: >69.5 kV",
         "Monoenergetisch (diskrete Linien)"
-      ]
+      ],
+      "image": "images/Roentgen_Roehre.png"
     },
     {
       "id": "q_linac_01",
@@ -1101,7 +1103,8 @@
         "Klystron = Verstärker",
         "Magnetron = Oszillator",
         "Frequenz: ~3 GHz"
-      ]
+      ],
+      "image": "images/Linac_Aufbau.png"
     },
     {
       "id": "q_linac_03",
@@ -1121,7 +1124,8 @@
         "Stehend: kompakter (Varian)",
         "Laufend: effizienter (Elektra)",
         "Vakuum: ~10⁻⁷ mbar"
-      ]
+      ],
+      "image": "images/Linac_Aufbau.png"
     },
     {
       "id": "q_linac_04",
@@ -1141,7 +1145,8 @@
         "270° = achromatisch",
         "Energieselektion am Spalt",
         "Kleiner Brennfleck: ~1–3 mm"
-      ]
+      ],
+      "image": "images/Linac_Aufbau.png"
     },
     {
       "id": "q_linac_05",
@@ -1161,7 +1166,8 @@
         "MU-Zählung + Symmetrie-Kontrolle",
         "2 redundante Kammern",
         "Toleranz: ±2%"
-      ]
+      ],
+      "image": "images/Linac_Head_Components_Flattening_Filter.png"
     },
     {
       "id": "q_linac_06",
@@ -1181,7 +1187,8 @@
         "Leaves: 5mm Breite Standard",
         "Transmission: <2%",
         "Basis für IMRT/VMAT"
-      ]
+      ],
+      "image": "images/Linac_Head_Components_Flattening_Filter.png"
     },
     {
       "id": "q_linac_07",
@@ -1243,7 +1250,8 @@
         "Konisches Profil (nicht flach)",
         "Weniger Kopfstreuung"
       ],
-      "parent": "q_linac_07"
+      "parent": "q_linac_07",
+      "image": "images/Photon_beam_horizontal_profile.png"
     },
     {
       "id": "q_fff_02",
@@ -1265,7 +1273,8 @@
         "Kurze Behandlung → weniger Bewegung",
         "FFF: Standard für SBRT/SRS"
       ],
-      "parent": "q_fff_01"
+      "parent": "q_fff_01",
+      "image": "images/Photon_beam_horizontal_profile.png"
     },
     {
       "id": "q_mlck_01",
@@ -1286,7 +1295,8 @@
         "Penumbra: Quelle × Dist/Kollimator",
         "Elektronen: viel breiter als Photonen",
         "Elektronen: 1 cm Abstand Feldrand-Tumor"
-      ]
+      ],
+      "image": "images/Photon_beam_horizontal_profile.png"
     },
     {
       "id": "q_pddph_01",
@@ -1427,7 +1437,8 @@
         "e⁻: 0.511 MeV/c² → stark gestreut",
         "p: 938 MeV/c² → kaum gestreut",
         "Streuung verhindert Bragg-Peak"
-      ]
+      ],
+      "image": "images/Comparison_PDD_Photon_Electron_Proton.png"
     },
     {
       "id": "q_pdde_03",
@@ -1448,7 +1459,8 @@
         "Kein Blei zuerst → Bremsstrahlung!",
         "Niedrig-Z zuerst, dann Blei",
         "Indikation: <5 cm Tiefe"
-      ]
+      ],
+      "image": "images/Electron_PDD_increasing_energy.png"
     },
     {
       "id": "q_pddp_01",
@@ -1489,7 +1501,8 @@
         "Range Uncertainty: ~3.5%+1mm",
         "RBE steigt zum distalen Rand"
       ],
-      "parent": "q_rbe_01"
+      "parent": "q_rbe_01",
+      "image": "images/Proton_PDD_SOBP.png"
     },
     {
       "id": "q_pddp_03",
@@ -1572,7 +1585,8 @@
         "I ∝ 1/r²",
         "Grösserer SSD → flachere PDD",
         "TBI: SSD 350–400 cm"
-      ]
+      ],
+      "image": "images/Photon_PDD_increasing_SSD.png"
     },
     {
       "id": "q_bhrd_01",
@@ -1651,7 +1665,8 @@
         "OF(10×10)=1.0 (Referenz)",
         "Gross: OF>1, Klein: OF<1",
         "Kleine Felder: Diamant-Detektor"
-      ]
+      ],
+      "image": "images/Photon_PDD_increasing_field_size.png"
     },
     {
       "id": "q_fipl_01",
@@ -2518,7 +2533,8 @@
         "Akut: während RT, reversibel",
         "Spät: >3 Mo., irreversibel",
         "Spät: dosislimitierend!"
-      ]
+      ],
+      "image": "images/survival_curve_alpha_beta.png"
     },
     {
       "id": "q_ntcz_02",
@@ -2716,7 +2732,8 @@
         "18MV: Dmax=3.5cm",
         "18MV: Eintrittsdosis ~25%",
         "6MV für SBRT (Penumbra)"
-      ]
+      ],
+      "image": "images/Photons_PDD_increasing_energy.png"
     },
     {
       "id": "q_pddph_10",
@@ -2736,7 +2753,8 @@
         "SSD: Oberfläche=100cm vom Fokus",
         "SAD: Tumor=100cm vom Fokus",
         "SAD = heute Standard"
-      ]
+      ],
+      "image": "images/Photon_PDD_increasing_SSD.png"
     },
     {
       "id": "q_vergl_01",
@@ -2759,7 +2777,8 @@
         "Photonen: 40% Eintrittsdosis, kein Ende",
         "Elektronen: 85%, Rp=E/2 cm",
         "Protonen: 30%, keine Exitdosis"
-      ]
+      ],
+      "image": "images/Comparison_PDD_Photon_Electron_Proton.png"
     },
     {
       "id": "q_vergl_02",
@@ -2780,7 +2799,8 @@
         "Photon: Eintrittsdosis sinkt mit E",
         "Elektron: Eintrittsdosis steigt mit E",
         "e⁻: breite Penumbra"
-      ]
+      ],
+      "image": "images/Comparison_PDD_Photon_Electron_Proton.png"
     },
     {
       "id": "q_linac_09",
@@ -2800,7 +2820,8 @@
         "W: Z=74, Dichte 19.3 g/cm³",
         "Schmelzpunkt 3422°C",
         "MLC: <2% Transmission"
-      ]
+      ],
+      "image": "images/Linac_Aufbau.png"
     },
     {
       "id": "q_linac_10",
@@ -2819,7 +2840,8 @@
         "Primär → Jaws → MLC",
         "Jaws: rechteckig, robust",
         "MLC: beliebige Form, IMRT"
-      ]
+      ],
+      "image": "images/Linac_Head_Components_Flattening_Filter.png"
     },
     {
       "id": "q_mu_04",
@@ -3349,7 +3371,8 @@
         "D₀: SF auf 37% reduziert",
         "Schulter = sublethale Reparatur"
       ],
-      "parent": "q_zell_01"
+      "parent": "q_zell_01",
+      "image": "images/survival_curve_alpha_beta.png"
     },
     {
       "id": "q_lqm_04",
@@ -3370,7 +3393,8 @@
         "Isoeffektplot: gleiche BED = gleicher Effekt",
         "Steilere Krümmung bei niedrigem α/β",
         "START-B: α/β=4 für Brust"
-      ]
+      ],
+      "image": "images/survival_curve_alpha_beta.png"
     },
     {
       "id": "q_tcpntcp_01",
@@ -3489,7 +3513,8 @@
         "OF(10×10)=1.0",
         "Kleines Feld: CPE fehlt → OF falsch",
         "TRS-483: Guideline kleine Felder"
-      ]
+      ],
+      "image": "images/Photon_PDD_increasing_field_size.png"
     },
     {
       "id": "q_pddph_12",
@@ -3510,7 +3535,8 @@
         "FFF: Dmax minimal flacher",
         "Grosses Feld FFF: 30–50% Abfall zum Rand",
         "Dosisrate FFF: 4–6×"
-      ]
+      ],
+      "image": "images/Photon_beam_horizontal_profile.png"
     },
     {
       "id": "q_vergl_03",
@@ -3531,7 +3557,8 @@
         "Elektronen: <5 cm Tiefe",
         "Photonen: >5 cm, grosse Volumina",
         "E[MeV] ≈ Tiefe×3.3"
-      ]
+      ],
+      "image": "images/Comparison_PDD_Photon_Electron_Proton.png"
     },
     {
       "id": "q_vergl_04",
@@ -3553,7 +3580,8 @@
         "Okuläres Melanom: 98% LC",
         "NTCP-Reduktion >10%: Indikation"
       ],
-      "parent": "q_pddp_01"
+      "parent": "q_pddp_01",
+      "image": "images/Comparison_PDD_Photon_Electron_Proton.png"
     },
     {
       "id": "q_linac_11",
@@ -4098,26 +4126,6 @@
       ]
     },
     {
-      "id": "q_pddph_13",
-      "block": "b05",
-      "weight": 4,
-      "tags": [
-        "PDD-Photonen",
-        "Aufbaueffekt-KERMA"
-      ],
-      "requires_context": [
-        "PDD-Photonen"
-      ],
-      "question": "Was ist der Skin-Sparing-Effekt? Wann geht er verloren? Was ist ein Bolus?",
-      "answer": "**Skin-Sparing-Effekt:**\n• Bei MV-Photonen: Hautoberfläche erhält nur ~40% (6 MV) der Maximaldosis\n• Durch Aufbaueffekt: Dmax liegt in Tiefe, nicht an Oberfläche\n• 6 MV: Eintrittsdosis ~40%, Dmax bei 1.5 cm\n• 18 MV: Eintrittsdosis ~25%, Dmax bei 3.5 cm\n• → Wichtiger therapeutischer Vorteil: Akute Hautreaktionen reduziert\n\n**Verlust des Skin-Sparings bei:**\n• Bolus auf der Haut (gewollt)\n• Flacher Einstrahlwinkel (streifseitig → mehr Kontaminationselektronen)\n• FFF-Modus (etwas mehr Kontaminationselektronen)\n• Hauttumore direkt an der Oberfläche\n\n**Bolus:**\n• Wasseräquivalentes Material: Paraffin, Aquaplast, nasse Gaze\n• Auf Haut aufgelegt → verschiebt Dmax künstlich an die Oberfläche\n• **Indikationen:**\n  - Narbenbestrahlung (volle Dosis ab Haut nötig)\n  - Hauttumore <5 mm tief\n  - Wenn Dmax zu tief für Zielstruktur\n• Bolus-Dicke = gewünschte Tiefenverschiebung des Dmax",
-      "cluster": "A",
-      "chips": [
-        "6MV: 40% Eintrittsdosis",
-        "18MV: 25% Eintrittsdosis",
-        "Bolus → Dmax an Oberfläche"
-      ]
-    },
-    {
       "id": "q_pddph_14",
       "block": "b05",
       "weight": 2,
@@ -4157,7 +4165,8 @@
         "Grosses Feld: mehr Scatter → höhere Dosis",
         "R50: unverändert (energieabhängig)",
         "Minfeld: 4×4 cm²"
-      ]
+      ],
+      "image": "images/Electron_PDD_increasing_energy.png"
     },
     {
       "id": "q_linac_13",
@@ -4320,7 +4329,8 @@
         "Hoch-LET: keine Schulter",
         "SF ≈ e^(-αD) (nur linear)",
         "Kein Elkind-Repair"
-      ]
+      ],
+      "image": "images/survival_curve_alpha_beta.png"
     },
     {
       "id": "q_4rs_06",
@@ -4364,7 +4374,8 @@
         "Klinisch: RBE=1.1 (Vereinfachung)",
         "OAR nicht distal vom SOBP platzieren"
       ],
-      "parent": "q_pddp_01"
+      "parent": "q_pddp_01",
+      "image": "images/Proton_PDD_SOBP.png"
     },
     {
       "id": "q_reox_02",
@@ -4444,7 +4455,8 @@
         "Fraktionierungssensitiv: spätreag. Gewebe",
         "Therapeutisches Fenster: Tumor α/β > Spätgewebe",
         "Prostata α/β<Spätgewebe → Hypofrax"
-      ]
+      ],
+      "image": "images/survival_curve_alpha_beta.png"
     },
     {
       "id": "q_stdet_04",
@@ -4683,7 +4695,7 @@
     {
       "id": "q_pddph_15",
       "block": "b05",
-      "weight": 3,
+      "weight": 4,
       "tags": [
         "PDD-Photonen",
         "Aufbaueffekt-KERMA"
@@ -4698,7 +4710,8 @@
         "6MV: 40% Eintrittsdosis",
         "Bolus: Dmax an Oberfläche",
         "Tangentialer Strahl: Skin-Sparing verloren"
-      ]
+      ],
+      "image": "images/Kerma_vs_Dose_PDD.png"
     },
     {
       "id": "q_sbrt_02",
@@ -4782,7 +4795,8 @@
         "D₀: 37% Überleben",
         "Dq: Schulterbreite",
         "n: Extrapolationsnummer (>1=Schulter)"
-      ]
+      ],
+      "image": "images/survival_curve_alpha_beta.png"
     },
     {
       "id": "q_strahbio_02",
@@ -5064,7 +5078,8 @@
         "CPE: Dosis = Kollisions-KERMA",
         "Vor Dmax: KERMA > Dosis",
         "Farmer-Kammer: bei Dmax kalibrieren"
-      ]
+      ],
+      "image": "images/Kerma_vs_Dose_PDD.png"
     },
     {
       "id": "q_ntcz_09",
@@ -5107,7 +5122,8 @@
         "Distaler Rand: 40–80+ keV/µm",
         "RBE: 1.0→1.1→1.5 (distal)"
       ],
-      "parent": "q_rbe_01"
+      "parent": "q_rbe_01",
+      "image": "images/Proton_PDD_SOBP.png"
     },
     {
       "id": "q_reox_03",
@@ -5374,7 +5390,8 @@
         "Chordome Schädelbasis: nur Protonen",
         "NTCP-Reduktion >10%"
       ],
-      "parent": "q_pddp_01"
+      "parent": "q_pddp_01",
+      "image": "images/Proton_PDD_SOBP.png"
     },
     {
       "id": "q_plan_01",
@@ -5685,7 +5702,8 @@
         "PBS: magnetisch, IMPT möglich",
         "Neue Zentren: PBS Standard"
       ],
-      "parent": "q_pddp_01"
+      "parent": "q_pddp_01",
+      "image": "images/Proton_PDD_SOBP.png"
     },
     {
       "id": "q_strahbio_03",
@@ -6169,7 +6187,8 @@
       "cluster": "A",
       "requires_context": [
         "Dosisbegriffe-Physik"
-      ]
+      ],
+      "image": "images/Kerma_vs_Dose_PDD.png"
     },
     {
       "id": "q_gdef_04",
@@ -6226,7 +6245,8 @@
         "Intensität ∝ U²",
         "Wirkungsgrad Röhre: ~1%"
       ],
-      "cluster": "B"
+      "cluster": "B",
+      "image": "images/Roentgen_Roehre.png"
     },
     {
       "id": "q_rohr_08",
@@ -6246,7 +6266,8 @@
         "mA → Quantität (Intensität)",
         "Filter: entfernt Weichstrahlung"
       ],
-      "cluster": "B"
+      "cluster": "B",
+      "image": "images/Roentgen_Roehre.png"
     },
     {
       "id": "q_dosdet_01",
