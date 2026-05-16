@@ -4,19 +4,19 @@ const ASSETS = [
   './index.html',
   './manifest.json',
   './questions_database.json',
-  './images/Kerma_vs_Dose_PDD.png',
-  './images/Comparison_PDD_Photon_Electron_Proton.png',
-  './images/Proton_PDD_SOBP.png',
-  './images/Electron_PDD_increasing_energy.png',
-  './images/Photon_PDD_increasing_SSD.png',
-  './images/Photon_PDD_increasing_field_size.png',
-  './images/Photons_PDD_increasing_energy.png',
-  './images/Use_of_wegdes.png',
-  './images/Photon_beam_horizontal_profile.png',
-  './images/Linac_Head_Components_Flattening_Filter.png',
-  './images/Linac_Aufbau.png',
-  './images/Roentgen_Roehre.png',
-  './images/survival_curve_alpha_beta.png'
+  './Comparison_PDD_Photon_Electron_Proton.png',
+  './Electron_PDD_increasing_energy.png',
+  './Kerma_vs_Dose_PDD.png',
+  './Linac_Aufbau.png',
+  './Linac_Head_Components_Flattening_Filter.png',
+  './Photon_PDD_increasing_SSD.png',
+  './Photon_PDD_increasing_field_size.png',
+  './Photon_beam_horizontal_profile.png',
+  './Photons_PDD_increasing_energy.png',
+  './Proton_PDD_SOBP.png',
+  './Roentgen_Roehre.png',
+  './Use_of_wegdes.png',
+  './survival_curve_alpha_beta.png'
 ];
 
 self.addEventListener('install', e => {
