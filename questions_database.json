@@ -630,19 +630,19 @@
       "block": "b01",
       "weight": 3,
       "tags": [
-        "Strahlung-Grundlagen",
-        "Strahlenarten"
+        "DVH",
+        "PTV-Konzepte"
       ],
-      "question": "Was ist eine Isodose? Was versteht man unter Bestrahlung?",
-      "answer": "**Bestrahlung:**\n• Vorgang des Aussetzens gegenüber ionisierender Strahlung\n• Beschreibt den Prozess (nicht die Menge)\n• Veraltet: Exposition [C/kg] — heute ersetzt durch Dosis [Gy]\n\n**Isodose:**\n• Linie (2D) oder Fläche (3D) mit gleicher Dosis in der Dosisverteilung\n• Angegeben als % der Verschreibungsdosis (Referenzdosis)\n• Beispiele: 95%-Isodose, 50%-Isodose (halbe Dosis)\n• ICRU 50: PTV muss von 95%-Isodose umschlossen sein\n\n**Isodosenlinien klinisch:**\n• Enge Isodosen (viele Linien): steiler Dosisabfall = Gradient\n• Weite Isodosen: flacher Abfall = homogene Region\n• Konkave Isodose (nach innen gebogen): nur mit IMRT möglich\n• Conformity Index nutzt Isodosen für Planung\n\n**Zusammenhang:**\n• DVH = Zusammenfassung aller Isodosen in einem Organ/Volumen",
+      "question": "Was ist eine Isodose? Was versteht man unter Isodosenlinien klinisch?",
+      "answer": "**Isodose:**\n• Linie (2D) oder Fläche (3D) mit gleicher Dosis in der Dosisverteilung\n• Angegeben als % der Verschreibungsdosis (Referenzdosis)\n• Beispiele: 95%-Isodose, 50%-Isodose (halbe Dosis)\n• ICRU 50: PTV muss von 95%-Isodose umschlossen sein\n\n**Isodosenlinien klinisch:**\n• Enge Isodosen (viele Linien): steiler Dosisabfall = hoher Gradient\n• Weite Isodosen: flacher Abfall = homogene Region\n• Konformität: wie gut umschliessen die Isodosen das PTV?\n• Gradient wichtig für OAR-Schonung",
       "requires_context": [
-        "Strahlung-Grundlagen"
+        "DVH"
       ],
       "cluster": "A",
       "chips": [
-        "ICRU50: PTV ⊂ 95%-Isodose",
-        "Enge Isodosen = steiler Gradient",
-        "% der Verschreibungsdosis"
+        "95%-Isodose = PTV-Minimum",
+        "Enge Linien = steiler Gradient",
+        "ICRU 50"
       ]
     },
     {
@@ -929,6 +929,9 @@
         "Schwelle: 1.022 MeV",
         "Positron → 2×511 keV @ 180°",
         "Basis PET"
+      ],
+      "requires_context": [
+        "Photon-WW"
       ]
     },
     {
@@ -1013,8 +1016,7 @@
       "weight": 5,
       "tags": [
         "Röntgenröhre",
-        "Bremsstrahlung",
-        "Linac-Aufbau"
+        "Bremsstrahlung"
       ],
       "question": "Erklären Sie den Aufbau und die Funktionsweise einer Röntgenröhre.",
       "answer": "**Aufbau der Röntgenröhre:**\n\n**Kathode:**\n• Glühwendel (Wolfram) → thermische Elektronenemission\n• Wehnelt-Zylinder fokussiert Strahl auf Anode\n• Steuert Röhrenstrom [mA] → bestimmt Photonenmenge\n\n**Anode (Drehanode):**\n• Wolfram-Rhenium auf Molybdän, rotiert 3000–10'000 rpm\n• Rotation verteilt Wärme → bis 150 kW Dauerbelastung\n• Wolfram: Z=74 (viel Bremsstrahlung), Schmelzpunkt 3422°C\n\n**Vakuumhülle:**\n• <10⁻⁶ mbar → kein Energieverlust durch Luft\n\n**Funktionsweise:**\n• Hochspannung U beschleunigt e⁻ von Kathode → Anode\n• Elektronen im Wolfram → Bremsstrahlung (99%) + charakteristische Strahlung (1%)\n• **Wirkungsgrad: nur ~1%** → 99% als Wärme!\n\n**Spektrum:**\n• Kontinuierliches Bremsspektrum: 0 bis E_max = e × U\n• Charakteristische Linien: Wolfram Kα ≈ 59 keV\n\n**Vergleich Linac:**\n• Röntgenröhre: bis ~300 kV, Wirkungsgrad ~1%\n• Linac: MV-Bereich, viel effizienter, höhere Dosisrate",
@@ -1072,8 +1074,7 @@
       "block": "b09",
       "weight": 5,
       "tags": [
-        "Linac-Aufbau",
-        "Bremsstrahlung"
+        "Linac-Aufbau"
       ],
       "question": "Nennen Sie die Hauptkomponenten eines Linearbeschleunigers und erklären Sie deren Funktion.",
       "answer": "**Hauptkomponenten eines Linearbeschleunigers:**\n\n**1. Elektronenkanone (Electron Gun):**\n• Glühkathode emittiert Elektronen (thermionisch)\n• Vorbeschleunigung auf ~50 keV\n\n**2. Mikrowellenquelle:**\n• Klystron (Verstärker) oder Magnetron (Oszillator)\n• Erzeugt Mikrowellen ~3 GHz\n• Versorgt den Wellenleiter mit HF-Energie\n\n**3. Wellenleiter (Accelerating Waveguide):**\n• Stehende oder laufende Welle beschleunigt Elektronen auf 6–18 MeV\n• Im Vakuum betrieben\n\n**4. Bending-Magnet (270°):**\n• Lenkt Elektronenstrahl auf Target\n• Energiemonochromatisierung (nur korrekte Energie passiert)\n\n**5. Target (Wolfram) + Photonenproduktion:**\n• Elektronen → Bremsstrahlung → Photonenstrahl (wenn Photonenmodus)\n• Target entfernt bei Elektronenmodus\n\n**6. Linac-Kopf:**\n• Primärkollimator → Flattening Filter (oder FFF) → Ionisationskammer\n• Jaws (X/Y-Kollimatoren) → MLC\n\n**7. Isozentrum:**\n• Rotationsachse der Gantry, 100 cm vom Fokus",
@@ -1543,7 +1544,10 @@
         "e⁻: kein Peak (Streuung)",
         "γ: kein Peak (ungeladen)"
       ],
-      "image": "Proton_PDD_SOBP.png"
+      "image": "Proton_PDD_SOBP.png",
+      "requires_context": [
+        "PDD-Protonen"
+      ]
     },
     {
       "id": "q_akrm_01",
@@ -1906,9 +1910,6 @@
       ],
       "question": "Was ist die effektive Dosis? Was sind die Gewebewichtungsfaktoren?",
       "answer": "**Effektive Dosis E:**\n• Gewichtete Summe der Äquivalentdosen aller Organe\n• E = Σ(wT × HT) [Sv]\n• Berücksichtigt unterschiedliche Radiosensitivität der Organe\n• Nur für Strahlenschutz bei niedrigen Dosen (nicht für RT-Patienten!)\n\n**Gewebewichtungsfaktoren wT (ICRP 103):**\n| Gewebe | wT |\n|---|---|\n| Knochenmark, Kolon, Lunge, Magen, Brust | je 0.12 |\n| Gonaden | 0.08 |\n| Blase, Leber, Schilddrüse, Ösophagus | je 0.04 |\n| Haut, Gehirn, Knochen, Speicheldrüsen | je 0.01 |\n| Summe aller Gewebe | **1.0** |\n\n**Interpretation:**\n• Höherer wT → strahlensensitiver → mehr Gewichtung in effektiver Dosis\n• Brust und Knochenmark: relativ hohe Gewichtung (0.12)\n• Haut: niedrig (0.01) trotz direkter Exposition\n\n**Grenzen:**\n• Bevölkerungsdurchschnitt (jung/alt, Mann/Frau) → nicht individuell\n• Nicht geeignet für RT (zu hohe Dosen, inhomogene Verteilung)",
-      "requires_context": [
-        "Dosisbegriffe-SS"
-      ],
       "cluster": "C",
       "chips": [
         "E = Σ(wT × HT)",
@@ -2255,8 +2256,7 @@
       "weight": 5,
       "tags": [
         "LQ-Modell",
-        "alpha-beta",
-        "DNA-Schaden"
+        "alpha-beta"
       ],
       "question": "Erklären Sie das Linear-Quadratische Modell (LQ-Modell). Was sind die zwei Zelltötungskomponenten?",
       "answer": "**Linear-Quadratisches Modell (LQ-Modell):**\n\n**Überlebensformel:**\n• SF = e^(−αD − βD²)\n• SF = Surviving Fraction (Anteil überlebender Zellen)\n• D = Dosis pro Fraktion [Gy]\n\n**Zwei Komponenten der Zelltötung:**\n• **α-Komponente (αD):** Linear mit Dosis → einzelne DSBs, nicht reparierbar → sofortige Zelltötung\n• **β-Komponente (βD²):** Quadratisch → Akkumulation sublethaler Schäden → reparierbar (Elkind-Erholung)\n\n**α/β-Wert:**\n• Dosis bei der α- = β-Komponente gleich gross: αD = βD² → D = α/β\n• Hoher α/β (8–10 Gy): frühreagierendes Gewebe (Mukosa, Tumor meist)\n• Niedriger α/β (1–3 Gy): spätreagierendes Gewebe (Rückenmark, Lunge)\n\n**Klinische Bedeutung:**\n• Spätreagierendes Gewebe profitiert mehr von kleinen Fraktionen (Schulter!)\n• Grundlage für BED, EQD2, Fraktionierungsoptimierung\n• Erklärt therapeutisches Fenster der Fraktionierung",
@@ -5512,16 +5512,13 @@
     {
       "id": "q_schutz_11",
       "block": "b15",
-      "weight": 2,
+      "weight": 4,
       "tags": [
         "Strahlenschutz-Prinzipien"
       ],
       "question": "Was sind die Grundprinzipien der Rechtfertigung in der Radioonkologie? Welche drei Stufen gibt es?",
       "answer": "**Rechtfertigung in der Radiologie (EURATOM 97/43):**\n\n**Drei Ebenen:**\n\n**Stufe 1 (Allgemein):**\n• Ist die Anwendung ionisierender Strahlung für diesen medizinischen Bereich grundsätzlich gerechtfertigt?\n• Einmalig durch Fachgesellschaften/Regulatoren entschieden\n• Beispiel: Thorax-CT für Lungenkarzinom-Screening → allgemein gerechtfertigt\n\n**Stufe 2 (Spezifisch/Leitlinien):**\n• Ist diese Untersuchung für diese klinische Fragestellung geeignet?\n• Leitlinien (z.B. ESR iGuide, ACR Appropriateness Criteria)\n• Radiologisch zuweisender Arzt: «Ist eine CT bei Bauchschmerzen gerechtfertigt?»\n\n**Stufe 3 (Individuell):**\n• Überwiegt der Nutzen für diesen spezifischen Patienten das Risiko?\n• Arzt bewertet: Kontraindikationen, Alternativen, klinische Situation\n• Schwangerschaft, Kinder: besondere Abwägung\n\n**Rechtfertigungspflicht:**\n• Jede Strahlenanwendung muss gerechtfertigt sein (StSG, EURATOM)\n• Anforderung: schriftliche Anforderung mit klinischer Fragestellung\n• Radiologe prüft Indikation (rechtfertigende Indikation = Pflichttext)\n\n**Nicht gerechtfertigt:**\n• Routine-Röntgen ohne klinische Indikation\n• Ganzkörper-CT für «Check-up» ohne Risikofaktoren",
       "cluster": "C",
-      "requires_context": [
-        "Strahlenschutz-Prinzipien"
-      ],
       "chips": [
         "3 Stufen: allgemein→spezifisch→individuell",
         "StSG: Rechtfertigungspflicht",
@@ -6160,12 +6157,12 @@
         "Strahlung-Grundlagen",
         "Dosisbegriffe-Physik"
       ],
-      "question": "Was ist der Unterschied zwischen Strahlung, Bestrahlung und Dosis? Was ist eine Isodose?",
-      "answer": "**Strahlung:**\n• Transport von Energie durch Raum in Form von Wellen oder Teilchen\n• Ionisierende Strahlung: überträgt genug Energie um Atome zu ionisieren (>30 eV)\n• Beispiele: Röntgen, Gamma, Alpha, Beta, Elektronen, Protonen\n\n**Bestrahlung:**\n• Vorgang des Aussetzens gegenüber ionisierender Strahlung\n• Beschreibt den Prozess, nicht die Menge\n• Veraltet auch als Exposition (X) bekannt [C/kg]\n\n**Dosis (Absorbierte Dosis D):**\n• Energie absorbiert pro Masseeinheit: D = dE/dm\n• Einheit: Gray [Gy] = J/kg\n• Gibt an wie viel Energie tatsächlich im Gewebe deponiert wurde\n• Unterschied zu Kerma: Dosis berücksichtigt Elektronengleichgewicht\n\n**Isodose:**\n• Linie (2D) oder Fläche (3D) gleicher Dosis in der Dosisverteilung\n• Angegeben als % der Referenzdosis (z.B. 95%-Isodose)\n• ICRU 50: PTV muss von 95%-Isodose umschlossen werden\n• Dient zur Beurteilung der Dosishomogenität im Zielvolumen",
+      "question": "Was ist der Unterschied zwischen Strahlung, Bestrahlung und Dosis?",
+      "answer": "**Strahlung:**\n• Transport von Energie durch Raum in Form von Wellen oder Teilchen\n• Ionisierende Strahlung: überträgt genug Energie um Atome zu ionisieren (>30 eV)\n• Beispiele: Röntgen, Gamma, Alpha, Beta, Elektronen, Protonen\n\n**Bestrahlung:**\n• Vorgang des Aussetzens gegenüber ionisierender Strahlung\n• Beschreibt den Prozess, nicht die Menge\n• Veraltet auch als Exposition (X) bekannt [C/kg]\n\n**Dosis (Absorbierte Dosis D):**\n• Energie absorbiert pro Masseeinheit: D = dE/dm\n• Einheit: Gray [Gy] = J/kg\n• Gibt an wie viel Energie tatsächlich im Gewebe deponiert wurde\n• Unterschied zu Kerma: Dosis berücksichtigt Elektronengleichgewicht",
       "chips": [
         "Dosis D = dE/dm [Gy]",
         "1 Gy = 1 J/kg",
-        "ICRU 50: PTV ⊂ 95%-Isodose"
+        "Bestrahlung = Prozess, nicht Menge"
       ],
       "cluster": "A"
     },
